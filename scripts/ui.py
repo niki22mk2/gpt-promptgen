@@ -15,7 +15,6 @@ def on_ui_tabs():
         with gr.Tab("Conversational (experimental)", elem_id="tab_conversational"):
             conversational.on_ui_tabs()
 
-    # return required as (gradio_component, title, elem_id)
     return (main_block, "GPT-PromptGen", "gpt_prompt_interface"),
 
 
