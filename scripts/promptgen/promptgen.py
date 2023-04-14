@@ -116,7 +116,7 @@ def process_prompt(prompt_request, user_prompt_type):
     system_prompt = SYSTEM_PROMPTS[prompt_lang]
     user_prompt = BASE_INSTRUCTIONS[prompt_lang_instructions] + user_prompt_type[prompt_lang].format(request=prompt_request)
 
-    print(user_prompt)
+    #print(user_prompt)
 
     max_retries = shared.opts.max_retry + 1
     retry_interval = 2
