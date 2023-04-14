@@ -12,7 +12,7 @@ def on_ui_tabs():
         with gr.Tab("GPT-PromptGen", elem_id="tab_basic"):
             promptgen.on_ui_tabs()
 
-        with gr.Tab("Conversational", elem_id="tab_conversational"):
+        with gr.Tab("Conversational (experimental)", elem_id="tab_conversational"):
             conversational.on_ui_tabs()
 
     # return required as (gradio_component, title, elem_id)
