@@ -80,7 +80,7 @@ def update_history_display():
 
 def clear_history():
     message_history.clear_history()
-    return ""
+    return "", "", "", ""
 
 def save_log_to_file(context, type):
     timestamp = datetime.datetime.now().strftime("%Y%m%d")
