@@ -48,7 +48,7 @@ def on_ui_tabs():
                         style={"width": "50%"}
                     )
             with gr.Column(variant='panel'):
-                gr.Markdown(value="Conversation history (provisional)<br>***",style={"width": "100%", "overflow": "auto"})
+                gr.Markdown(value="Conversation history (provisional)<br><hr>",style={"width": "100%", "overflow": "auto"})
                 history_display = gr.Markdown(
                     label="History",
                     style={"width": "100%", "height": "100%", "overflow": "auto"}
