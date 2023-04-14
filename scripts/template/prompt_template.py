@@ -165,7 +165,7 @@ Prompt: [編集後のプロンプト]
 Title: [あなたのタイトル]
 Points: [あなたのキーポイント]
 
-Input Prompt: {request}
+Prompt: {request}
 """
 
 _IMPROVE_USER_PROMPT_EN = """
@@ -176,7 +176,7 @@ Prompt: [edited prompt]
 Title: [your title]
 Points: [your key points]
 
-Input Prompt: {request} 
+Prompt: {request} 
 """
 
 _FILL_IN_THE_BLANKS_USER_PROMPTS_JP = """
@@ -200,7 +200,7 @@ Prompt: [提供されたプロンプト]
 Title: [あなたのタイトル]
 Points: [あなたのキーポイント]
 
-Input Prompt: {request}
+Prompt: {request}
 """
 
 _NAMING_USER_PROMPTS_EN = """
@@ -210,7 +210,7 @@ Prompt: [provided prompt]
 Title: [your title]
 Point: [your key points]
 
-Input Prompt: {request} 
+Prompt: {request} 
 """
 
 _CONVERSATIONAL_USER_PROMPTS_JP = """
