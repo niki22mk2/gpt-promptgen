@@ -182,7 +182,7 @@ def generate_prompt(prompt_request, request_history, mode):
     
     list_tag = """
     <ul>
-    <li>{content}</li>
+    <li> {content} </li>
     </ul>
     """
     # リクエスト履歴を更新
