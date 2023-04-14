@@ -2,7 +2,7 @@ import gradio as gr
 
 from modules import script_callbacks
 import modules.shared as shared
-from scripts.prompter import prompter
+from scripts.promptgen import promptgen
 from scripts.conversational import conversational
 
 
@@ -10,7 +10,7 @@ def on_ui_tabs():
 
     with gr.Blocks() as main_block:
         with gr.Tab("GPT-PromptGen", elem_id="tab_basic"):
-            prompter.on_ui_tabs()
+            promptgen.on_ui_tabs()
 
         with gr.Tab("Conversational", elem_id="tab_conversational"):
             conversational.on_ui_tabs()
