@@ -16,6 +16,7 @@ def on_ui_tabs():
     with gr.Blocks() as conversational_interface:
         with gr.Row(equal_height=True):
             with gr.Column(variant='panel'):                
+                gr.Markdown(value="このモードでは、前のレスポンスを踏まえたリクエストが可能です。",style={"width": "100%", "overflow": "auto"})                    
                 generated_prompt = gr.Textbox(
                     label="Generated Prompt",
                     interactive=False,
@@ -48,7 +49,8 @@ def on_ui_tabs():
                         style={"width": "50%"}
                     )
             with gr.Column(variant='panel'):
-                gr.Markdown(value="Conversation history (provisional)",style={"width": "100%", "overflow": "auto"})
+                gr.Markdown(value="History (簡易)",style={"width": "100%", "overflow": "auto"})
+                gr.Markdown(value="***",style={"width": "100%", "overflow": "auto"})                    
                 history_display = gr.Markdown(
                     label="History",
                     style={"width": "100%", "height": "100%", "overflow": "auto"}
@@ -74,7 +76,6 @@ def on_ui_tabs():
 def update_history_display():
     history_text = message_history.get_history_text(full=True)
     history_text = history_text.replace('\n', '<br>')
-    history_text = history_text.replace('---', '<hr>')
     return history_text
 
 def clear_history():
