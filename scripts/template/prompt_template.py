@@ -158,14 +158,15 @@ The request serves as a theme. Please use your imagination to add any necessary 
 """
 
 _IMPROVE_USER_PROMPT_JP = """
-以下のプロンプトに詳細な描写（例えば、状況、雰囲気、人物の外見、背景など）や追加要素を加えて、より緻密で具体的なプロンプトに編集してください。
+以下のプロンプト(Input Prompt)に詳細な描写（例えば、状況、雰囲気、人物の外見、背景など）や追加要素を加えて、より緻密で具体的なプロンプトに編集してください。
 また、出力フォーマットに従って書き直してください。
-
+```
 Prompt: [編集後のプロンプト]
-Title: [あなたのタイトル]
-Points: [あなたのキーポイント]
+Title: [タイトル]
+Points: [キーポイント]
+```
 
-Prompt: {request}
+Input Prompt: {request}
 """
 
 _IMPROVE_USER_PROMPT_EN = """
@@ -194,13 +195,14 @@ Be sure to follow the output format.
 """
 
 _NAMING_USER_PROMPTS_JP = """
-以下のプロンプトのタイトルとポイントを考えてください。プロンプトは変更せずにそのまま返してください。また、出力フォーマットに必ず従ってください。
+以下のプロンプト(Input Prompt)のタイトルとポイントを考えてください。プロンプトは変更せずにそのまま返してください。また、出力フォーマットに必ず従ってください。
+```
+Prompt: [入力されたプロンプト]
+Title: [タイトル]
+Points: [キーポイント]
+```
 
-Prompt: [提供されたプロンプト]
-Title: [あなたのタイトル]
-Points: [あなたのキーポイント]
-
-Prompt: {request}
+Input Prompt: {request}
 """
 
 _NAMING_USER_PROMPTS_EN = """
