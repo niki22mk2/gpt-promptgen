@@ -121,6 +121,7 @@ def process_prompt(prompt_request):
 
             response_text = response.choices[0].message["content"].strip()
             response_text = re.sub(r'\n+', '\n', response_text)
+            response_text = response_text.replace("You:", "Prompt:")
 
             prompt_match = re.search(r'Prompt:\s*(.+)', response_text)
             title_match = re.search(r'Title:\s*(.+)', response_text)
