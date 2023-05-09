@@ -165,6 +165,10 @@ def process_prompt(prompt_request, user_prompt_type):
                 print(f"Failed to generate the prompt after {max_retries} attempts. Please try again later.")
                 return "", f'### <span style="color: red">Error: Failed to generate the prompt. Please retry Generate Prompt.</span> <br><br>{e}'
 
+list_tag = """
+<ul>
+<li> {content} </li>
+</ul>"""
 
 def generate_prompt(prompt_request, request_history, mode):
     prompt_template = BASIC_USER_PROMPTS
@@ -180,11 +184,6 @@ def generate_prompt(prompt_request, request_history, mode):
     
     prompt_text, supplementary_info = process_prompt(prompt_request, prompt_template)
     
-    list_tag = """
-    <ul>
-    <li> {content} </li>
-    </ul>
-    """
     # リクエスト履歴を更新
     if not (prompt_text == ""):
         new_history_entry = list_tag.format(content=prompt_request)
