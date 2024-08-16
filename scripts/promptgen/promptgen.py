@@ -1,6 +1,7 @@
 import gradio as gr
 import anthropic
 import time,os,datetime,re
+import json
 
 import modules.shared as shared
 from modules import generation_parameters_copypaste as parameters_copypaste
@@ -130,27 +131,25 @@ def process_prompt(prompt_request, user_prompt_type):
             )
 
             response_text = response.content[0].text.strip()
-            response_text = re.sub(r'\n+', '\n', response_text)
 
-            prompt_match = re.search(r'Prompt:\s*(.+)', response_text)
-            title_match = re.search(r'Title:\s*(.+)', response_text)
-            points_match = re.search(r'Points:\s*(.+)', response_text, flags=re.DOTALL)
+            try:
+                response_json = json.loads(response_text)
+                prompt_text = response_json['prompt']
+                title = response_json['title']
+                points = response_json['points']
 
-            if not title_match or not prompt_match:
-                raise ValueError("Invalid response_text format:", response_text)
+                supplementary_info = f"### Title: {title}\n\nPoints: {points}"
 
-            prompt_text = prompt_match.group(1).strip()
-            title = title_match.group(1).strip()
-            points = points_match.group(1).strip()
+                if shared.opts.save_response_log:
+                    save_log_to_file(response_text, "response")
 
-            supplementary_info = f"### Title: {title}\n\nPoints: {points}"
-            if shared.opts.save_response_log:
-                save_log_to_file(response_text, "response")
+                if shared.opts.save_request_log and user_prompt_type == BASIC_USER_PROMPTS:
+                    save_log_to_file(prompt_request, "request")
 
-            if shared.opts.save_request_log and user_prompt_type == BASIC_USER_PROMPTS:
-                save_log_to_file(prompt_request, "request")
+                return prompt_text, supplementary_info
 
-            return prompt_text, supplementary_info
+            except json.JSONDecodeError:
+                raise ValueError("Invalid JSON format in response:", response_text)
 
         except Exception as e:
             if attempt < max_retries - 1:
