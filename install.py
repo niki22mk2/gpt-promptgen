@@ -1,5 +1,5 @@
 import launch
 
-if not launch.is_installed("openai"):
-    launch.run_pip("install openai")
-    print("Installing openai...")
+if not launch.is_installed("anthropic"):
+    launch.run_pip("install anthropic")
+    print("Installing anthropic...")

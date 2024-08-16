@@ -1,5 +1,5 @@
 import gradio as gr
-import openai
+import anthropic
 import time,os,datetime,re
 
 import modules.shared as shared
@@ -107,7 +107,7 @@ def save_log_to_file(context, type):
         f.write("\n\n")
 
 def process_prompt(prompt_request, user_prompt_type):
-    openai.api_key = shared.opts.open_ai_key
+    client = anthropic.Anthropic(api_key=shared.opts.anthropic_api_key)
     prompt_lang = "EN" if shared.opts.prompt_lang else "JP"
     prompt_lang_instructions = prompt_lang
     if shared.opts.output_lang:
@@ -116,24 +116,31 @@ def process_prompt(prompt_request, user_prompt_type):
     system_prompt = SYSTEM_PROMPTS[prompt_lang]
     user_prompt = BASE_INSTRUCTIONS[prompt_lang_instructions] + user_prompt_type[prompt_lang].format(request=prompt_request)
 
-    #print(user_prompt)
-
     max_retries = shared.opts.max_retry + 1
     retry_interval = 2
 
     for attempt in range(max_retries):
         try:
-            response = openai.ChatCompletion.create(
-                model=shared.opts.open_ai_model,
-                messages=[
-                    {"role": "system", "content": system_prompt},
-                    {"role": "user", "content": user_prompt},
-                ],
+            response = client.beta.prompt_caching.messages.create(
+                model=shared.opts.anthropic_model,
+                max_tokens=1024,
                 temperature=shared.opts.opt_temperature,
-                timeout = 60
+                system=[
+                    {
+                        "type": "text",
+                        "text": system_prompt,
+                        "cache_control": {"type": "ephemeral"}
+                    }
+                ],
+                messages=[
+                    {
+                        "role": "user",
+                        "content": user_prompt
+                    }
+                ]
             )
 
-            response_text = response.choices[0].message["content"].strip()
+            response_text = response.content[0].text.strip()
             response_text = re.sub(r'\n+', '\n', response_text)
 
             prompt_match = re.search(r'Prompt:\s*(.+)', response_text)
