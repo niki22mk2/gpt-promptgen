@@ -63,6 +63,9 @@ def on_ui_tabs():
                         value="Refine and Enhance",
                         variant='primary'
                     )
+                thinking_information = gr.Markdown(  # 新しく追加
+                    label="Thinking Process"
+                )
         
         # register_paste_params_buttonの呼び出しを修正
         for tabname, button in send_to_buttons.items():
@@ -78,19 +81,19 @@ def on_ui_tabs():
         generate_prompt_button.click(
             fn=generate_prompt,
             inputs=[prompt_request, request_history, mode_radio],
-            outputs=[generated_prompt, supplementary_information, request_history, full_info_textbox]  # full_info_textboxを出力に追加
+            outputs=[generated_prompt, supplementary_information, request_history, full_info_textbox, thinking_information]  # thinking_informationを追加
         )
 
         improve_button.click(
             fn=improve_prompt,
             inputs=[generated_prompt],
-            outputs=[generated_prompt, supplementary_information]
+            outputs=[generated_prompt, supplementary_information, thinking_information]  # thinking_informationを追加
         )
 
         clear_button.click(
-            fn=lambda: ["", "", "",""],
+            fn=lambda: ["", "", "", "", ""],  # 空の文字列を1つ追加
             inputs=[],
-            outputs=[prompt_request, generated_prompt, supplementary_information,request_history]
+            outputs=[prompt_request, generated_prompt, supplementary_information, request_history, thinking_information]  # thinking_informationを追加
         )
 
     return [(llm_prompt_artisan_interface, "LLM Prompt Artisan", "llm_prompt_artisan_interface")]
@@ -142,8 +145,21 @@ def process_prompt(prompt_request, user_prompt_type):
             response_text = response.content[0].text.strip()
 
             try:
-                response_json = json.loads(response_text)
-                prompt_text = response_json['prompt'].strip()  # 先頭と末尾の空白文字を削除
+                # Thinking部分を抽出
+                thinking_match = re.search(r'<antThinking>(.*?)</antThinking>', response_text, re.DOTALL)
+                thinking_text = thinking_match.group(1).strip() if thinking_match else ""
+
+                # XMLタグ内のJSON形式の出力を抽出
+                output_match = re.search(r'<output>(.*?)</output>', response_text, re.DOTALL)
+                if output_match:
+                    output_json = output_match.group(1).strip()
+                    # バックスラッシュをエスケープ
+                    output_json = output_json.replace('\\', '\\\\')
+                    response_json = json.loads(output_json)
+                else:
+                    raise ValueError("Output format not found in response")
+
+                prompt_text = response_json['prompt'].strip()
                 title = response_json['title']
                 points = response_json['points']
 
@@ -168,10 +184,10 @@ def process_prompt(prompt_request, user_prompt_type):
                 if shared.opts.save_request_log and user_prompt_type == BASIC_USER_PROMPTS:
                     save_log_to_file(prompt_request, "request")
 
-                return prompt_text, supplementary_info, full_info
+                return prompt_text, supplementary_info, full_info, thinking_text
 
-            except json.JSONDecodeError:
-                raise ValueError("Invalid JSON format in response:", response_text)
+            except (json.JSONDecodeError, ValueError) as e:
+                raise ValueError(f"Error parsing response: {e}\nResponse text: {response_text}")
 
         except Exception as e:
             if attempt < max_retries - 1:
@@ -180,7 +196,7 @@ def process_prompt(prompt_request, user_prompt_type):
                 time.sleep(retry_interval)
             else:
                 print(f"Failed to generate the prompt after {max_retries} attempts. Please try again later.")
-                return "", f'### <span style="color: red">Error: Failed to generate the prompt. Please retry Generate Prompt.</span> <br><br>{e}'
+                return "", f'### <span style="color: red">Error: Failed to generate the prompt. Please retry Generate Prompt.</span> <br><br>{e}', "", ""
 
 list_tag = """
 <ul>
@@ -200,7 +216,7 @@ def generate_prompt(prompt_request, request_history, mode):
     elif mode == "Refine and Enhance":
         prompt_template = IMPROVE_USER_PROMPTS
     
-    prompt_text, supplementary_info, full_info = process_prompt(prompt_request, prompt_template)
+    prompt_text, supplementary_info, full_info, thinking_text = process_prompt(prompt_request, prompt_template)
 
     # リクエスト履歴を更新
     if prompt_text:
@@ -209,9 +225,9 @@ def generate_prompt(prompt_request, request_history, mode):
     else:
         updated_history = request_history
 
-    return prompt_text, supplementary_info, updated_history, full_info 
+    return prompt_text, supplementary_info, updated_history, full_info, thinking_text 
 
 def improve_prompt(prompt_request):
-    prompt_text, supplementary_info = process_prompt(prompt_request, IMPROVE_USER_PROMPTS)
+    prompt_text, supplementary_info, thinking_text = process_prompt(prompt_request, IMPROVE_USER_PROMPTS)
 
-    return prompt_text, supplementary_info
+    return prompt_text, supplementary_info, thinking_text
