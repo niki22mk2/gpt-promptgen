@@ -15,7 +15,7 @@ from scripts.template.prompt_template import (
 )
 
 def on_ui_tabs():
-    with gr.Blocks() as gpt_prompt_interface:
+    with gr.Blocks() as llm_prompt_artisan_interface:
         with gr.Row(equal_height=True):
             with gr.Column(variant='panel'):
                 with gr.Column(variant='panel'):
@@ -83,7 +83,7 @@ def on_ui_tabs():
             outputs=[prompt_request, generated_prompt, supplementary_information,request_history]
         )
 
-    return (gpt_prompt_interface, "GPT-PromptGen", "gpt_prompt_interface"),
+    return (llm_prompt_artisan_interface, "LLM Prompt Artisan", "llm_prompt_artisan_interface"),
 
 
 def save_log_to_file(context, type):
