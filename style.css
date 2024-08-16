@@ -1,11 +1,54 @@
-.full-width {
-    width: 100%;
+/* 拡張機能のコンテナにユニークなクラスを追加 */
+.llm-prompt-artisan-container {
+    max-width: 90%;
+    margin: 0 auto;
+    padding: 20px;
 }
 
-.overflow-auto {
-    overflow: auto;
+/* より具体的なセレクタを使用 */
+.llm-prompt-artisan-container .full-width {
+    width: 100% !important;
 }
 
-.height-100px {
-    height: 100px;
+.llm-prompt-artisan-container .overflow-auto {
+    overflow: auto !important;
+}
+
+.llm-prompt-artisan-container .height-100px {
+    height: 100px !important;
+}
+
+/* Gradioのクラスを上書きする場合は!importantを使用 */
+.llm-prompt-artisan-container .gradio-container {
+    font-family: 'Arial', sans-serif !important;
+}
+
+.llm-prompt-artisan-container .gr-button {
+    transition: all 0.3s ease !important;
+}
+
+.llm-prompt-artisan-container .gr-button:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+}
+
+.llm-prompt-artisan-container .gr-form {
+    background-color: #f5f5f5 !important;
+    border-radius: 8px !important;
+    padding: 20px !important;
+    margin-bottom: 20px !important;
+}
+
+.llm-prompt-artisan-container .gr-input,
+.llm-prompt-artisan-container .gr-textarea {
+    border: 1px solid #ddd !important;
+    border-radius: 4px !important;
+    padding: 8px !important;
+}
+
+.llm-prompt-artisan-container .gr-input:focus,
+.llm-prompt-artisan-container .gr-textarea:focus {
+    border-color: #007bff !important;
+    outline: none !important;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25) !important;
 }

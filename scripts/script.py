@@ -1,16 +1,7 @@
 import gradio as gr
-
 from modules import script_callbacks
 import modules.shared as shared
-from scripts.promptgen.promptgen import on_ui_tabs
-
-# def on_ui_tabs():
-#     with gr.Blocks() as main_block:
-#         with gr.Tab("LLM Prompt Artisan", elem_id="tab_basic"):
-#             promptgen.on_ui_tabs()
-
-#     return (main_block, "LLM Prompt Artisan", "llm_prompt_artisan_interface"),
-
+from scripts.promptgen.ui import create_ui
 
 def on_ui_settings():
     section = ('LLM Prompt Artisan', "LLM Prompt Artisan")
@@ -24,4 +15,4 @@ def on_ui_settings():
     shared.opts.add_option("save_response_log", shared.OptionInfo(True, "Save response logs to a file. ([webui root folder]/promptgen_log/response/)", section=section))
 
 script_callbacks.on_ui_settings(on_ui_settings)
-script_callbacks.on_ui_tabs(on_ui_tabs)
+script_callbacks.on_ui_tabs(create_ui)
