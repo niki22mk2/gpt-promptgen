@@ -53,18 +53,19 @@ def on_ui_tabs():
                     label="Supplementary Information"
                 )
                 with gr.Row():
-                    parameters_copypaste.bind_buttons(
-                        parameters_copypaste.create_buttons(
-                            ["txt2img", "img2img"],
-                        ),
-                        None,
-                        generated_prompt
-                    ) 
+                    send_to_buttons = parameters_copypaste.create_buttons(["txt2img", "img2img"])
                     improve_button = gr.Button(
                         elem_id="improve_button",
                         value="Refine and Enhance",
                         variant='primary'
-                    ) 
+                    )
+        
+        parameters_copypaste.bind_buttons(
+            send_to_buttons,
+            None,
+            generated_prompt
+        )
+
         generate_prompt_button.click(
             fn=generate_prompt,
             inputs=[prompt_request, request_history, mode_radio],
@@ -83,8 +84,7 @@ def on_ui_tabs():
             outputs=[prompt_request, generated_prompt, supplementary_information,request_history]
         )
 
-    return (llm_prompt_artisan_interface, "LLM Prompt Artisan", "llm_prompt_artisan_interface"),
-
+    return [(llm_prompt_artisan_interface, "LLM Prompt Artisan", "llm_prompt_artisan_interface")]
 
 def save_log_to_file(context, type):
     timestamp = datetime.datetime.now().strftime("%Y%m%d")

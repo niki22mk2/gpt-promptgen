@@ -2,14 +2,14 @@ import gradio as gr
 
 from modules import script_callbacks
 import modules.shared as shared
-from scripts.promptgen import promptgen
+from scripts.promptgen.promptgen import on_ui_tabs
 
-def on_ui_tabs():
-    with gr.Blocks() as main_block:
-        with gr.Tab("LLM Prompt Artisan", elem_id="tab_basic"):
-            promptgen.on_ui_tabs()
+# def on_ui_tabs():
+#     with gr.Blocks() as main_block:
+#         with gr.Tab("LLM Prompt Artisan", elem_id="tab_basic"):
+#             promptgen.on_ui_tabs()
 
-    return (main_block, "LLM Prompt Artisan", "llm_prompt_artisan_interface"),
+#     return (main_block, "LLM Prompt Artisan", "llm_prompt_artisan_interface"),
 
 
 def on_ui_settings():
