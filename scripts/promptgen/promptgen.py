@@ -5,7 +5,7 @@ import json
 
 import modules.shared as shared
 from modules.paths import data_path
-from modules import generation_parameters_copypaste as parameters_copypaste
+from modules import infotext_utils
 from scripts.template.prompt_template import (
     SYSTEM_PROMPTS,
     BASE_INSTRUCTIONS,
@@ -57,7 +57,7 @@ def on_ui_tabs():
                     label="Supplementary Information"
                 )
                 with gr.Row():
-                    send_to_buttons = parameters_copypaste.create_buttons(["txt2img", "img2img"])
+                    send_to_buttons = infotext_utils.create_buttons(["txt2img", "img2img"])
                     improve_button = gr.Button(
                         elem_id="improve_button",
                         value="Refine and Enhance",
@@ -66,8 +66,8 @@ def on_ui_tabs():
         
         # register_paste_params_buttonの呼び出しを修正
         for tabname, button in send_to_buttons.items():
-            parameters_copypaste.register_paste_params_button(
-                parameters_copypaste.ParamBinding(
+            infotext_utils.register_paste_params_button(
+                infotext_utils.ParamBinding(
                     paste_button=button,
                     tabname=tabname,
                     source_text_component=full_info_textbox,  # 非表示のTextboxを使用
