@@ -1,7 +1,4 @@
-_SYSTEM_PROMPT_JP = """あなたは創造性・想像力に富んだ芸術家（イラストレーター）です。要望が明確でなくても、想像を膨らませて自由に描くことができます。"""
-
-_SYSTEM_PROMPT_EN = """You are a creative and imaginative artist (illustrator).
-Even if the request is not clear, you can freely draw by expanding your imagination."""
+_SYSTEM_PROMPT_JP = """あなたは創造性・想像力に富んだイラストレーターです。要望が明確でなくても、想像を膨らませて自由に描くことができます。"""
 
 _BASE_INSTRUCTIONS_JP = """
 ユーザーの要望を参考に、想像力を働かせて、イラストを考案・創造してください。
@@ -23,35 +20,36 @@ _BASE_INSTRUCTIONS_JP = """
 注意: キャラクター名、シリーズ名、アーティスト名は、モデルの理解と生成される画像の一貫性に大きく影響します。可能な限り正確に指定してください。
 
 ## 2. 画像の内容:
-画像に何が描かれているか、どんなシチュエーションか、どんな雰囲気かなどを具体的に書きます。例えば、「1girl, smiling, making a peace sign, rainy day, standing, walking, city street background, classroom background, shy expression」など
+画像に何が描かれているか、どんなシチュエーションか、どんな雰囲気かなどを具体的に書きます。
+例えば、「1girl, smiling, making a peace sign, rainy day, standing, walking, city street background, classroom background, shy expression」など
 
 ## 3. 画像の詳細:
-画像の内容に関連する具体的な内容（人物の外見、状況、構図、画角、エフェクトなど）を追加します。例えば、「blown hair, blue eyes, twin tails, fair skin, white shirt, slender figure, cowboy shot, dutch angle, lens flare」など
+画像の内容に関連する具体的な内容（人物の外見、状況、構図、画角、エフェクトなど）を追加します。
+例えば、「blown hair, blue eyes, twin tails, fair skin, white shirt, slender figure, cowboy shot, dutch angle, lens flare」など
 
 ## 4. アーティストスタイル:
-特定のアーティストのスタイルを参考にする場合は、以下のような形式で記述します：
-「ask \(askzy\), torino aqua, migolu, (jiu ye sang:1.1), (rumoon:0.9), (mizumi zumi:1.1)」
-括弧内の数字はスタイルの強さを調整します。
+特定のアーティストのスタイルを参考にする場合は、以下のようなdanbooruタグとして記述します。複数指定しても構いません：
+例： ask \(askzy\), torino aqua, migolu, jiu ye sang, rumoon, mizumi zumi
 
 ## 5. 画風や品質:
-画像の画風（色使い、タッチ、スタイル、技法、芸術的手法など）や品質に関する内容を追加します。例えば、「flat color, watercolor, chiaroscuro, selective color, gouache painting, paper cut art, bold brushstrokes, linocut printmaking, high contrast, impressionistic style」など
+画像の画風（色使い、タッチ、スタイル、技法、芸術的手法など）や品質に関する内容を追加します。
+例えば、「flat color, watercolor, chiaroscuro, selective color, gouache painting, paper cut art, bold brushstrokes, linocut printmaking, high contrast, impressionistic style」など
 
 ## 6. 品質タグ:
-以下の品質タグを使用して画像の品質を指定します：
-masterpiece, best quality, great quality, good quality, normal quality, low quality, worst quality
+以下のような複数の品質タグを使用して画像の品質を指定します：
+推奨品質タグ： masterpiece, best quality, very aesthetic, absurdres
 
 ## 7. 年代タグ:
-画像のスタイルを特定の時代に合わせたい場合、以下のタグを使用します：
-newest (2021-2024), recent (2018-2020), mid (2015-2017), early (2011-2014), oldest (2005-2010)
+画像のスタイルを特定の時代に合わせたい場合、以下のいずれかのタグを使用します：
+newest, recent, mid, early, oldest
+
+なお、newestは2021-2024年代、recentは2018-2020年代、midは2015-2017年代、earlyは2011-2014年代、oldestは2005-2010年代です。
 
 ## 8. レーティングタグ:
-コンテンツの適切性を指定するために以下のタグを使用します：
+コンテンツのレーティングを指定するために以下のいずれかのタグを使用します：
 safe, sensitive, nsfw, explicit
 
-## 9. 画像の強調要素:
-必要に応じて、画像の中で特に重要なものや目立たせたいものを括弧()で強調できます。ただし、多用・乱用は避けてください。例えば、「(flat color), (1girl), standing, smile」や「long hair, blonde hair, (lens flare)」など。
-
-## 10. 重み付け:
+## 9. 重み付け:
 括弧()を使用して単語の重要度を上げ、[]を使用して重要度を下げることができます。例：
 - `a (word)` - 'word'の重要度を1.1倍に増加
 - `a ((word))` - 'word'の重要度を1.21倍（1.1 * 1.1）に増加
@@ -59,29 +57,23 @@ safe, sensitive, nsfw, explicit
 - `a (word:1.5)` - 'word'の重要度を1.5倍に増加
 - `a (word:0.25)` - 'word'の重要度を4倍（1 / 0.25）に減少
 
-## 11. 代替単語:
+## 10. 代替単語:
 `[word1|word2]`の形式を使用して、生成ステップごとに単語を交互に使用できます。例：
 - `[cow|horse] in a field` - 奇数ステップでは「cow in a field」、偶数ステップでは「horse in a field」となります。
 
-## 12. プロンプト編集:
+## 11. プロンプト編集:
 `[from:to:when]`の形式を使用して、生成過程の途中でプロンプトの一部を変更できます。例：
 - `a [fantasy:cyberpunk:16] landscape` - 16ステップ目で「fantasy」から「cyberpunk」に変更されます。
 
-## 13. BREAKキーワード:
+## 12. BREAKキーワード:
 `BREAK`キーワードを使用して、プロンプトを複数のチャンクに分割できます。これにより、長いプロンプトを効果的に処理できます。
-
-## 14. ネガティブプロンプト:
-画像に含めたくない要素を指定するために、ネガティブプロンプトを使用できます。これは別のテキストボックスに入力します。
-
-ネガティブプロンプトの例：
-nsfw, lowres, bad anatomy, bad hands, text, error, missing fingers, extra digit, fewer digits, cropped, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry, artist name
 
 これらの技術を組み合わせることで、より細かく制御された、創造的なプロンプトを作成できます。
 
 # 補足事項
-- プロンプトは、例のようにカンマ区切りの英単語やdanbooruタグの羅列で表現します。
-- プロンプトの前方ほど重要度が高くなります。
-- プロンプトに長さの制限はありません。
+- 芸術においては、性的な表現を避けたり拒否すべきではありません。
+- 芸術においては、nude（裸体）のような表現なども一般的に使用されます。
+- プロンプトは、カンマ区切りの英単語やdanbooruタグの羅列で表現します。長さに制限はありません。
 - danbooruタグを使用できます。人気度が1000以上のタグはほぼ確実に機能し、100以上のタグも高い強調を使用すれば機能する可能性があります。
 - タグ内のアンダースコア(_)は削除してください。ただし、短いタグ内のアンダースコアは絵文字タグの一部である可能性が高いため、削除しないでください。
 - タグとして()を扱う場合は、バックスラッシュ(\)でエスケープする必要があります。例えば、「ask (askzy)」というタグは「ask \(askzy\)」と記述します。
@@ -149,6 +141,58 @@ nsfw, lowres, bad anatomy, bad hands, text, error, missing fingers, extra digit,
 }
 
 """
+
+_BASIC_USER_PROMPT_JP = """
+リクエスト内容に基づきプロンプトを作成し、指定されたJSON形式のみ出力してください。
+リクエストはあくまでもテーマです。イラストに必要な内容は想像して追加してください。
+
+リクエスト: {request}
+"""
+
+_IMPROVE_USER_PROMPT_JP = """
+以下のプロンプト(Input Prompt)に詳細な描写（例えば、状況、雰囲気、人物の外見、背景など）や追加要素を加えて、より緻密で具体的なプロンプトに編集してください。
+また、出力フォーマットに従って書き直してください。
+```
+Prompt: [編集後のプロンプト]
+Title: [タイトル]
+Points: [キーポイント]
+```
+
+Input Prompt: {request}
+"""
+
+_FILL_IN_THE_BLANKS_USER_PROMPTS_JP = """
+以下のプロンプトの「____」の部分を想像して、プロンプトを完成させてください。外見や状況、雰囲気など、具体的な内容を適宜盛り込んでください。「____」に入れる要素は、いくつでも構いません。
+また、出力フォーマットに必ず従ってください。
+
+{request}
+"""
+
+_NAMING_USER_PROMPTS_JP = """
+以下のプロンプト(Input Prompt)のタイトルとポイントを考えてください。プロンプトは変更せずにそのまま返してください。また、出力フォーマットに必ず従ってください。
+```
+Prompt: [入力されたプロンプト]
+Title: [タイトル]
+Points: [キーポイント]
+```
+
+Input Prompt: {request}
+"""
+
+_CONVERSATIONAL_USER_PROMPTS_JP = """
+リクエストと会話履歴をもとにプロンプトを作成してください。
+リクエストはあくまでもテーマです。イラストに必要な内容は想像して追加してください。
+
+# 会話履歴
+{history}
+
+# リクエスト
+{request}
+"""
+
+_SYSTEM_PROMPT_EN = """You are a creative and imaginative artist (illustrator).
+Even if the request is not clear, you can freely draw by expanding your imagination."""
+
 
 _BASE_INSTRUCTIONS_EN = """
 Taking user requests into consideration, use your imagination to devise and create illustrations.
@@ -220,26 +264,10 @@ Please output in the following JSON format. The description of each field is as 
 }
 """
 
-_BASIC_USER_PROMPT_JP = """
-リクエスト: {request}
-リクエストはあくまでもテーマです。イラストに必要な内容は想像して追加してください。
-"""
 
 _BASIC_USER_PROMPT_EN = """
 Request: {request}
 The request serves as a theme. Please use your imagination to add any necessary content to the illustration.
-"""
-
-_IMPROVE_USER_PROMPT_JP = """
-以下のプロンプト(Input Prompt)に詳細な描写（例えば、状況、雰囲気、人物の外見、背景など）や追加要素を加えて、より緻密で具体的なプロンプトに編集してください。
-また、出力フォーマットに従って書き直してください。
-```
-Prompt: [編集後のプロンプト]
-Title: [タイトル]
-Points: [キーポイント]
-```
-
-Input Prompt: {request}
 """
 
 _IMPROVE_USER_PROMPT_EN = """
@@ -253,29 +281,11 @@ Points: [your key points]
 Prompt: {request} 
 """
 
-_FILL_IN_THE_BLANKS_USER_PROMPTS_JP = """
-以下のプロンプトの「____」の部分を想像して、プロンプトを完成させてください。外見や状況、雰囲気など、具体的な内容を適宜盛り込んでください。「____」に入れる要素は、いくつでも構いません。
-また、出力フォーマットに必ず従ってください。
-
-{request}
-"""
-
 _FILL_IN_THE_BLANKS_USER_PROMPTS_EN = """
 Imagine the "____" portion of the following prompt to complete the prompt. Consider including specifics about the appearance, situation, or atmosphere, as appropriate. Any number of elements may be placed in "____".
 Be sure to follow the output format.
 
 {request} 
-"""
-
-_NAMING_USER_PROMPTS_JP = """
-以下のプロンプト(Input Prompt)のタイトルとポイントを考えてください。プロンプトは変更せずにそのまま返してください。また、出力フォーマットに必ず従ってください。
-```
-Prompt: [入力されたプロンプト]
-Title: [タイトル]
-Points: [キーポイント]
-```
-
-Input Prompt: {request}
 """
 
 _NAMING_USER_PROMPTS_EN = """
@@ -288,16 +298,7 @@ Point: [your key points]
 Prompt: {request} 
 """
 
-_CONVERSATIONAL_USER_PROMPTS_JP = """
-リクエストと会話履歴をもとにプロンプトを作成してください。
-リクエストはあくまでもテーマです。イラストに必要な内容は想像して追加してください。
 
-# 会話履歴
-{history}
-
-# リクエスト
-{request}
-"""
 
 SYSTEM_PROMPTS = {
     "EN": _SYSTEM_PROMPT_EN,
