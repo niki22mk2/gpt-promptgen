@@ -54,8 +54,9 @@ def on_ui_tabs():
                     label="Generated Prompt",
                     interactive=False,
                     show_progress=True,
-                    style={"width": "100%", "height": "100px", "overflow": "auto"}
-                ).style(show_copy_button=True)
+                    style={"width": "100%", "height": "100px", "overflow": "auto"},
+                    copy_button=True
+                )
                 supplementary_information = gr.Markdown(
                     label="Supplementary Information",
                     placeholder="Enter supplementary information",
