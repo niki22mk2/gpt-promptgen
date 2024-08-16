@@ -4,6 +4,7 @@ import time,os,datetime,re
 import json
 
 import modules.shared as shared
+from modules.paths import data_path
 from modules import generation_parameters_copypaste as parameters_copypaste
 from scripts.template.prompt_template import (
     SYSTEM_PROMPTS,
@@ -43,6 +44,9 @@ def on_ui_tabs():
                     gr.Markdown("Request History")
                     request_history = gr.Markdown()
 
+            # 非表示のTextboxを追加して完全な生成情報を保持
+            full_info_textbox = gr.Textbox(visible=False)
+
             with gr.Column(variant='panel'):
                 generated_prompt = gr.Textbox(
                     label="Generated Prompt",
@@ -60,16 +64,21 @@ def on_ui_tabs():
                         variant='primary'
                     )
         
-        parameters_copypaste.bind_buttons(
-            send_to_buttons,
-            None,
-            generated_prompt
-        )
+        # register_paste_params_buttonの呼び出しを修正
+        for tabname, button in send_to_buttons.items():
+            parameters_copypaste.register_paste_params_button(
+                parameters_copypaste.ParamBinding(
+                    paste_button=button,
+                    tabname=tabname,
+                    source_text_component=full_info_textbox,  # 非表示のTextboxを使用
+                    source_image_component=None
+                )
+            )
 
         generate_prompt_button.click(
             fn=generate_prompt,
             inputs=[prompt_request, request_history, mode_radio],
-            outputs=[generated_prompt, supplementary_information, request_history]
+            outputs=[generated_prompt, supplementary_information, request_history, full_info_textbox]  # full_info_textboxを出力に追加
         )
 
         improve_button.click(
@@ -134,9 +143,22 @@ def process_prompt(prompt_request, user_prompt_type):
 
             try:
                 response_json = json.loads(response_text)
-                prompt_text = response_json['prompt']
+                prompt_text = response_json['prompt'].strip()  # 先頭と末尾の空白文字を削除
                 title = response_json['title']
                 points = response_json['points']
+
+                # params.txtの内容を読み込む
+                filename = os.path.join(data_path, "params.txt")
+                try:
+                    with open(filename, "r", encoding="utf8") as file:
+                        params_content = file.read()
+                except OSError:
+                    params_content = "temp prompt\nNegative prompt:"
+
+                # 1行目をgenerated_promptで置き換える
+                params_lines = params_content.split('\n')
+                params_lines[0] = prompt_text
+                full_info = '\n'.join(params_lines)
 
                 supplementary_info = f"### Title: {title}\n\nPoints: {points}"
 
@@ -146,7 +168,7 @@ def process_prompt(prompt_request, user_prompt_type):
                 if shared.opts.save_request_log and user_prompt_type == BASIC_USER_PROMPTS:
                     save_log_to_file(prompt_request, "request")
 
-                return prompt_text, supplementary_info
+                return prompt_text, supplementary_info, full_info
 
             except json.JSONDecodeError:
                 raise ValueError("Invalid JSON format in response:", response_text)
@@ -166,6 +188,7 @@ list_tag = """
 </ul>"""
 
 def generate_prompt(prompt_request, request_history, mode):
+
     prompt_template = BASIC_USER_PROMPTS
 
     if mode == "Prompt Generation":
@@ -177,16 +200,16 @@ def generate_prompt(prompt_request, request_history, mode):
     elif mode == "Refine and Enhance":
         prompt_template = IMPROVE_USER_PROMPTS
     
-    prompt_text, supplementary_info = process_prompt(prompt_request, prompt_template)
-    
+    prompt_text, supplementary_info, full_info = process_prompt(prompt_request, prompt_template)
+
     # リクエスト履歴を更新
-    if not (prompt_text == ""):
+    if prompt_text:
         new_history_entry = list_tag.format(content=prompt_request)
         updated_history = request_history + new_history_entry
     else:
         updated_history = request_history
 
-    return prompt_text, supplementary_info, updated_history
+    return prompt_text, supplementary_info, updated_history, full_info 
 
 def improve_prompt(prompt_request):
     prompt_text, supplementary_info = process_prompt(prompt_request, IMPROVE_USER_PROMPTS)
