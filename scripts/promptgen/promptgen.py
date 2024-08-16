@@ -21,46 +21,35 @@ def on_ui_tabs():
                     prompt_request = gr.Textbox(
                         label="Prompt request",
                         placeholder="Enter request",
-                        value="",
-                        style={"width": "100%"}
+                        value=""
                     )
                     mode_radio = gr.Radio(
                         ["Prompt Generation", "Refine and Enhance","Fill-in-the-Blanks", "Title and Points Generation"],
                         label="Mode",
-                        inline=True,
-                        style={"width": "100%"}
+                        interactive=True
                     )
                     with gr.Row():
                         generate_prompt_button = gr.Button(
                             elem_id="generate_prompt_button",
                             value="Send",
-                            variant='primary',
-                            style={"width": "50%"}
+                            variant='primary'
                         )
                         clear_button = gr.Button(
                             elem_id="clear_button",
                             value="Clear",
-                            variant='secondary',
-                            style={"width": "50%"}
+                            variant='secondary'
                         )
-                    gr.Markdown(value="Request History",style={"width": "100%", "overflow": "auto"})
-                    request_history = gr.Markdown(
-                        placeholder="No requests made yet.",
-                        style={"width": "100%", "overflow": "auto"}
-                    )
+                    gr.Markdown("Request History")
+                    request_history = gr.Markdown()
 
             with gr.Column(variant='panel'):
                 generated_prompt = gr.Textbox(
                     label="Generated Prompt",
                     interactive=False,
-                    show_progress=True,
-                    style={"width": "100%", "height": "100px", "overflow": "auto"},
-                    copy_button=True
+                    lines=4
                 )
                 supplementary_information = gr.Markdown(
-                    label="Supplementary Information",
-                    placeholder="Enter supplementary information",
-                    style={"width": "100%"}
+                    label="Supplementary Information"
                 )
                 with gr.Row():
                     parameters_copypaste.bind_buttons(
@@ -73,8 +62,7 @@ def on_ui_tabs():
                     improve_button = gr.Button(
                         elem_id="improve_button",
                         value="Refine and Enhance",
-                        variant='primary',
-                        style={"width": "30%"}
+                        variant='primary'
                     ) 
         generate_prompt_button.click(
             fn=generate_prompt,
@@ -114,8 +102,8 @@ def process_prompt(prompt_request, user_prompt_type):
     if shared.opts.output_lang:
         prompt_lang_instructions = "EN_ALL"
 
-    system_prompt = SYSTEM_PROMPTS[prompt_lang]
-    user_prompt = BASE_INSTRUCTIONS[prompt_lang_instructions] + user_prompt_type[prompt_lang].format(request=prompt_request)
+    system_prompt = SYSTEM_PROMPTS[prompt_lang] + BASE_INSTRUCTIONS[prompt_lang_instructions]
+    user_prompt =  user_prompt_type[prompt_lang].format(request=prompt_request)
 
     max_retries = shared.opts.max_retry + 1
     retry_interval = 2
