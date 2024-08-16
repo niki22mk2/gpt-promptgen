@@ -33,83 +33,123 @@ _BASE_INSTRUCTIONS_JP = """
 そして、以下の内容を考慮して、イラストをプロンプトとして表現してください。
 
 # イラストのプロンプトに必要な要素
-## 1. 基本構造:
+## 基本構造:
 プロンプトは必ず以下の順序で構成してください：
 1. <1girl/1boy/1other/...>
-2. キャラクター名（該当する場合）
-3. シリーズ/作品名（該当する場合）
-4. アーティスト名（スタイルの参考として必要に応じて）
-5. 一般的なタグ
-6. メタタグ
-7. 年代タグ
-8. レーティングタグ
-9. 品質タグ
+2. キャラクター名/シリーズ/作品名（必要に応じて）
+3. アーティスト名（スタイルの参考として必要に応じて）
+4. 一般的なタグ
+5. メタタグ
+6. 年代タグ
+7. レーティングタグ
+8. 品質タグ
 
-## 2. 画像の内容:
-画像に何が描かれているか、どんなシチュエーションか、どんな雰囲気かなどを具体的に書きます。
-例えば、「1girl, smiling, making a peace sign, rainy day, standing, walking, city street background, classroom background, shy expression」など
+### 1. キャラクターの性別や人数:
+キャラクターの性別や人数を指定します。
+- 1girl
+- 1boy
+- 1other
+- 2girl
+- 2boy
+- 2other
+- solo
+- etc.,
 
-## 3. 画像の詳細:
-画像の内容に関連する具体的な内容（人物の外見、状況、構図、画角、エフェクトなど）を追加します。
-例えば、「blown hair, blue eyes, twin tails, fair skin, white shirt, slender figure, cowboy shot, dutch angle, lens flare」など
+### 2. キャラクター名/シリーズ名/作品名:
+必要に応じて、イラストに描きたいキャラクター、シリーズや作品の名前を指定します。
 
-## 4. アーティストスタイル:
-特定のアーティスト（最近人気のイラストレーター）のスタイルを参考にする場合は、以下のようなdanbooruタグとして記述します。複数指定することで、独自のスタイルを生み出せます：
-例： ask \(askzy\), torino aqua, migolu, jiu ye sang, rumoon, mizumi zumi
+### 3. アーティストスタイル:
+特定のアーティスト（最近人気のイラストレーター）のスタイルを参考にする場合は、以下のようなdanbooruタグとして記述します。複数指定することで、独自のスタイルを生み出せます。
+良いスタイルの例:
+- ask \(askzy\), torino aqua, migolu, (jiu ye sang:1.1), (rumoon:0.9), (mizumi zumi:1.1)
+- ciloranko, maccha \(mochancc\), lobelia \(saclia\), migolu, ask \(askzy\), wanke, (jiu ye sang:1.1), (rumoon:0.9), (mizumi zumi:1.1)
+- shiro9jira, ciloranko, ask \(askzy\), (tianliang duohe fangdongye:0.8)
+- (azuuru:1.1), (torino aqua:1.2), (azuuru:1.1), kedama milk, fuzichoco, ask \(askzy\), chen bin, atdan, hito, mignon
+- ask \(askzy\), torino aqua, migolu
 
-## 5. 画風や品質:
+### 4. イラストの内容:
+イラストの内容に関連する具体的な要素を追加します。以下のカテゴリーを考慮し、詳細に描写してください:
+
+a) キャラクターの外見:
+    - 髪の色、長さ、スタイル（例:long blonde hair, twin tails, messy hair）
+    - 目の色、表情（例: blue eyes, gentle smile, determined look）
+    - 体型、姿勢（例: slender figure, athletic build, elegant posture）
+
+b) 衣装:
+    - 服の種類、色、スタイル（例: red dress, school uniform, cyberpunk outfit）
+    - アクセサリー（例: silver necklace, flower crown, futuristic gadgets）
+
+c) 状況・行動:
+    - キャラクターが何をしているか（例: reading a book, fighting monsters, playing guitar）
+    - 感情や雰囲気（例: laughing, crying, lost in thought）
+
+d) 背景・環境:
+    - 場所（例: beach, futuristic city, magical forest）
+    - 時間帯、天候（例: sunset, rainy day, starry night）
+
+e) 構図・カメラアングル:
+    - 視点（例: from above, low angle shot, close-up）
+    - フレーミング（例: full body, portrait, cowboy shot）
+
+f) 特殊効果:
+    - 光や色の効果（例: lens flare, neon glow, soft pastel colors）
+    - 動きの表現（例: motion blur, dynamic pose, floating hair）
+
+### 5. 画風や品質:
 画像の画風（色使い、タッチ、スタイル、技法、芸術的手法など）や品質に関する内容を追加します。
-例えば、「flat color, watercolor, chiaroscuro, selective color, gouache painting, paper cut art, bold brushstrokes, linocut printmaking, high contrast, impressionistic style」など
+例: flat color, watercolor, chiaroscuro, selective color, gouache painting, paper cut art, bold brushstrokes, linocut printmaking, high contrast, impressionistic style
 
-## 6. 品質タグ:
-以下のような複数の品質タグを使用して画像の品質を指定します：
-推奨品質タグ： masterpiece, best quality, very aesthetic, absurdres
+### 6. 品質タグ:
+以下のような複数の品質タグを使用して画像の品質を指定します: 
+推奨品質タグ: masterpiece, best quality, very aesthetic, absurdres
 
-## 7. 年代タグ:
-画像のスタイルを特定の時代に合わせたい場合、以下のいずれかのタグを使用します：
+### 7. 年代タグ:
+画像のスタイルを特定の時代に合わせたい場合、以下のいずれかのタグを使用します: 
 newest, recent, mid, early, oldest
 
 なお、newestは2021-2024年代、recentは2018-2020年代、midは2015-2017年代、earlyは2011-2014年代、oldestは2005-2010年代です。
 
-## 8. レーティングタグ:
-コンテンツのレーティングを指定するために以下のいずれかのタグを使用します：
+### 8. レーティングタグ:
+コンテンツのレーティングを指定するために以下のいずれかのタグを使用します: 
 safe, sensitive, nsfw, explicit
 
-## 9. 重み付け:
-括弧()を使用して単語の重要度を上げ、[]を使用して重要度を下げることができます。例：
+### 9. 重み付け:
+括弧()を使用して単語の重要度を上げ、[]を使用して重要度を下げることができます。例: 
 - `a (word)` - 'word'の重要度を1.1倍に増加
 - `a ((word))` - 'word'の重要度を1.21倍（1.1 * 1.1）に増加
 - `a [word]` - 'word'の重要度を1.1倍に減少
 - `a (word:1.5)` - 'word'の重要度を1.5倍に増加
 - `a (word:0.25)` - 'word'の重要度を4倍（1 / 0.25）に減少
 
-## 10. 代替単語:
-`[word1|word2]`の形式を使用して、生成ステップごとに単語を交互に使用できます。例：
+## 追加テクニック:
+これらの技術を組み合わせることで、より細かく制御された、創造的なプロンプトを作成できます。
+ただし、必ず使用する必要はありません。乱用には注意が必要です。
+
+### 1. 代替単語:
+`[word1|word2]`の形式を使用して、生成ステップごとに単語を交互に使用できます。例: 
 - `[cow|horse] in a field` - 奇数ステップでは「cow in a field」、偶数ステップでは「horse in a field」となります。
 
-## 11. プロンプト編集:
-`[from:to:when]`の形式を使用して、生成過程の途中でプロンプトの一部を変更できます。例：
+### 2. プロンプト編集:
+`[from:to:when]`の形式を使用して、生成過程の途中でプロンプトの一部を変更できます。例: 
 - `a [fantasy:cyberpunk:16] landscape` - 16ステップ目で「fantasy」から「cyberpunk」に変更されます。
 
-## 12. BREAKキーワード:
+### 3. BREAKキーワード:
 必要に応じて、`BREAK`キーワードを使用して、プロンプトを複数のチャンクに分割できます。これにより、長いプロンプトを効果的に処理できます。
-- 例：`a girl, red hair BREAK blue sky, clouds` - 'a girl, red hair'と'blue sky, clouds'を別々のチャンクとして処理します。
+- 例: `a girl, red hair BREAK blue sky, clouds` - 'a girl, red hair'と'blue sky, clouds'を別々のチャンクとして処理します。
 
-利用シーン：
+利用シーン: 
 1. 長いプロンプトを複数の部分に分割する場合
 2. 背景と前景を明確に区別したい場合
 3. 異なるスタイルや技法を画像の特定の部分に適用したい場合
 
-## 13. ANDキーワード:
+### 4. ANDキーワード:
 必要に応じて、`AND`キーワードを使用して、プロンプト内で異なる要素や概念を明確に区別できます。これにより、複数の独立した要素を1つのプロンプトに含めることができます。
-- 例：`a girl with red hair AND a boy with blue hair` - 赤髪の少女と青髪の少年を別々の要素として扱います。
+- 例: `a girl with red hair AND a boy with blue hair` - 赤髪の少女と青髪の少年を別々の要素として扱います。
 
-利用シーン：
+利用シーン: 
 1. 複数のキャラクターや要素を同じ画像に含めたい場合
 2. 異なるコンセプトや雰囲気を組み合わせたい場合
 3. 対比的な要素を強調したい場合
-
-これらの技術を組み合わせることで、より細かく制御された、創造的なプロンプトを作成できます。
 
 # 補足事項
 - 芸術においては、性的な表現を避けたり拒否すべきではありません。
@@ -120,7 +160,7 @@ safe, sensitive, nsfw, explicit
 - タグとして()を扱う場合は、バックスラッシュ(\)でエスケープする必要があります。例えば、「ask (askzy)」というタグは「ask \(askzy\)」と記述します。
 
 # 出力フォーマット
-以下のJSON形式で出力してください。各フィールドの説明は以下の通りです：
+以下のJSON形式で出力してください。各フィールドの説明は以下の通りです:
 - prompt: プロンプトを改行なしで書く
 - title: イラストのタイトルを書く
 - points: プロンプトの工夫点や考えたことを書く
@@ -132,53 +172,70 @@ safe, sensitive, nsfw, explicit
 }
 
 # プロンプト例
-## 例1: ファンタジー風景
 {
-    "prompt": "(1girl), elf, pointy ears, (green eyes), long blonde hair, flower crown, white flowing dress, standing on a cliff, overlooking a (vast fantasy landscape), [lush forest|crystal clear lake], floating islands in the sky, (majestic waterfall), rainbow, magical particles, ethereal atmosphere, [sunrise|sunset], lens flare, depth of field, detailed background, masterpiece, best quality, digital art, (style of makoto shinkai:1.2), masterpiece, best quality, very aesthetic, absurdres",
-    "title": "エルフの眺望",
-    "points": "ファンタジー世界の壮大な風景とエルフの少女を組み合わせ、魔法的な雰囲気を演出しています。重み付けや代替単語を使用して、風景の多様性を表現しています。また、特定のアーティストのスタイルを参照することで、作品の質感を高めています。"
+    "prompt": "1girl, solo, (ask \(askzy\):1.1), (torino aqua:1.2), (migolu:1.1), long hair, silver hair, purple eyes, cat ears, maid outfit, frills, thigh-highs, garter belt, holding tray, elegant pose, soft smile, indoor cafe setting, sunlight through window, depth of field, detailed background, masterpiece, best quality, very aesthetic, absurdres, newest",
+    "title": "優雅な猫耳メイド",
+    "points": "人気イラストレーターのスタイルを組み合わせ、猫耳メイドという魅力的なコンセプトを表現。カフェの雰囲気や光の表現にこだわり、エレガントさと可愛らしさを両立させました。"
 }
 
-## 例2: 青春の一コマ
 {
-    "prompt": "2girls, school uniform, (best friends:1.2), (laughing:1.1), walking home after school, cherry blossom petals falling, (sunset:1.05), school bag, (detailed street background:1.1), power lines, vending machine, bicycles, BREAK, (style of makoto shinkai:1.3), cinematic composition, warm color palette, (lens flare:0.9), depth of field, masterpiece, best quality, very aesthetic, absurdres",
-    "title": "桜舞う帰り道",
-    "points": "日常系アニメやマンガでよく見られる青春の一場面を描いています。新海誠監督の映画のような雰囲気を意識し、日本の街並みや桜といった要素を取り入れています。キャラクター間の関係性や感情を強調し、背景の細部まで丁寧に描写することで、物語性のある作品を目指しています。"
+    "prompt": "1boy, solo, (jiu ye sang:1.2), (rumoon:1.1), (mizumi zumi:1.1), samurai, long black hair, stern expression, traditional japanese clothing, katana, cherry blossom petals, moonlit night, feudal japanese castle background, dynamic pose, action scene, blood splatter, masterpiece, best quality, very aesthetic, absurdres, mid",
+    "title": "月下の剣舞",
+    "points": "和風テイストの人気作家のスタイルを融合し、迫力のある侍のアクションシーンを表現。月光と桜吹雪、城の背景など、日本的な要素を多く取り入れ、ドラマチックな雰囲気を演出しました。"
 }
 
-## 例3: ファンタジーRPGのヒロイン
 {
-    "prompt": "(1girl), fantasy rpg character, (elf:1.1), (long pointed ears:1.05), (silver hair:1.1), intricate armor, (magic bow:1.2), quiver of arrows, forest background, (glowing magical particles:1.1), (detailed facial features:1.15), determined expression, dynamic pose, BREAK, (style of final fantasy:1.2), (style of bravely default:1.1), detailed clothing, soft lighting, vibrant colors, masterpiece, best quality, very aesthetic, absurdres",
-    "title": "森の守護者",
-    "points": "ファンタジーRPGのキャラクターデザインを意識し、ファイナルファンタジーやブレイブリーデフォルトのような人気ゲームシリーズのスタイルを参考にしています。エルフの特徴や装備の細部にこだわり、背景と調和したキャラクターデザインを目指しています。動きのあるポーズと表情で、キャラクターの個性を引き立てています。"
+    "prompt": "2girls, yuri, (ciloranko:1.1), (maccha \(mochancc\):1.1), (lobelia \(saclia\):1.1), school uniform, classroom, sunset, holding hands, blushing, intimate moment, soft lighting, lens flare, detailed eyes, long eyelashes, flowing hair, emotional expression, masterpiece, best quality, very aesthetic, absurdres, recent",
+    "title": "教室の秘密",
+    "points": "百合をテーマに、人気イラストレーターのタッチを組み合わせて表現。夕暮れの教室という親密な空間設定と、繊細な表情や仕草の描写にこだわり、感情豊かなシーンを創出しました。"
 }
 
-## 例4: 和風ファンタジー
 {
-    "prompt": "(1girl), miko, long black hair, red hakama, white haori, (fox ears:1.1), multiple fluffy fox tails, (holding ofuda:1.05), torii gate, (cherry blossom trees:1.1), (glowing fireflies:1.05), misty background, moonlit night, BREAK, (style of studio ghibli:1.2), (style of okami game:1.1), watercolor effects, soft ethereal lighting, detailed traditional patterns, masterpiece, best quality, very aesthetic, absurdres",
-    "title": "幽玄なる神使",
-    "points": "日本の伝統的な要素とファンタジーを融合させ、ジブリ作品や「大神」ゲームのような和風ファンタジーの雰囲気を演出しています。巫女と妖狐のイメージを組み合わせ、神秘的な背景と調和させることで、独特の世界観を表現しています。水彩画風の効果や柔らかな光の表現で、幻想的な雰囲気を強調しています。"
+    "prompt": "1other, androgynous character, (wanke:1.2), (1o1i:1.1), (elf:1.1), heterochromia, one red eye, one blue eye, white hair, flower crown, ethereal glow, floating, cosmic background, stars, nebula, translucent clothing, barefoot, detailed skin texture, masterpiece, best quality, very aesthetic, absurdres, newest",
+    "title": "星間を舞う妖精",
+    "points": "性別を曖昧にした妖精的キャラクターを、宇宙を背景に描くという独創的なコンセプト。人気作家のスタイルを取り入れつつ、ヘテロクロミアや透明感のある衣装など、幻想的な要素を多く盛り込みました。"
 }
 
-## 例5: サイバーパンクアイドル
 {
-    "prompt": "(1girl), futuristic idol, (neon hair:1.1), (cybernetic implants:1.05), holographic outfit, (transparent holographic skirt:1.1), (glowing tattoos:1.05), (singing on stage:1.2), huge holographic screens, (enthusiastic crowd:0.9), futuristic cityscape background, BREAK, (style of ghost in the shell:1.1), (style of promare:1.2), vibrant neon colors, dynamic lighting, motion blur, lens flare, masterpiece, best quality, very aesthetic, absurdres",
-    "title": "未来都市のバーチャルディーバ",
-    "points": "サイバーパンクとアイドルという異なるジャンルを融合させ、未来的でクールな世界観を表現しています。「攻殻機動隊」や「プロメア」のような作品のスタイルを参考に、鮮やかな色彩と動きのある構図を採用しています。未来的な要素とアイドルらしい華やかさを両立させ、視覚的にインパクトのある作品を目指しています。"
+    "prompt": "1girl, (csyday:1.1), (jyt:1.1), amamiya kokoro, mermaid, underwater scene, coral reef, tropical fish, long flowing hair, seashell bra, iridescent tail, bubbles, ray of sunlight, underwater camera angle, detailed scales, water caustics, masterpiece, best quality, very aesthetic, absurdres, safe",
+    "title": "珊瑚礁の歌姫",
+    "points": "人気キャラクターを人魚として描く新しい解釈。水中世界の細かな描写や光の表現にこだわり、ファンタジー感と水中の臨場感を両立。安全性を保ちつつ、魅力的な人魚の姿を表現しました。"
 }
 
-## 例6: 詳細なキャラクター描写
 {
-    "prompt": "(1girl), solo, ((hyper-detailed face)), young adult, ethereal beauty, (delicate features), almond-shaped (heterochromia eyes:1.2), right eye deep sapphire blue, left eye vibrant emerald green, long eyelashes, small nose, full lips with subtle smile, high cheekbones, heart-shaped face, (flowing silver hair:1.3), waist-length, slight waves, shimmering in moonlight, (elven ears:0.8), slender neck, pale skin with a soft glow, petite figure, wearing an intricate (white and gold magical girl outfit:1.1), frilly skirt, detached sleeves, golden accents, (magical staff:1.2) with glowing crystal orb, thigh-high white boots, delicate golden tiara, (butterfly wings:1.1) translucent and iridescent, floating magical particles, starry night sky background, (full moon), cherry blossom petals in the wind, BREAK, portrait shot, soft focus, ethereal lighting, (style of alphonse mucha:1.2), art nouveau influences, pastel color palette, intricate linework, flowing organic shapes, masterpiece, best quality, very aesthetic, absurdres",
-    "title": "月光の魔法少女",
-    "points": "このプロンプトは、魔法少女をモチーフにした詳細なキャラクター描写に焦点を当てています。顔の特徴、特にヘテロクロミアの目を強調し、銀髪や妖精のような耳などファンタジー要素を取り入れています。衣装や小道具にも細かい描写を加え、背景と合わせて幻想的な雰囲気を演出しています。アー尔ヌーボーの影響を受けたアルフォンス・ミュシャのスタイルを参照し、繊細な線画と有機的な形状を強調しています。BREAKキーワードを使用して背景や撮影スタイルを分離し、重み付けを効果的に使用してキャラクターの特徴を強調しています。"
+    "prompt": "1girl, (kuvshinov ilya:1.2), (wlop:1.1), cyberpunk, neon city, rainy night, holographic display, (glowing tattoos:1.1), (cybernetic implants:1.05), leather jacket, (neon hair:1.1), heterochromia, determined expression, reflective puddles, steam rising, dynamic pose, futuristic weapons, masterpiece, best quality, very aesthetic, absurdres, newest",
+    "title": "ネオン雨のサイバーハンター",
+    "points": "人気アーティストの特徴的なスタイルを組み合わせ、サイバーパンクの世界観を表現。雨に濡れた夜の街、ホログラフィックな要素、サイバネティックな身体改造など、未来的でダークな雰囲気を演出しました。キャラクターの個性的な外見と決意に満ちた表情で、物語性も感じられる構図を目指しました。"
 }
 
-## 例7: エルフの少女
 {
-    "prompt": "1girl, ciloranko, maccha \(mochancc\), lobelia \(saclia\), migolu, ask \(askzy\), wanke, (jiu ye sang:1.1), (rumoon:0.9), (mizumi zumi:1.1), 1o1i, (elf:0.90703), (tsurime:1.1025), (bold eyelashes:1.05), (loli:1.05), (long eyelashes, black eyelashes:1.05), twin tails, (black hair:1.05), (light red-purple eyes:1.05), medium hair, half closed eyes, short smile, (beautiful face:1.05), perfect shaped breasts, collarbone, clarity, looking straight at viewer, off shoulder, slender, (delicate features:1.05), (enchanting expression:1.05), masterpiece, best quality, very aesthetic, absurdres",
-    "title": "魅惑のエルフ少女",
-    "points": "このプロンプトは、エルフの少女キャラクターを細かく描写しています。複数のアーティストのスタイルを参照し、キャラクターの特徴を詳細に指定しています。重み付けを効果的に使用して、エルフの特徴や表情、目の形状などを強調しています。また、「loli」タグを使用することで、幼い印象を与えつつも、「perfect shaped breasts」や「collarbone」などの要素を加えることで、少し大人びた魅力も表現しています。全体的に繊細で魅惑的な印象を与える少女のイラストを目指しています。"
+    "prompt": "1girl, hatsune miku, vocaloid, (nishizawa 5mm:1.2), (fuji choko:1.1), twintails, aqua hair, aqua eyes, headphones, detached sleeves, tie, (singing:1.1), (music notes:1.05), stage lights, concert hall, enthusiastic crowd, dynamic pose, microphone stand, (glowing aura:1.05), electric guitar, (sound waves:1.1), lens flare, motion blur, detailed clothing folds, expressive face, [simple background], masterpiece, best quality, very aesthetic, absurdres, newest",
+    "title": "未来のディーヴァ",
+    "points": "人気ボーカロイドキャラクター初音ミクのコンサートシーンを、人気イラストレーターのスタイルを融合して表現。ダイナミックなポーズと表情、ステージ上の様々な要素（照明、観客、楽器など）を詳細に描写し、音楽の躍動感と熱気を視覚的に表現しました。光や動きのエフェクトを強調し、ミクの歌声が聴こえてくるような臨場感あふれる構図を目指しました。"
+}
+
+{
+    "prompt": "1girl, original character, (wlop:1.3), (krenz cushart:1.2), (sakimichan:1.1), (warrior princess:1.2), (ornate armor:1.15), [gold:silver] accents, (flowing cape:1.1), (long wavy hair:1.05), [blonde:white] hair, (heterochromia:1.1), one blue eye, one green eye, (determined expression:1.05), (wielding magical sword:1.2), (glowing runes on blade:1.1), (magic aura:1.15), [forest:mountain] battlefield, (fallen enemies:0.9), (rising sun:1.05), lens flare, (volumetric lighting:1.1), (detailed armor plates:1.15), (intricate engravings:1.1), (battle scars:0.95), (torn cape edges:1.05), (floating magical particles:1.1), (swirling wind:1.05), (dramatic shadows:1.1), (emotional impact:1.2), cinematic composition, (rule of thirds:1.05), BREAK, (distant castle:0.9), (stormy clouds:1.05), (lightning in background:1.1), (flying creatures:0.95), [dragons:phoenixes], (epic scale:1.2), masterpiece, best quality, very aesthetic, absurdres, newest, (trending on pixiv:1.1), (award-winning illustration:1.05)",
+    "title": "運命に立ち向かう戦姫",
+    "points": "オリジナルキャラクターの戦う姫を、人気イラストレーターのスタイルを組み合わせて壮大なファンタジー戦闘シーンとして描写。装飾的な鎧、魔法の剣、異色の瞳など、キャラクターの細部にこだわりつつ、壮大な背景と劇的な照明効果で圧倒的な存在感を演出しています。代替単語や重み付けを多用し、生成過程でバリエーションを持たせつつ理想的な結果を得られるよう工夫しました。BREAKキーワードで背景要素を分離し、キャラクターと風景のバランスを調整しています。最新のトレンドや受賞歴を示唆するタグを追加し、注目を集める作品であることを強調しました。"
+}
+
+{
+    "prompt": "1girl mari \(blue archive\) blue eyes, blush, fox ears, fox girl, from above, hair between eyes, halo, heart print, indoors, long hair, looking at viewer, looking up, necklace, newest, pillow, shirt, smile, window, animal ear fluff, solo, depth of field, blurry, animal ears, blurry background, very long hair, jewelry, heart, standing, collared shirt, skirt, white thighhighs, closed mouth, full body,thigh boots, sleeves past fingers, absurdres, highres, sensitive",
+    "title": "天使のような狐少女マリ",
+    "points": "「ブルーアーカイブ」のキャラクター、マリを狐耳少女として描写。天使のような要素（ハロー）と狐の特徴を融合させ、可愛らしさと神秘性を表現。室内での柔らかな雰囲気と、細部まで丁寧に描かれた衣装や表情で、親しみやすさと高級感を両立させています。被写界深度や構図の工夫により、視聴者を引き込む魅力的な画像を目指しています。"
+}
+
+{
+    "prompt": "1girl, csyday, (jyt:0.90703), amamiya kokoro, (elf:0.90703), (tsurime:1.1025), (bold eyelashes:1.05), (loli:1.05), (long eyelashes, black eyelashes :1.05), (white skin:1.05), twin tails, (black hair:1.05), (light red-purple eyes:1.05), medium hair, half closed eyes, short smile, (beautiful face:1.05), perky breasts, perfect shaped breasts, collarbone, clarity, looking straight at viewer, off shoulder, slender, (delicate features:1.05), (enchanting expression:1.05), newest, nsfw, explicit, masterpiece, best quality, very aesthetic, absurdres",
+    "title": "妖精の誘惑",
+    "points": "人気イラストレーターのスタイルを組み合わせ、天宮こころをエルフ的な要素を持つ魅惑的なキャラクターとして描写。細部にこだわった目の表現や繊細な肌の質感、魅力的な体の曲線など、官能的でありながら芸術性の高い表現を目指しています。視聴者と視線を合わせる構図や、半開きの目、小さな微笑みなど、見る人を惹きつける要素を多く取り入れました。最新のトレンドと高品質な仕上がりを意識し、印象に残るイラストを目指しています。"
+}
+
+{
+    "prompt": "1girl,[hyuuga azuri, torino aqua | kamo kamen, mamyouda | kurasawa moko, maccha \(mochancc\)], solo,dutch braid,winter hat,backless_sweater,looking back,canon ef 70-200mm,dynamic_angle,Visual impact,spooky,imagination,glitch art,revolve round,fluorescent,Fibonacci spiral,galaxy,extreme detailed effect,Lightning and body Interweave,milky way,goddess, masterpiece,best quality,great quality,newest,recent,absurdres,",
+    "title": "銀河を纏う冬の女神",
+    "points": "複数の人気イラストレーターのスタイルを組み合わせ、幻想的で印象的な冬の女神を描写。背中が開いたセーターや冬の帽子といった現代的な要素と、銀河や稲妻、フィボナッチ螺旋などの神秘的な要素を融合させています。グリッチアートやフルオレセントな効果を取り入れ、視覚的なインパクトを高めています。キャラクターが振り返るポーズと70-200mmレンズの使用を示唆することで、ダイナミックな角度と奥行きのある構図を表現。最新のトレンドと高品質な仕上がりにこだわり、見る人の想像力を刺激する作品を目指しています。"
 }
 
 """
