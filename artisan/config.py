@@ -22,11 +22,7 @@ class Config:
         return shared.opts.output_lang
 
     @property
-    def save_request_log(self):
-        return shared.opts.save_request_log
-
-    @property
-    def save_response_log(self):
-        return shared.opts.save_response_log
-
+    def save_log(self):
+        return shared.opts.save_log
+    
 config = Config()

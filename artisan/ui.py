@@ -31,7 +31,7 @@ def create_ui():
                         fixed_tags = gr.Textbox(
                             label="Fixed tags to append",
                             placeholder="Enter tags to append to all prompts",
-                            value=load_fixed_tags()
+                            value=gr.update(value=load_fixed_tags())  # gr.updateを使用
                         )
 
                     with gr.Column(scale=3):
@@ -129,7 +129,7 @@ def create_ui():
 
 def generate_prompt_wrapper(prompt_request, mode, fixed_tags):
     mode_number = list(MODE_MAPPING.values()).index(mode)
-    prompt_text, supplementary_info, full_info, thinking_text = generate_prompt(prompt_request, mode_number)
+    prompt_text, supplementary_info, thinking_text = generate_prompt(prompt_request, mode_number)
     
     # 固定タグを追加
     full_info_with_tags = update_params_content(prompt_text + (", " + fixed_tags if fixed_tags else ""))

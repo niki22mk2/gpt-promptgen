@@ -26,7 +26,7 @@ def process_prompt(prompt_request, user_prompt_type, mode_number):
             title = output_json['title']
             points = output_json['points']
 
-            full_info = update_params_content(prompt_text)
+            # full_info = update_params_content(prompt_text)
             supplementary_info = f"### Title: {title}\n\nPoints: {points}"
 
             try:
@@ -46,7 +46,7 @@ def process_prompt(prompt_request, user_prompt_type, mode_number):
             except Exception as e:
                 print(f"An error occurred while saving the log: {e}")
 
-            return prompt_text, supplementary_info, full_info, thinking_text
+            return prompt_text, supplementary_info, thinking_text
 
         except Exception as e:
             if attempt < config.max_retry:
