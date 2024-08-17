@@ -1,7 +1,7 @@
 import gradio as gr
 from modules import infotext_utils, shared
 from .core import generate_prompt, improve_prompt
-from .utils import update_request_history, load_request_history, get_params_content, update_params_content
+from .utils import update_request_history, load_request_history, update_params_content, load_fixed_tags, save_fixed_tags
 from constants.constants import MODE_MAPPING
 
 def create_ui():
@@ -31,7 +31,7 @@ def create_ui():
                         fixed_tags = gr.Textbox(
                             label="Fixed tags to append",
                             placeholder="Enter tags to append to all prompts",
-                            value=shared.opts.prompt_artisan_fixed_tags
+                            value=load_fixed_tags()
                         )
 
                     with gr.Column(scale=3):
@@ -93,7 +93,7 @@ def create_ui():
 
             # 固定タグの保存
             fixed_tags.change(
-                fn=lambda x: setattr(shared.opts, 'prompt_artisan_fixed_tags', x),
+                fn=lambda x: save_fixed_tags(x),
                 inputs=[fixed_tags],
                 outputs=[]
             )

@@ -2,14 +2,13 @@ import os
 import json
 import datetime
 from modules.paths import data_path
-from constants.constants import MODE_MAPPING
+from constants.constants import MODE_MAPPING, OUTPUT_DIR, FIXED_TAGS_FILE
 import math
 
 def save_log(log_data):
     timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    folder_path = os.path.join(data_path, 'prompt_artisan_logs')
-    file_path = os.path.join(folder_path, f"{datetime.datetime.now().strftime('%Y%m%d')}.jsonl")
-    os.makedirs(folder_path, exist_ok=True)
+    file_path = os.path.join(OUTPUT_DIR, f"generated_logs.jsonl")
+    os.makedirs(OUTPUT_DIR, exist_ok=True)
     
     log_entry = {
         "timestamp": timestamp,
@@ -57,8 +56,8 @@ def truncate_string(s, max_length=50):
     return s if len(s) <= max_length else s[:max_length-3] + '...'
 
 def load_request_history(page=1, items_per_page=15):
-    folder_path = os.path.join(data_path, 'prompt_artisan_logs')
-    file_path = os.path.join(folder_path, f"{datetime.datetime.now().strftime('%Y%m%d')}.jsonl")
+    # folder_path = os.path.join(data_path, 'prompt_artisan_logs')
+    file_path = os.path.join(OUTPUT_DIR, f"generated_logs.jsonl")
     
     if not os.path.exists(file_path):
         return "<p>No requests made yet.</p>", 0, 0
@@ -86,3 +85,14 @@ def load_request_history(page=1, items_per_page=15):
     html += "</table>"
     
     return html, page, total_pages
+
+def load_fixed_tags():
+    if os.path.exists(FIXED_TAGS_FILE):
+        with open(FIXED_TAGS_FILE, 'r') as f:
+            return json.load(f).get('fixed_tags', '')
+    return ''
+
+def save_fixed_tags(tags):
+    os.makedirs(OUTPUT_DIR, exist_ok=True)
+    with open(FIXED_TAGS_FILE, 'w') as f:
+        json.dump({'fixed_tags': tags}, f)

@@ -9,4 +9,3 @@ def on_ui_settings():
     shared.opts.add_option('max_retry', shared.OptionInfo(1, 'Number of automatic retries on generation errors (default=1)', gr.Slider, {'minimum': 0, 'maximum': 10, 'step': 1}, section=section))
     shared.opts.add_option('output_lang', shared.OptionInfo('JP', 'Language for generated titles and descriptions (default=JP)', gr.Dropdown, {'choices': ['JP', 'EN']}, section=section))
     shared.opts.add_option('save_log', shared.OptionInfo(True, 'Save logs to a file. ([webui root folder]/prompt_artisan_logs/)', section=section))
-    shared.opts.add_option('prompt_artisan_fixed_tags', shared.OptionInfo('', 'Fixed tags to append to all prompts', section=section))
