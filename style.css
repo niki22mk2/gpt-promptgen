@@ -103,16 +103,17 @@
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-/* 既存のスタイルに追加 */
+/* 既存のスタイルはそのまま保持し、以下を修正または追加 */
+
 .llm-prompt-artisan-container #generated-prompt label {
     display: flex;
     flex-direction: column;
 }
 
 .llm-prompt-artisan-container #generated-prompt .label-wrapper {
-    /* display: flex; */
+    /* display: flex; を削除 */
     align-items: center;
-    margin-bottom: 5px;
+    /* margin-bottom: 5px; */
 }
 
 .llm-prompt-artisan-container #generated-prompt .label-wrapper span {
@@ -120,19 +121,18 @@
 }
 
 .llm-prompt-artisan-container .copy-button {
-    margin-left: 10px;
     padding: 2px 6px;
     font-size: 0.8em;
     background-color: transparent;
-    /* border: 1px solid #ccc; */
     border-radius: 3px;
     cursor: pointer;
     transition: all 0.3s ease;
+    vertical-align: middle;
 }
 
-.llm-prompt-artisan-container .copy-button:hover {
+/* .llm-prompt-artisan-container .copy-button:hover {
     background-color: rgba(0, 0, 0, 0.1);
-}
+} */
 
 .llm-prompt-artisan-container .copy-button:disabled {
     opacity: 0.5;
@@ -141,5 +141,19 @@
 
 .llm-prompt-artisan-container #generated-prompt textarea {
     width: 100%;
-    margin-top: 5px;
+    /* margin-top: 5px; */
 }
+
+/* テキストエリアのホバー効果を無効化 */
+.llm-prompt-artisan-container #generated-prompt:hover {
+    background-color: transparent;
+}
+
+/* コピーボタンのホバー効果を明示的に設定 */
+/* .llm-prompt-artisan-container .label-wrapper:hover .copy-button {
+    background-color: transparent;
+} */
+
+/* .llm-prompt-artisan-container .label-wrapper .copy-button:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+} */
