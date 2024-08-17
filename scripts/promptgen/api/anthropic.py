@@ -1,5 +1,6 @@
 from anthropic import AsyncAnthropic
 from ..config import config
+import asyncio
 
 class AnthropicAPI:
     def __init__(self):
@@ -25,7 +26,13 @@ class AnthropicAPI:
                     }
                 ]
             )
-
             return response.content[0].text.strip()
         except Exception as e:
             raise Exception(f"Error generating message: {str(e)}")
+
+    async def cleanup(self):
+        if hasattr(self.client, 'aclose'):
+            try:
+                await self.client.aclose()
+            except Exception as e:
+                print(f"Error during AnthropicAPI cleanup: {str(e)}")
