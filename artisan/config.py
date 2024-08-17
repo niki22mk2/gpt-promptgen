@@ -18,12 +18,8 @@ class Config:
         return shared.opts.max_retry
 
     @property
-    def prompt_lang(self):
-        return "EN" if shared.opts.prompt_lang else "JP"
-
-    @property
     def output_lang(self):
-        return "EN_ALL" if shared.opts.output_lang else self.prompt_lang
+        return shared.opts.output_lang
 
     @property
     def save_request_log(self):

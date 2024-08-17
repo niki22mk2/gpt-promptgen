@@ -5,7 +5,6 @@ from .config import config
 from .utils import save_log_to_file, update_params_content
 from constants.prompt_templates import (
     SYSTEM_PROMPTS,
-    BASE_INSTRUCTIONS,
     BASIC_USER_PROMPTS,
     IMPROVE_USER_PROMPTS,
     FILL_IN_THE_BLANKS_USER_PROMPTS,
@@ -15,7 +14,7 @@ from .api.anthropic import AnthropicAPI
 
 def process_prompt(prompt_request, user_prompt_type):
     anthropic_api = AnthropicAPI()
-    system_prompt = SYSTEM_PROMPTS[config.prompt_lang] + BASE_INSTRUCTIONS[config.output_lang]
+    system_prompt = SYSTEM_PROMPTS[config.prompt_lang]
     user_prompt = user_prompt_type[config.prompt_lang].format(request=prompt_request)
 
     for attempt in range(config.max_retry + 1):
