@@ -45,10 +45,16 @@ def create_ui():
                             thinking_information = gr.Markdown()
 
             with gr.Tab("Request History"):
-                request_history = gr.HTML(
-                    value=load_request_history(),
-                    elem_id="request-history-content"
-                )
+                with gr.Row():
+                    request_history = gr.HTML(
+                        value=load_request_history()[0],
+                        elem_id="request-history-content"
+                    )
+                with gr.Row():
+                    prev_page = gr.Button("Previous Page")
+                    current_page = gr.Number(value=1, label="Current Page", interactive=False)
+                    total_pages = gr.Number(value=1, label="Total Pages", interactive=False)
+                    next_page = gr.Button("Next Page")
 
             full_info_textbox = gr.Textbox(visible=False)
 
@@ -56,7 +62,7 @@ def create_ui():
             generate_prompt_button.click(
                 fn=generate_prompt_wrapper,
                 inputs=[prompt_request, mode],
-                outputs=[generated_prompt, supplementary_information, request_history, full_info_textbox, thinking_information]
+                outputs=[generated_prompt, supplementary_information, request_history, full_info_textbox, thinking_information, current_page, total_pages]
             )
 
             improve_button.click(
@@ -82,17 +88,33 @@ def create_ui():
                     )
                 )
 
+            def update_history(page):
+                history_html, current, total = load_request_history(page=page)
+                return history_html, current, total
+
+            prev_page.click(
+                fn=lambda page: update_history(max(1, page - 1)),
+                inputs=[current_page],
+                outputs=[request_history, current_page, total_pages]
+            )
+
+            next_page.click(
+                fn=lambda page, total: update_history(min(total, page + 1)),
+                inputs=[current_page, total_pages],
+                outputs=[request_history, current_page, total_pages]
+            )
+
     return [(llm_prompt_artisan_interface, "LLM Prompt Artisan", "llm_prompt_artisan_interface")]
 
 def generate_prompt_wrapper(prompt_request, mode):
     mode_number = list(MODE_MAPPING.values()).index(mode)
     prompt_text, supplementary_info, full_info, thinking_text = generate_prompt(prompt_request, mode_number)
-    updated_history = update_request_history(prompt_request, mode_number, {
+    updated_history, current_page, total_pages = update_request_history(prompt_request, mode_number, {
         "generated_prompt": prompt_text,
         "title": supplementary_info.split("\n")[0].replace("### Title: ", ""),
         "points": "\n".join(supplementary_info.split("\n")[2:])
     })
-    return prompt_text, supplementary_info, updated_history, full_info, thinking_text
+    return prompt_text, supplementary_info, updated_history, full_info, thinking_text, current_page, total_pages
 
 def improve_prompt_wrapper(prompt_request):
     return improve_prompt(prompt_request)

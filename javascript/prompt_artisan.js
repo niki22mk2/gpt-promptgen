@@ -42,26 +42,23 @@ function waitQuerySelector(selector, timeout = 5000, $rootElement = gradioApp())
     })
 }
 
-function updateRequestHistory(newRequest) {
+function updateRequestHistory(newHistory, currentPage, totalPages) {
     waitQuerySelector('#request-history-content').then((historyContent) => {
-        const historyList = historyContent.querySelector('ul') || document.createElement('ul');
-        
-        const listItem = document.createElement('li');
-        listItem.textContent = newRequest;
-        listItem.classList.add('history-item');
-        
-        // 最新の項目を先頭に追加
-        historyList.insertBefore(listItem, historyList.firstChild);
-        
-        // 履歴の最大数を制限（例：10項目）
-        while (historyList.children.length > 10) {
-            historyList.removeChild(historyList.lastChild);
-        }
-        
-        historyContent.innerHTML = '';
-        historyContent.appendChild(historyList);
+        historyContent.innerHTML = newHistory;
     }).catch((error) => {
         console.error('Error updating request history:', error);
+    });
+
+    waitQuerySelector('input[data-testid="Current Page"]').then((currentPageInput) => {
+        currentPageInput.value = currentPage;
+    }).catch((error) => {
+        console.error('Error updating current page:', error);
+    });
+
+    waitQuerySelector('input[data-testid="Total Pages"]').then((totalPagesInput) => {
+        totalPagesInput.value = totalPages;
+    }).catch((error) => {
+        console.error('Error updating total pages:', error);
     });
 }
 
@@ -126,10 +123,10 @@ document.addEventListener('DOMContentLoaded', onUiLoaded);
 
 // Gradioのイベントを使用してプロンプト生成時に履歴を更新
 document.addEventListener('gradioUpdated', function(event) {
-    if (event.detail && event.detail.output && event.detail.output['request_history']) {
-        const historyContent = document.querySelector('#request-history-content');
-        if (historyContent) {
-            historyContent.innerHTML = event.detail.output['request_history'];
+    if (event.detail && event.detail.output) {
+        const { request_history, current_page, total_pages } = event.detail.output;
+        if (request_history) {
+            updateRequestHistory(request_history, current_page, total_pages);
         }
     }
 });

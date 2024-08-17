@@ -2,8 +2,8 @@ import os
 import json
 import datetime
 from modules.paths import data_path
-from .config import config
 from constants.constants import MODE_MAPPING
+import math
 
 def save_log(log_data):
     timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -46,20 +46,27 @@ def update_request_history(prompt_request, mode_number, response_data):
 def truncate_string(s, max_length=50):
     return s if len(s) <= max_length else s[:max_length-3] + '...'
 
-def load_request_history():
+def load_request_history(page=1, items_per_page=10):
     folder_path = os.path.join(data_path, 'prompt_artisan_logs')
     file_path = os.path.join(folder_path, f"{datetime.datetime.now().strftime('%Y%m%d')}.jsonl")
     
     if not os.path.exists(file_path):
-        return "<p>No requests made yet.</p>"
-    
+        return "<p>No requests made yet.</p>", 0, 0
+
     with open(file_path, 'r', encoding='utf-8') as f:
         logs = [json.loads(line) for line in f]
     
     logs.reverse()  # 最新のログを先頭に
+
+    total_items = len(logs)
+    total_pages = math.ceil(total_items / items_per_page)
+    start_index = (page - 1) * items_per_page
+    end_index = start_index + items_per_page
     
+    logs_page = logs[start_index:end_index]
+
     html = "<table><tr><th>Timestamp</th><th>Mode</th><th>Request</th><th>Generated Prompt</th><th>Title</th><th>Points</th></tr>"
-    for log in logs[:50]:  # 最新の50件のみ表示
+    for log in logs_page:
         mode = MODE_MAPPING.get(log.get('mode', 0), "Unknown")
         request = truncate_string(log.get('prompt_request', 'Blank'))
         generated_prompt = truncate_string(log.get('response', {}).get('generated_prompt', ''), 100)
@@ -68,4 +75,4 @@ def load_request_history():
         html += f"<tr><td>{log['timestamp']}</td><td>{mode}</td><td>{request}</td><td>{generated_prompt}</td><td>{title}</td><td>{points}</td></tr>"
     html += "</table>"
     
-    return html
+    return html, page, total_pages
