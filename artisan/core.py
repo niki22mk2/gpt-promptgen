@@ -20,7 +20,6 @@ def process_prompt(prompt_request, user_prompt_type, mode_number):
     for attempt in range(config.max_retry + 1):
         try:
             response_text = anthropic_api.generate_message(system_prompt, user_prompt, prefill="<antThinking>")
-            # print("Generated text:", response_text)
             thinking_text, output_json = parse_response(response_text)
 
             prompt_text = output_json['prompt'].strip()
@@ -81,5 +80,4 @@ def generate_prompt(prompt_request, mode_number):
     return process_prompt(prompt_request, prompt_template, mode_number)
 
 def improve_prompt(prompt_request):
-    prompt_text, supplementary_info, _, thinking_text = process_prompt(prompt_request, IMPROVE_USER_PROMPTS, mode="🔄 Refine")
-    return prompt_text, supplementary_info, thinking_text
+    return generate_prompt(prompt_request, 1)  # 1 is the mode number for "Refine"

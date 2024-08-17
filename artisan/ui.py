@@ -2,13 +2,7 @@ import gradio as gr
 from modules import infotext_utils
 from .core import generate_prompt, improve_prompt
 from .utils import update_request_history, load_request_history
-
-MODE_MAPPING = {
-    0: "🖊️ Generate",
-    1: "🔄 Refine",
-    2: "🧩 Fill Blanks",
-    3: "📝 Title & Points"
-}
+from constants.constants import MODE_MAPPING
 
 def create_ui():
     with gr.Blocks() as llm_prompt_artisan_interface:

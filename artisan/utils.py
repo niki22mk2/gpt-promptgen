@@ -3,6 +3,7 @@ import json
 import datetime
 from modules.paths import data_path
 from .config import config
+from constants.constants import MODE_MAPPING
 
 def save_log(log_data):
     timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -57,13 +58,14 @@ def load_request_history():
     
     logs.reverse()  # 最新のログを先頭に
     
-    html = "<table><tr><th>Timestamp</th><th>Mode</th><th>Request</th><th>Generated Prompt</th><th>Title</th></tr>"
+    html = "<table><tr><th>Timestamp</th><th>Mode</th><th>Request</th><th>Generated Prompt</th><th>Title</th><th>Points</th></tr>"
     for log in logs[:50]:  # 最新の50件のみ表示
-        mode = log.get('mode', '')
+        mode = MODE_MAPPING.get(log.get('mode', 0), "Unknown")
         request = truncate_string(log.get('prompt_request', ''))
-        generated_prompt = truncate_string(log.get('response', {}).get('generated_prompt', ''))
+        generated_prompt = truncate_string(log.get('response', {}).get('generated_prompt', ''), 100)
         title = truncate_string(log.get('response', {}).get('title', ''))
-        html += f"<tr><td>{log['timestamp']}</td><td>{mode}</td><td>{request}</td><td>{generated_prompt}</td><td>{title}</td></tr>"
+        points = truncate_string(log.get('response', {}).get('points', ''))
+        html += f"<tr><td>{log['timestamp']}</td><td>{mode}</td><td>{request}</td><td>{generated_prompt}</td><td>{title}</td><td>{points}</td></tr>"
     html += "</table>"
     
     return html
