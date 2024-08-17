@@ -1,6 +1,6 @@
 /* 拡張機能のコンテナにユニークなクラスを追加 */
 .llm-prompt-artisan-container {
-    max-width: 90%;
+    max-width: 100%;
     margin: 0 auto;
     padding: 20px;
 }

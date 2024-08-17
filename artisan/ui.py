@@ -1,18 +1,10 @@
-from pathlib import Path
 import gradio as gr
 from modules import infotext_utils
 from .core import generate_prompt, improve_prompt
 from .utils import update_request_history
-from constants.paths import EXTENSION_BASE_DIR
 
 def create_ui():
-    css_path = Path(EXTENSION_BASE_DIR, "static", "css", "style.css")
-    js_path = Path(EXTENSION_BASE_DIR, "static", "js", "script.js")
-
-    print("css_path:", css_path)
-    print("js_path:", js_path)
-
-    with gr.Blocks(css=css_path, js=js_path) as llm_prompt_artisan_interface:
+    with gr.Blocks() as llm_prompt_artisan_interface:
         with gr.Column(elem_classes="llm-prompt-artisan-container"):
             gr.Markdown("# LLM Prompt Artisan")
             
