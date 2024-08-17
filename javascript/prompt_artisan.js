@@ -1,57 +1,132 @@
 console.log('LLM Prompt Artisan script loaded');
 
-function waitForElement(selector, timeout = 10000) {
+/**
+ * wait until element is loaded and returns
+ * @param {string} selector
+ * @param {number} timeout 
+ * @param {Element} $rootElement
+ * @returns {Promise<HTMLElement>}
+ */
+function waitQuerySelector(selector, timeout = 5000, $rootElement = gradioApp()) {
     return new Promise((resolve, reject) => {
-        const observer = new MutationObserver(() => {
-            const element = document.querySelector(selector);
-            if (element) {
-                observer.disconnect();
-                resolve(element);
-            }
-        });
+        const element = $rootElement.querySelector(selector)
+        if (element) {
+            return resolve(element)
+        }
 
-        observer.observe(document.body, {
+        let timeoutId
+
+        const observer = new MutationObserver(() => {
+            const element = $rootElement.querySelector(selector)
+            if (!element) {
+                return
+            }
+
+            if (timeoutId) {
+                clearTimeout(timeoutId)
+            }
+
+            observer.disconnect()
+            resolve(element)
+        })
+
+        timeoutId = setTimeout(() => {
+            observer.disconnect()
+            reject(new Error(`timeout, cannot find element by '${selector}'`))
+        }, timeout)
+
+        observer.observe($rootElement, {
             childList: true,
             subtree: true
-        });
+        })
+    })
+}
 
-        setTimeout(() => {
-            observer.disconnect();
-            reject(new Error(`Timeout waiting for element: ${selector}`));
-        }, timeout);
+function updateRequestHistory(newRequest) {
+    waitQuerySelector('#request-history-content').then((historyContent) => {
+        const historyList = historyContent.querySelector('ul') || document.createElement('ul');
+        
+        const listItem = document.createElement('li');
+        listItem.textContent = newRequest;
+        listItem.classList.add('history-item');
+        
+        // 最新の項目を先頭に追加
+        historyList.insertBefore(listItem, historyList.firstChild);
+        
+        // 履歴の最大数を制限（例：10項目）
+        while (historyList.children.length > 10) {
+            historyList.removeChild(historyList.lastChild);
+        }
+        
+        historyContent.innerHTML = '';
+        historyContent.appendChild(historyList);
+    }).catch((error) => {
+        console.error('Error updating request history:', error);
     });
 }
 
 function addCopyButton() {
-    waitForElement('#generated-prompt textarea')
-        .then((generatedPromptTextarea) => {
-            if (!generatedPromptTextarea.parentNode.querySelector('.copy-prompt-button')) {
-                const copyButton = document.createElement('button');
-                copyButton.textContent = 'Copy Prompt';
-                copyButton.classList.add('gr-button', 'gr-button-secondary', 'copy-prompt-button');
-                copyButton.style.marginLeft = '10px';
+    waitQuerySelector('#generated-prompt label').then((labelElement) => {
+        if (!labelElement.querySelector('.copy-button')) {
+            const copyButton = document.createElement('button');
+            copyButton.textContent = '📋';
+            copyButton.className = 'copy-button';
 
-                generatedPromptTextarea.parentNode.insertBefore(copyButton, generatedPromptTextarea.nextSibling);
-
-                copyButton.addEventListener('click', () => {
-                    navigator.clipboard.writeText(generatedPromptTextarea.value).then(() => {
-                        copyButton.textContent = 'Copied!';
-                        setTimeout(() => {
-                            copyButton.textContent = 'Copy Prompt';
-                        }, 2000);
-                    });
-                });
+            // ラベルの最初のspan要素（既存のラベルテキスト）を見つける
+            const labelSpan = labelElement.querySelector('span[data-testid="block-info"]');
+            if (labelSpan) {
+                // 既存のwrapperを使用するか、新しく作成する
+                let wrapper = labelElement.querySelector('.label-wrapper');
+                if (!wrapper) {
+                    wrapper = document.createElement('div');
+                    wrapper.className = 'label-wrapper';
+                    labelSpan.parentNode.insertBefore(wrapper, labelSpan);
+                    wrapper.appendChild(labelSpan);
+                }
+                
+                // コピーボタンを追加
+                wrapper.appendChild(copyButton);
             }
-        })
-        .catch((error) => {
-            console.error('Error adding copy button:', error);
+
+            copyButton.addEventListener('click', function(e) {
+                e.preventDefault(); // デフォルトの動作を防止
+                const textArea = labelElement.querySelector('textarea');
+                navigator.clipboard.writeText(textArea.value).then(function() {
+                    const originalText = copyButton.textContent;
+                    copyButton.textContent = "✓";
+                    copyButton.disabled = true;
+                    setTimeout(function() {
+                        copyButton.textContent = originalText;
+                        copyButton.disabled = false;
+                    }, 2000);
+                });
+            });
+        }
+    }).catch((error) => {
+        console.error('Error adding copy button:', error);
+    });
+}
+
+function setupModeRadio() {
+    waitQuerySelector('input[name="mode"]').then(() => {
+        const modeRadios = document.querySelectorAll('input[name="mode"]');
+        modeRadios.forEach(radio => {
+            radio.addEventListener('change', function() {
+                // ラジオボタンの変更時の処理をここに追加（必要な場合）
+            });
         });
+    }).catch((error) => {
+        console.error('Error setting up mode radio:', error);
+    });
 }
 
 function onUiLoaded() {
+    console.log('LLM Prompt Artisan UI loaded');
     addCopyButton();
+    setupModeRadio();
 }
 
+// DOMContentLoadedイベントとGradioのuiUpdateイベントの両方でonUiLoadedを呼び出す
 document.addEventListener('DOMContentLoaded', onUiLoaded);
 
 // Gradio の UI 更新後にも実行されるようにする
@@ -62,3 +137,11 @@ document.addEventListener('DOMContentLoaded', onUiLoaded);
         onUiLoaded();
     }
 })();
+
+// Gradioのイベントを使用してプロンプト生成時に履歴を更新
+document.addEventListener('gradioUpdated', function(event) {
+    if (event.detail && event.detail.output && event.detail.output['request_history']) {
+        const newRequest = event.detail.output['prompt_request'];
+        updateRequestHistory(newRequest);
+    }
+});

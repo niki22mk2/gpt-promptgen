@@ -15,11 +15,12 @@ def create_ui():
                         placeholder="Enter request",
                         lines=2
                     )
-                    mode_radio = gr.Radio(
-                        ["Prompt Generation", "Refine and Enhance", "Fill-in-the-Blanks", "Title and Points Generation"],
-                        label="Mode",
-                        interactive=True
-                    )
+                    with gr.Row():
+                        mode = gr.Radio(
+                            ["🖊️ Generate", "🔄 Refine", "🧩 Fill Blanks", "📝 Title & Points"],
+                            label="Mode",
+                            value="🖊️ Generate"
+                        )
                     with gr.Row():
                         generate_prompt_button = gr.Button("Send", variant='primary')
                         clear_button = gr.Button("Clear", variant='secondary')
@@ -52,7 +53,7 @@ def create_ui():
             # イベントハンドラーの設定
             generate_prompt_button.click(
                 fn=generate_prompt_wrapper,
-                inputs=[prompt_request, request_history, mode_radio],
+                inputs=[prompt_request, request_history, mode],
                 outputs=[generated_prompt, supplementary_information, request_history, full_info_textbox, thinking_information]
             )
 

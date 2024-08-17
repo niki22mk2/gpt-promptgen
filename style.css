@@ -1,8 +1,24 @@
 /* 拡張機能のコンテナにユニークなクラスを追加 */
 .llm-prompt-artisan-container {
-    max-width: 100%;
-    margin: 0 auto;
-    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+@media (min-width: 768px) {
+    .llm-prompt-artisan-container {
+        flex-direction: row;
+    }
+}
+
+.llm-prompt-artisan-container > * {
+    flex: 1;
+}
+
+.llm-prompt-artisan-container .gr-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 /* より具体的なセレクタを使用 */
@@ -51,4 +67,79 @@
     border-color: #007bff !important;
     outline: none !important;
     box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25) !important;
+}
+
+.llm-prompt-artisan-container #request-history-content ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.llm-prompt-artisan-container .history-item {
+    padding: 8px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.llm-prompt-artisan-container .history-item:hover {
+    background-color: #f0f0f0;
+}
+
+.llm-prompt-artisan-container .mode-button {
+    flex: 1;
+    margin: 0 5px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f8f8f8;
+    transition: all 0.3s;
+}
+
+.llm-prompt-artisan-container .mode-button:hover,
+.llm-prompt-artisan-container .mode-button.active {
+    background-color: #e0e0e0;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* 既存のスタイルに追加 */
+.llm-prompt-artisan-container #generated-prompt label {
+    display: flex;
+    flex-direction: column;
+}
+
+.llm-prompt-artisan-container #generated-prompt .label-wrapper {
+    /* display: flex; */
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.llm-prompt-artisan-container #generated-prompt .label-wrapper span {
+    flex-grow: 1;
+}
+
+.llm-prompt-artisan-container .copy-button {
+    margin-left: 10px;
+    padding: 2px 6px;
+    font-size: 0.8em;
+    background-color: transparent;
+    /* border: 1px solid #ccc; */
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.llm-prompt-artisan-container .copy-button:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.llm-prompt-artisan-container .copy-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.llm-prompt-artisan-container #generated-prompt textarea {
+    width: 100%;
+    margin-top: 5px;
 }
