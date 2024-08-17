@@ -2,7 +2,7 @@ import json
 import re
 import time
 from .config import config
-from .utils import save_log_to_file, update_params_content
+from .utils import save_structured_log, update_params_content
 from constants.prompt_templates import (
     SYSTEM_PROMPTS,
     BASIC_USER_PROMPTS,
@@ -12,10 +12,10 @@ from constants.prompt_templates import (
 )
 from .api.anthropic import AnthropicAPI
 
-def process_prompt(prompt_request, user_prompt_type):
+def process_prompt(prompt_request, user_prompt_type, mode):
     anthropic_api = AnthropicAPI()
-    system_prompt = SYSTEM_PROMPTS[config.prompt_lang]
-    user_prompt = user_prompt_type[config.prompt_lang].format(request=prompt_request)
+    system_prompt = SYSTEM_PROMPTS[config.output_lang]
+    user_prompt = user_prompt_type[config.output_lang].format(request=prompt_request)
 
     for attempt in range(config.max_retry + 1):
         try:
@@ -29,11 +29,22 @@ def process_prompt(prompt_request, user_prompt_type):
             full_info = update_params_content(prompt_text)
             supplementary_info = f"### Title: {title}\n\nPoints: {points}"
 
-            if config.save_response_log:
-                save_log_to_file(response_text, "response")
+            try:    
+                if config.save_response_log:
+                    save_structured_log({
+                        "title": title,
+                        "generated_prompt": prompt_text,
+                        "points": points,
+                    }, "response")
 
-            if config.save_request_log and user_prompt_type == BASIC_USER_PROMPTS:
-                save_log_to_file(prompt_request, "request")
+                if config.save_request_log:
+                    save_structured_log({
+                        "prompt_request": prompt_request,
+                        "prompt_type": mode
+                    }, "request")
+
+            except Exception as e:
+                print(f"An error occurred while saving the log: {e}")
 
             return prompt_text, supplementary_info, full_info, thinking_text
 
@@ -65,7 +76,7 @@ def generate_prompt(prompt_request, request_history, mode):
         "Refine and Enhance": IMPROVE_USER_PROMPTS,
     }.get(mode, BASIC_USER_PROMPTS)
 
-    return process_prompt(prompt_request, prompt_template)
+    return process_prompt(prompt_request, prompt_template, mode)
 
 def improve_prompt(prompt_request):
     prompt_text, supplementary_info, _, thinking_text = process_prompt(prompt_request, IMPROVE_USER_PROMPTS)

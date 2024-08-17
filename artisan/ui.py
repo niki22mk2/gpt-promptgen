@@ -1,11 +1,9 @@
 from pathlib import Path
 import gradio as gr
-from modules import infotext_utils, scripts
+from modules import infotext_utils
 from .core import generate_prompt, improve_prompt
 from .utils import update_request_history
-
-# インポート時に basedir を取得し保存
-EXTENSION_BASE_DIR = Path(scripts.basedir())
+from constants.paths import EXTENSION_BASE_DIR
 
 def create_ui():
     css_path = Path(EXTENSION_BASE_DIR, "static", "css", "style.css")
@@ -35,8 +33,8 @@ def create_ui():
                         clear_button = gr.Button("Clear", variant='secondary')
                     
                     with gr.Accordion("Request History", open=False, elem_id="request-history-accordion"):
-                        request_history = gr.Markdown(
-                            placeholder="No requests made yet.",
+                        request_history = gr.HTML(
+                            value="<ul></ul>",
                             elem_id="request-history-content"
                         )
 
