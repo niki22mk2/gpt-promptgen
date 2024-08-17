@@ -61,7 +61,7 @@ def load_request_history():
     html = "<table><tr><th>Timestamp</th><th>Mode</th><th>Request</th><th>Generated Prompt</th><th>Title</th><th>Points</th></tr>"
     for log in logs[:50]:  # 最新の50件のみ表示
         mode = MODE_MAPPING.get(log.get('mode', 0), "Unknown")
-        request = truncate_string(log.get('prompt_request', ''))
+        request = truncate_string(log.get('prompt_request', 'Blank'))
         generated_prompt = truncate_string(log.get('response', {}).get('generated_prompt', ''), 100)
         title = truncate_string(log.get('response', {}).get('title', ''))
         points = truncate_string(log.get('response', {}).get('points', ''))
