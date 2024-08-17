@@ -107,23 +107,9 @@ function addCopyButton() {
     });
 }
 
-function setupModeRadio() {
-    waitQuerySelector('input[name="mode"]').then(() => {
-        const modeRadios = document.querySelectorAll('input[name="mode"]');
-        modeRadios.forEach(radio => {
-            radio.addEventListener('change', function() {
-                // ラジオボタンの変更時の処理をここに追加（必要な場合）
-            });
-        });
-    }).catch((error) => {
-        console.error('Error setting up mode radio:', error);
-    });
-}
-
 function onUiLoaded() {
     console.log('LLM Prompt Artisan UI loaded');
     addCopyButton();
-    setupModeRadio();
 }
 
 // DOMContentLoadedイベントとGradioのuiUpdateイベントの両方でonUiLoadedを呼び出す
@@ -141,7 +127,9 @@ document.addEventListener('DOMContentLoaded', onUiLoaded);
 // Gradioのイベントを使用してプロンプト生成時に履歴を更新
 document.addEventListener('gradioUpdated', function(event) {
     if (event.detail && event.detail.output && event.detail.output['request_history']) {
-        const newRequest = event.detail.output['prompt_request'];
-        updateRequestHistory(newRequest);
+        const historyContent = document.querySelector('#request-history-content');
+        if (historyContent) {
+            historyContent.innerHTML = event.detail.output['request_history'];
+        }
     }
 });

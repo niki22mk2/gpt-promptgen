@@ -1,59 +1,67 @@
 import gradio as gr
 from modules import infotext_utils
 from .core import generate_prompt, improve_prompt
-from .utils import update_request_history
+from .utils import update_request_history, load_request_history
+
+MODE_MAPPING = {
+    0: "🖊️ Generate",
+    1: "🔄 Refine",
+    2: "🧩 Fill Blanks",
+    3: "📝 Title & Points"
+}
 
 def create_ui():
     with gr.Blocks() as llm_prompt_artisan_interface:
         with gr.Column(elem_classes="llm-prompt-artisan-container"):
             gr.Markdown("# LLM Prompt Artisan")
             
-            with gr.Row():
-                with gr.Column(scale=2):
-                    prompt_request = gr.Textbox(
-                        label="Prompt request",
-                        placeholder="Enter request",
-                        lines=2
-                    )
-                    with gr.Row():
-                        mode = gr.Radio(
-                            ["🖊️ Generate", "🔄 Refine", "🧩 Fill Blanks", "📝 Title & Points"],
-                            label="Mode",
-                            value="🖊️ Generate"
+            with gr.Tab("Prompt Generation"):
+                with gr.Row():
+                    with gr.Column(scale=2):
+                        prompt_request = gr.Textbox(
+                            label="Prompt request",
+                            placeholder="Enter request",
+                            lines=2
                         )
-                    with gr.Row():
-                        generate_prompt_button = gr.Button("Send", variant='primary')
-                        clear_button = gr.Button("Clear", variant='secondary')
-                    
-                    with gr.Accordion("Request History", open=False, elem_id="request-history-accordion"):
-                        request_history = gr.HTML(
-                            value="<ul></ul>",
-                            elem_id="request-history-content"
-                        )
+                        with gr.Row():
+                            mode = gr.Radio(
+                                choices=list(MODE_MAPPING.values()),
+                                label="Mode",
+                                value="🖊️ Generate"
+                            )
+                        with gr.Row():
+                            generate_prompt_button = gr.Button("Send", variant='primary')
+                            clear_button = gr.Button("Clear", variant='secondary')
 
-                with gr.Column(scale=3):
-                    generated_prompt = gr.Textbox(
-                        label="Generated Prompt",
-                        interactive=False,
-                        lines=5,
-                        elem_id="generated-prompt"
-                    )
-                    supplementary_information = gr.Markdown(
-                        label="Supplementary Information"
-                    )
-                    with gr.Row():
-                        send_to_buttons = infotext_utils.create_buttons(["txt2img", "img2img"])
-                        improve_button = gr.Button("Refine and Enhance", variant='primary')
-                    
-                    with gr.Accordion("Thinking Process", open=False):
-                        thinking_information = gr.Markdown()
+                    with gr.Column(scale=3):
+                        generated_prompt = gr.Textbox(
+                            label="Generated Prompt",
+                            interactive=False,
+                            lines=5,
+                            elem_id="generated-prompt"
+                        )
+                        supplementary_information = gr.Markdown(
+                            label="Supplementary Information"
+                        )
+                        with gr.Row():
+                            send_to_buttons = infotext_utils.create_buttons(["txt2img", "img2img"])
+                            improve_button = gr.Button("Refine and Enhance", variant='primary')
+                        
+                        with gr.Accordion("Thinking Process", open=False):
+                            thinking_information = gr.Markdown()
+
+            with gr.Tab("Request History"):
+                request_history = gr.HTML(
+                    value=load_request_history(),
+                    elem_id="request-history-content"
+                )
 
             full_info_textbox = gr.Textbox(visible=False)
 
             # イベントハンドラーの設定
             generate_prompt_button.click(
                 fn=generate_prompt_wrapper,
-                inputs=[prompt_request, request_history, mode],
+                inputs=[prompt_request, mode],
                 outputs=[generated_prompt, supplementary_information, request_history, full_info_textbox, thinking_information]
             )
 
@@ -82,11 +90,14 @@ def create_ui():
 
     return [(llm_prompt_artisan_interface, "LLM Prompt Artisan", "llm_prompt_artisan_interface")]
 
-def generate_prompt_wrapper(prompt_request, request_history, mode):
-    prompt_text, supplementary_info, full_info, thinking_text = generate_prompt(prompt_request, request_history, mode)
-    updated_history = update_request_history(prompt_request, request_history)
-    # print(f"Debug - Old history: {request_history}")
-    # print(f"Debug - New history: {updated_history}")
+def generate_prompt_wrapper(prompt_request, mode):
+    mode_number = list(MODE_MAPPING.values()).index(mode)
+    prompt_text, supplementary_info, full_info, thinking_text = generate_prompt(prompt_request, mode_number)
+    updated_history = update_request_history(prompt_request, mode_number, {
+        "generated_prompt": prompt_text,
+        "title": supplementary_info.split("\n")[0].replace("### Title: ", ""),
+        "points": "\n".join(supplementary_info.split("\n")[2:])
+    })
     return prompt_text, supplementary_info, updated_history, full_info, thinking_text
 
 def improve_prompt_wrapper(prompt_request):

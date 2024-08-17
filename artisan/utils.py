@@ -4,15 +4,14 @@ import datetime
 from modules.paths import data_path
 from .config import config
 
-def save_structured_log(log_data, log_type):
+def save_log(log_data):
     timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    folder_path = os.path.join(data_path, 'prompt_artisan_logs', log_type)
+    folder_path = os.path.join(data_path, 'prompt_artisan_logs')
     file_path = os.path.join(folder_path, f"{datetime.datetime.now().strftime('%Y%m%d')}.jsonl")
     os.makedirs(folder_path, exist_ok=True)
     
     log_entry = {
         "timestamp": timestamp,
-        "type": log_type,
         **log_data
     }
     
@@ -34,12 +33,37 @@ def update_params_content(prompt_text):
     params_lines[0] = prompt_text
     return '\n'.join(params_lines)
 
-def update_request_history(prompt_request, request_history):
-    content = prompt_request if prompt_request else "Blank Request"
-    new_history_entry = f'<li>{content}</li>'
+def update_request_history(prompt_request, mode_number, response_data):
+    log_data = {
+        "prompt_request": prompt_request,
+        "mode": mode_number,
+        "response": response_data
+    }
+    save_log(log_data)
+    return load_request_history()
+
+def truncate_string(s, max_length=50):
+    return s if len(s) <= max_length else s[:max_length-3] + '...'
+
+def load_request_history():
+    folder_path = os.path.join(data_path, 'prompt_artisan_logs')
+    file_path = os.path.join(folder_path, f"{datetime.datetime.now().strftime('%Y%m%d')}.jsonl")
     
-    if not request_history or request_history == "No requests made yet.":
-        return f'<ul>{new_history_entry}</ul>'
-    else:
-        # 既存のリストの最後に新しいエントリーを追加
-        return request_history[:-5] + new_history_entry + '</ul>'
+    if not os.path.exists(file_path):
+        return "<p>No requests made yet.</p>"
+    
+    with open(file_path, 'r', encoding='utf-8') as f:
+        logs = [json.loads(line) for line in f]
+    
+    logs.reverse()  # 最新のログを先頭に
+    
+    html = "<table><tr><th>Timestamp</th><th>Mode</th><th>Request</th><th>Generated Prompt</th><th>Title</th></tr>"
+    for log in logs[:50]:  # 最新の50件のみ表示
+        mode = log.get('mode', '')
+        request = truncate_string(log.get('prompt_request', ''))
+        generated_prompt = truncate_string(log.get('response', {}).get('generated_prompt', ''))
+        title = truncate_string(log.get('response', {}).get('title', ''))
+        html += f"<tr><td>{log['timestamp']}</td><td>{mode}</td><td>{request}</td><td>{generated_prompt}</td><td>{title}</td></tr>"
+    html += "</table>"
+    
+    return html

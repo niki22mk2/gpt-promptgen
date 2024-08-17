@@ -2,7 +2,7 @@ import json
 import re
 import time
 from .config import config
-from .utils import save_structured_log, update_params_content
+from .utils import save_log, update_params_content
 from constants.prompt_templates import (
     SYSTEM_PROMPTS,
     BASIC_USER_PROMPTS,
@@ -12,7 +12,7 @@ from constants.prompt_templates import (
 )
 from .api.anthropic import AnthropicAPI
 
-def process_prompt(prompt_request, user_prompt_type, mode):
+def process_prompt(prompt_request, user_prompt_type, mode_number):
     anthropic_api = AnthropicAPI()
     system_prompt = SYSTEM_PROMPTS[config.output_lang]
     user_prompt = user_prompt_type[config.output_lang].format(request=prompt_request)
@@ -30,19 +30,19 @@ def process_prompt(prompt_request, user_prompt_type, mode):
             full_info = update_params_content(prompt_text)
             supplementary_info = f"### Title: {title}\n\nPoints: {points}"
 
-            try:    
-                if config.save_response_log:
-                    save_structured_log({
+            try:
+                log_data = {
+                    "prompt_request": prompt_request,
+                    "mode": mode_number,
+                    "response": {
                         "title": title,
                         "generated_prompt": prompt_text,
                         "points": points,
-                    }, "response")
-
-                if config.save_request_log:
-                    save_structured_log({
-                        "prompt_request": prompt_request,
-                        "prompt_type": mode
-                    }, "request")
+                    }
+                }
+                
+                if config.save_log:
+                    save_log(log_data)
 
             except Exception as e:
                 print(f"An error occurred while saving the log: {e}")
@@ -69,15 +69,16 @@ def parse_response(response_text):
     else:
         raise ValueError("Output format not found in response")
 
-def generate_prompt(prompt_request, request_history, mode):
-    prompt_template = {
-        "🖊️ Generate": BASIC_USER_PROMPTS,
-        "🧩 Fill Blanks": FILL_IN_THE_BLANKS_USER_PROMPTS,
-        "📝 Title & Points": NAMING_USER_PROMPTS,
-        "🔄 Refine": IMPROVE_USER_PROMPTS,
-    }.get(mode, BASIC_USER_PROMPTS)
+def generate_prompt(prompt_request, mode_number):
+    mode_mapping = {
+        0: BASIC_USER_PROMPTS,
+        1: IMPROVE_USER_PROMPTS,
+        2: FILL_IN_THE_BLANKS_USER_PROMPTS,
+        3: NAMING_USER_PROMPTS,
+    }
+    prompt_template = mode_mapping.get(mode_number, BASIC_USER_PROMPTS)
 
-    return process_prompt(prompt_request, prompt_template, mode)
+    return process_prompt(prompt_request, prompt_template, mode_number)
 
 def improve_prompt(prompt_request):
     prompt_text, supplementary_info, _, thinking_text = process_prompt(prompt_request, IMPROVE_USER_PROMPTS, mode="🔄 Refine")
