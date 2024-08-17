@@ -157,3 +157,69 @@
 /* .llm-prompt-artisan-container .label-wrapper .copy-button:hover {
     background-color: rgba(0, 0, 0, 0.1);
 } */
+
+/* 既存のスタイルはそのまま保持し、以下を追加 */
+
+.llm-prompt-artisan-container #pagination-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.llm-prompt-artisan-container #pagination-row > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.llm-prompt-artisan-container .pagination-button {
+    width: 40px !important;
+    height: 40px !important;
+    padding: 0 !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    font-size: 18px !important;
+    border-radius: 50% !important;
+    background-color: #f0f0f0 !important;
+    border: 1px solid #ddd !important;
+    cursor: pointer !important;
+    transition: background-color 0.3s ease !important;
+}
+
+.llm-prompt-artisan-container .pagination-button:hover {
+    background-color: #e0e0e0 !important;
+}
+
+.llm-prompt-artisan-container #page-info {
+    font-size: 16px !important;
+    margin: 0 10px !important;
+    text-align: center;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.llm-prompt-artisan-container #request-history-content {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.llm-prompt-artisan-container #request-history-content table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.llm-prompt-artisan-container #request-history-content th,
+.llm-prompt-artisan-container #request-history-content td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.llm-prompt-artisan-container #request-history-content th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}

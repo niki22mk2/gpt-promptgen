@@ -49,13 +49,20 @@ function updateRequestHistory(newHistory, currentPage, totalPages) {
         console.error('Error updating request history:', error);
     });
 
-    waitQuerySelector('input[data-testid="Current Page"]').then((currentPageInput) => {
+    waitQuerySelector('#page-info').then((pageInfo) => {
+        pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
+    }).catch((error) => {
+        console.error('Error updating page info:', error);
+    });
+
+    // 非表示の要素も更新
+    waitQuerySelector('input[data-testid="Number"]').then((currentPageInput) => {
         currentPageInput.value = currentPage;
     }).catch((error) => {
         console.error('Error updating current page:', error);
     });
 
-    waitQuerySelector('input[data-testid="Total Pages"]').then((totalPagesInput) => {
+    waitQuerySelector('input[data-testid="Number"]', 5000, gradioApp().querySelector('#pagination-row')).then((totalPagesInput) => {
         totalPagesInput.value = totalPages;
     }).catch((error) => {
         console.error('Error updating total pages:', error);
@@ -124,9 +131,14 @@ document.addEventListener('DOMContentLoaded', onUiLoaded);
 // Gradioのイベントを使用してプロンプト生成時に履歴を更新
 document.addEventListener('gradioUpdated', function(event) {
     if (event.detail && event.detail.output) {
-        const { request_history, current_page, total_pages } = event.detail.output;
-        if (request_history) {
-            updateRequestHistory(request_history, current_page, total_pages);
+        const outputs = event.detail.output;
+        if (outputs.length >= 7) {  // generate_prompt_wrapperの出力数に基づいて
+            const request_history = outputs[2];
+            const current_page = outputs[5];
+            const total_pages = outputs[6];
+            if (request_history) {
+                updateRequestHistory(request_history, current_page, total_pages);
+            }
         }
     }
 });

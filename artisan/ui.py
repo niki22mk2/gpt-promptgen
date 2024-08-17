@@ -45,16 +45,23 @@ def create_ui():
                             thinking_information = gr.Markdown()
 
             with gr.Tab("Request History"):
+                initial_history, initial_page, initial_total = load_request_history()
                 with gr.Row():
                     request_history = gr.HTML(
-                        value=load_request_history()[0],
+                        value=initial_history,
                         elem_id="request-history-content"
                     )
-                with gr.Row():
-                    prev_page = gr.Button("Previous Page")
-                    current_page = gr.Number(value=1, label="Current Page", interactive=False)
-                    total_pages = gr.Number(value=1, label="Total Pages", interactive=False)
-                    next_page = gr.Button("Next Page")
+                with gr.Row(elem_id="pagination-row"):
+                    with gr.Column(scale=1):
+                        prev_page = gr.Button("◀", elem_classes="pagination-button")
+                    with gr.Column(scale=2):
+                        page_info = gr.HTML(f"<div id='page-info'>Page {initial_page} of {initial_total}</div>")
+                    with gr.Column(scale=1):
+                        next_page = gr.Button("▶", elem_classes="pagination-button")
+                
+                # 非表示の要素としてページ情報を保持
+                current_page = gr.Number(value=initial_page, visible=False)
+                total_pages = gr.Number(value=initial_total, visible=False)
 
             full_info_textbox = gr.Textbox(visible=False)
 
@@ -90,18 +97,18 @@ def create_ui():
 
             def update_history(page):
                 history_html, current, total = load_request_history(page=page)
-                return history_html, current, total
+                return [history_html, current, total, gr.HTML.update(value=f"<div id='page-info'>Page {current} of {total}</div>")]
 
             prev_page.click(
                 fn=lambda page: update_history(max(1, page - 1)),
                 inputs=[current_page],
-                outputs=[request_history, current_page, total_pages]
+                outputs=[request_history, current_page, total_pages, page_info]
             )
 
             next_page.click(
                 fn=lambda page, total: update_history(min(total, page + 1)),
                 inputs=[current_page, total_pages],
-                outputs=[request_history, current_page, total_pages]
+                outputs=[request_history, current_page, total_pages, page_info]
             )
 
     return [(llm_prompt_artisan_interface, "LLM Prompt Artisan", "llm_prompt_artisan_interface")]
