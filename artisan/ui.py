@@ -1,7 +1,7 @@
 import gradio as gr
-from modules import infotext_utils
+from modules import infotext_utils, shared
 from .core import generate_prompt, improve_prompt
-from .utils import update_request_history, load_request_history
+from .utils import update_request_history, load_request_history, get_params_content, update_params_content
 from constants.constants import MODE_MAPPING
 
 def create_ui():
@@ -26,6 +26,13 @@ def create_ui():
                         with gr.Row():
                             generate_prompt_button = gr.Button("Send", variant='primary')
                             clear_button = gr.Button("Clear", variant='secondary')
+                        
+                        # 新しく追加する固定タグ入力欄
+                        fixed_tags = gr.Textbox(
+                            label="Fixed tags to append",
+                            placeholder="Enter tags to append to all prompts",
+                            value=shared.opts.prompt_artisan_fixed_tags
+                        )
 
                     with gr.Column(scale=3):
                         generated_prompt = gr.Textbox(
@@ -68,20 +75,27 @@ def create_ui():
             # イベントハンドラーの設定
             generate_prompt_button.click(
                 fn=generate_prompt_wrapper,
-                inputs=[prompt_request, mode],
+                inputs=[prompt_request, mode, fixed_tags],
                 outputs=[generated_prompt, supplementary_information, request_history, full_info_textbox, thinking_information, current_page, total_pages]
             )
 
             improve_button.click(
                 fn=improve_prompt_wrapper,
-                inputs=[generated_prompt],
-                outputs=[generated_prompt, supplementary_information, thinking_information]
+                inputs=[generated_prompt, fixed_tags],
+                outputs=[generated_prompt, supplementary_information, thinking_information, full_info_textbox]
             )
 
             clear_button.click(
                 fn=lambda: ["", "", "", "", ""],
                 inputs=[],
                 outputs=[prompt_request, generated_prompt, supplementary_information, request_history, thinking_information]
+            )
+
+            # 固定タグの保存
+            fixed_tags.change(
+                fn=lambda x: setattr(shared.opts, 'prompt_artisan_fixed_tags', x),
+                inputs=[fixed_tags],
+                outputs=[]
             )
 
             # Send to buttonsの設定
@@ -113,15 +127,21 @@ def create_ui():
 
     return [(llm_prompt_artisan_interface, "LLM Prompt Artisan", "llm_prompt_artisan_interface")]
 
-def generate_prompt_wrapper(prompt_request, mode):
+def generate_prompt_wrapper(prompt_request, mode, fixed_tags):
     mode_number = list(MODE_MAPPING.values()).index(mode)
     prompt_text, supplementary_info, full_info, thinking_text = generate_prompt(prompt_request, mode_number)
+    
+    # 固定タグを追加
+    full_info_with_tags = update_params_content(prompt_text + (", " + fixed_tags if fixed_tags else ""))
+    
     updated_history, current_page, total_pages = update_request_history(prompt_request, mode_number, {
         "generated_prompt": prompt_text,
         "title": supplementary_info.split("\n")[0].replace("### Title: ", ""),
         "points": "\n".join(supplementary_info.split("\n")[2:])
     })
-    return prompt_text, supplementary_info, updated_history, full_info, thinking_text, current_page, total_pages
+    return prompt_text, supplementary_info, updated_history, full_info_with_tags, thinking_text, current_page, total_pages
 
-def improve_prompt_wrapper(prompt_request):
-    return improve_prompt(prompt_request)
+def improve_prompt_wrapper(prompt_request, fixed_tags):
+    prompt_text, supplementary_info, _, thinking_text = improve_prompt(prompt_request)
+    full_info_with_tags = update_params_content(prompt_text + (", " + fixed_tags if fixed_tags else ""))
+    return prompt_text, supplementary_info, thinking_text, full_info_with_tags
