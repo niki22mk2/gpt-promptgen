@@ -19,7 +19,8 @@ def process_prompt(prompt_request, user_prompt_type, mode):
 
     for attempt in range(config.max_retry + 1):
         try:
-            response_text = anthropic_api.generate_message(system_prompt, user_prompt)
+            response_text = anthropic_api.generate_message(system_prompt, user_prompt, prefill="<antThinking>")
+            # print("Generated text:", response_text)
             thinking_text, output_json = parse_response(response_text)
 
             prompt_text = output_json['prompt'].strip()
@@ -70,14 +71,14 @@ def parse_response(response_text):
 
 def generate_prompt(prompt_request, request_history, mode):
     prompt_template = {
-        "Prompt Generation": BASIC_USER_PROMPTS,
-        "Fill-in-the-Blanks": FILL_IN_THE_BLANKS_USER_PROMPTS,
-        "Title and Points Generation": NAMING_USER_PROMPTS,
-        "Refine and Enhance": IMPROVE_USER_PROMPTS,
+        "🖊️ Generate": BASIC_USER_PROMPTS,
+        "🧩 Fill Blanks": FILL_IN_THE_BLANKS_USER_PROMPTS,
+        "📝 Title & Points": NAMING_USER_PROMPTS,
+        "🔄 Refine": IMPROVE_USER_PROMPTS,
     }.get(mode, BASIC_USER_PROMPTS)
 
     return process_prompt(prompt_request, prompt_template, mode)
 
 def improve_prompt(prompt_request):
-    prompt_text, supplementary_info, _, thinking_text = process_prompt(prompt_request, IMPROVE_USER_PROMPTS)
+    prompt_text, supplementary_info, _, thinking_text = process_prompt(prompt_request, IMPROVE_USER_PROMPTS, mode="🔄 Refine")
     return prompt_text, supplementary_info, thinking_text

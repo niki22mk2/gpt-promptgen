@@ -85,8 +85,8 @@ def create_ui():
 def generate_prompt_wrapper(prompt_request, request_history, mode):
     prompt_text, supplementary_info, full_info, thinking_text = generate_prompt(prompt_request, request_history, mode)
     updated_history = update_request_history(prompt_request, request_history)
-    print(f"Debug - Old history: {request_history}")
-    print(f"Debug - New history: {updated_history}")
+    # print(f"Debug - Old history: {request_history}")
+    # print(f"Debug - New history: {updated_history}")
     return prompt_text, supplementary_info, updated_history, full_info, thinking_text
 
 def improve_prompt_wrapper(prompt_request):
