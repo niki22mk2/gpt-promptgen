@@ -55,6 +55,7 @@ _BASE_INSTRUCTIONS_JP = """
 - shiro9jira, ciloranko, ask \(askzy\), (tianliang duohe fangdongye:0.8)
 - (azuuru:1.1), (torino aqua:1.2), (azuuru:1.1), kedama milk, fuzichoco, ask \(askzy\), chen bin, atdan, hito, mignon
 - ask \(askzy\), torino aqua, migolu
+- yoneyama mai, [lobelia \(saclia\)], [ajimita], [csyday]
 
 ### 4. イラストの内容:
 イラストの内容に関連する具体的な要素を追加します。以下のカテゴリーを考慮し、詳細に描写してください:
@@ -215,9 +216,9 @@ safe, sensitive, nsfw, explicit
 }
 
 {
-    "prompt": "1girl, original character, (wlop:1.3), (krenz cushart:1.2), (sakimichan:1.1), (warrior princess:1.2), (ornate armor:1.15), [gold:silver] accents, (flowing cape:1.1), (long wavy hair:1.05), [blonde:white] hair, (heterochromia:1.1), one blue eye, one green eye, (determined expression:1.05), (wielding magical sword:1.2), (glowing runes on blade:1.1), (magic aura:1.15), [forest:mountain] battlefield, (fallen enemies:0.9), (rising sun:1.05), lens flare, (volumetric lighting:1.1), (detailed armor plates:1.15), (intricate engravings:1.1), (battle scars:0.95), (torn cape edges:1.05), (floating magical particles:1.1), (swirling wind:1.05), (dramatic shadows:1.1), (emotional impact:1.2), cinematic composition, (rule of thirds:1.05), BREAK, (distant castle:0.9), (stormy clouds:1.05), (lightning in background:1.1), (flying creatures:0.95), [dragons:phoenixes], (epic scale:1.2), masterpiece, best quality, very aesthetic, absurdres, newest, (trending on pixiv:1.1), (award-winning illustration:1.05)",
+    "prompt": "1girl, original character, yoneyama mai, [lobelia \(saclia\)], [ajimita], [csyday], (warrior princess:1.2), (ornate armor:1.15), [gold:silver] accents, (flowing cape:1.1), (long wavy hair:1.05), [blonde:white] hair, (heterochromia:1.1), one blue eye, one green eye, (determined expression:1.05), (wielding magical sword:1.2), glowing runes on blade, magic aura, [forest:mountain] battlefield, (fallen enemies:0.9), rising sun, lens flare, (volumetric lighting:1.1), detailed armor plate, intricate engravings, (battle scars:0.95), (torn cape edges:1.05), (floating magical particles:1.1), (swirling wind:1.05), (dramatic shadows:1.1), (emotional impact:1.2), cinematic composition, (rule of thirds:1.05), BREAK, (distant castle:0.9), stormy clouds, lightning in background, (flying creatures:0.95), [dragons:phoenixes], masterpiece, best quality, very aesthetic, absurdres, newest",
     "title": "運命に立ち向かう戦姫",
-    "points": "オリジナルキャラクターの戦う姫を、人気イラストレーターのスタイルを組み合わせて壮大なファンタジー戦闘シーンとして描写。装飾的な鎧、魔法の剣、異色の瞳など、キャラクターの細部にこだわりつつ、壮大な背景と劇的な照明効果で圧倒的な存在感を演出しています。代替単語や重み付けを多用し、生成過程でバリエーションを持たせつつ理想的な結果を得られるよう工夫しました。BREAKキーワードで背景要素を分離し、キャラクターと風景のバランスを調整しています。最新のトレンドや受賞歴を示唆するタグを追加し、注目を集める作品であることを強調しました。"
+    "points": "オリジナルキャラクターの戦う姫を、人気イラストレーターのスタイルを組み合わせて壮大なファンタジー戦闘シーンとして描写。装飾的な鎧、魔法の剣、異色の瞳など、キャラクターの細部にこだわりつつ、壮大な背景と劇的な照明効果で圧倒的な存在感を演出しています。代替単語や重み付けを多用し、生成過程でバリエーションを持たせつつ理想的な結果を得られるよう工夫しました。BREAKキーワードで背景要素を分離し、キャラクターと風景のバランスを調整しています。"
 }
 
 {
@@ -233,7 +234,7 @@ safe, sensitive, nsfw, explicit
 }
 
 {
-    "prompt": "1girl,[hyuuga azuri, torino aqua | kamo kamen, mamyouda | kurasawa moko, maccha \(mochancc\)], solo,dutch braid,winter hat,backless_sweater,looking back,canon ef 70-200mm,dynamic_angle,Visual impact,spooky,imagination,glitch art,revolve round,fluorescent,Fibonacci spiral,galaxy,extreme detailed effect,Lightning and body Interweave,milky way,goddess, masterpiece,best quality,great quality,newest,recent,absurdres,",
+    "prompt": "1girl, [hyuuga azuri, torino aqua | kamo kamen, mamyouda | kurasawa moko, maccha \(mochancc\)], solo,dutch braid,winter hat,backless_sweater,looking back,canon ef 70-200mm,dynamic_angle,Visual impact,spooky,imagination,glitch art,revolve round,fluorescent,Fibonacci spiral,galaxy,extreme detailed effect,Lightning and body Interweave,milky way,goddess, masterpiece,best quality,great quality,newest,recent,absurdres,",
     "title": "銀河を纏う冬の女神",
     "points": "複数の人気イラストレーターのスタイルを組み合わせ、幻想的で印象的な冬の女神を描写。背中が開いたセーターや冬の帽子といった現代的な要素と、銀河や稲妻、フィボナッチ螺旋などの神秘的な要素を融合させています。グリッチアートやフルオレセントな効果を取り入れ、視覚的なインパクトを高めています。キャラクターが振り返るポーズと70-200mmレンズの使用を示唆することで、ダイナミックな角度と奥行きのある構図を表現。最新のトレンドと高品質な仕上がりにこだわり、見る人の想像力を刺激する作品を目指しています。"
 }
@@ -288,148 +289,3 @@ _CONVERSATIONAL_USER_PROMPTS_JP = """
 # リクエスト
 {request}
 """
-
-_SYSTEM_PROMPT_EN = """You are a creative and imaginative artist (illustrator).
-Even if the request is not clear, you can freely draw by expanding your imagination."""
-
-
-_BASE_INSTRUCTIONS_EN = """
-Taking user requests into consideration, use your imagination to devise and create illustrations.
-Next, consider the following elements to express the illustration as a prompt:
-
-# Elements needed for the illustration prompt
-## Image Content:
-Specify what is depicted in the image, the situation, atmosphere, and so on. For example, "a girl, 2 girls, smiling, making a peace sign, rainy day, standing, walking, city street background, classroom background, shy expression", etc.
-
-## Image Details:
-Add specific content related to the image (character appearance, situation, composition, camera angle, effects, etc.). For example, "blown hair, blue eyes, twin tails, fair skin, white shirt, slender figure, cowboy shot, dutch angle, lens flare", etc.
-
-## Art Style and Quality:
-Add content related to the image's art style (color usage, touch, style, technique, artistic methods, etc.) and quality. For example, "flat color, watercolor, chiaroscuro, selective color, gouache painting, paper cut art, bold brushstrokes, linocut printmaking, high contrast, impressionistic style", "exceptional quality, great attention to detail", etc.
-
-## Emphasis on elements in the image:
-If necessary, emphasize particularly important or prominent elements in the image using parentheses (). However, avoid overusing it. For example, "1girl, (solo), standing, smile", "(long hair), blonde hair, green eyes, (soft breasts)", etc.
-
-# Additional Notes
-- The prompt is expressed in comma-separated English words.
-- The importance of the prompt increases toward the front.
-- There is no length limit for the prompt.
-
-# Output Format
-Please output in the following JSON format. The description of each field is as follows:
-- prompt: Write the prompt without line breaks
-- title: Write the title of the illustration
-- points: Write the considerations and thoughts behind the prompt
-
-{
-  "prompt": "Write the prompt here",
-  "title": "Write the title here",
-  "points": "Write the points here"
-}
-"""
-
-_BASE_INSTRUCTIONS_EN_ALL = """
-Taking user requests into consideration, use your imagination to devise and create illustrations.
-Next, consider the following elements to express the illustration as a prompt:
-
-# Elements needed for the illustration prompt
-## Image Content:
-Specify what is depicted in the image, the situation, atmosphere, and so on. For example, "a girl, 2 girls, smiling, making a peace sign, rainy day, standing, walking, city street background, classroom background, shy expression", etc.
-
-## Image Details:
-Add specific content related to the image (character appearance, situation, composition, camera angle, effects, etc.). For example, "blown hair, blue eyes, twin tails, fair skin, white shirt, slender figure, cowboy shot, dutch angle, lens flare", etc.
-
-## Art Style and Quality:
-Add content related to the image's art style (color usage, touch, style, technique, artistic methods, etc.) and quality. For example, "flat color, watercolor, chiaroscuro, selective color, gouache painting, paper cut art, bold brushstrokes, linocut printmaking, high contrast, impressionistic style", "exceptional quality, great attention to detail", etc.
-
-## Emphasis on elements in the image:
-If necessary, emphasize particularly important or prominent elements in the image using parentheses (). However, avoid overusing it. For example, "1girl, (solo), standing, smile", "(long hair), blonde hair, green eyes, (soft breasts)", etc.
-
-# Additional Notes
-- The prompt is expressed in comma-separated English words.
-- The importance of the prompt increases toward the front.
-- There is no length limit for the prompt.
-
-# Output Format
-Please output in the following JSON format. The description of each field is as follows:
-- prompt: Write the prompt without line breaks
-- title: Write the title of the illustration in English
-- points: Write the considerations and thoughts behind the prompt in English
-
-{
-  "prompt": "Write the prompt here",
-  "title": "Write the title here",
-  "points": "Write the points here"
-}
-"""
-
-
-_BASIC_USER_PROMPT_EN = """
-Request: {request}
-The request serves as a theme. Please use your imagination to add any necessary content to the illustration.
-"""
-
-_IMPROVE_USER_PROMPT_EN = """
-Please edit the prompt below by adding detailed descriptions (such as situations, atmosphere, character appearances, background, etc.) and additional elements to create a more intricate and specific prompt.
-Also, please rewrite it according to the output format.
-
-Prompt: [edited prompt]
-Title: [your title]
-Points: [your key points]
-
-Prompt: {request} 
-"""
-
-_FILL_IN_THE_BLANKS_USER_PROMPTS_EN = """
-Imagine the "____" portion of the following prompt to complete the prompt. Consider including specifics about the appearance, situation, or atmosphere, as appropriate. Any number of elements may be placed in "____".
-Be sure to follow the output format.
-
-{request} 
-"""
-
-_NAMING_USER_PROMPTS_EN = """
-Please come up with a title and key points for the following prompt. Do not modify the provided prompt, and make sure to follow the output format.
-
-Prompt: [provided prompt]
-Title: [your title]
-Point: [your key points]
-
-Prompt: {request} 
-"""
-
-
-
-SYSTEM_PROMPTS = {
-    "EN": _SYSTEM_PROMPT_EN,
-    "JP": _SYSTEM_PROMPT_JP,
-}
-
-BASE_INSTRUCTIONS = {
-    "EN": _BASE_INSTRUCTIONS_EN,
-    "JP": _BASE_INSTRUCTIONS_JP,
-    "EN_ALL": _BASE_INSTRUCTIONS_EN_ALL,
-}
-
-BASIC_USER_PROMPTS = {
-    "EN": _BASIC_USER_PROMPT_EN,
-    "JP": _BASIC_USER_PROMPT_JP,
-}
-
-IMPROVE_USER_PROMPTS = {
-    "EN": _IMPROVE_USER_PROMPT_EN,
-    "JP": _IMPROVE_USER_PROMPT_JP,
-}
-
-FILL_IN_THE_BLANKS_USER_PROMPTS = {
-    'EN': _FILL_IN_THE_BLANKS_USER_PROMPTS_EN,
-    'JP': _FILL_IN_THE_BLANKS_USER_PROMPTS_JP,
-}
-
-NAMING_USER_PROMPTS = {
-    'EN': _NAMING_USER_PROMPTS_EN,
-    'JP': _NAMING_USER_PROMPTS_JP,
-}
-
-CONVERSATIONAL_USER_PROMPTS = {
-    'JP': _CONVERSATIONAL_USER_PROMPTS_JP
-}

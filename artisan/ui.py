@@ -1,14 +1,21 @@
+from pathlib import Path
 import gradio as gr
-from modules import infotext_utils
+from modules import infotext_utils, scripts
 from .core import generate_prompt, improve_prompt
 from .utils import update_request_history
 import asyncio
-from .api.anthropic import AnthropicAPI
+
+# インポート時に basedir を取得し保存
+EXTENSION_BASE_DIR = Path(scripts.basedir())
 
 def create_ui():
-    anthropic_api = AnthropicAPI()
+    css_path = Path(EXTENSION_BASE_DIR, "static", "css", "style.css")
+    js_path = Path(EXTENSION_BASE_DIR, "static", "js", "script.js")
 
-    with gr.Blocks(css="./style.css", js="./scripts/promptgen/static/js/script.js") as llm_prompt_artisan_interface:
+    print("css_path:", css_path)
+    print("js_path:", js_path)
+
+    with gr.Blocks(css=css_path, js=js_path) as llm_prompt_artisan_interface:
         with gr.Column(elem_classes="llm-prompt-artisan-container"):
             gr.Markdown("# LLM Prompt Artisan")
             
@@ -80,7 +87,7 @@ def create_ui():
                 )
 
         # クリーンアップ処理の追加
-        gr.on_close(lambda: asyncio.run(cleanup(anthropic_api)))
+        # gr.on_close(lambda: asyncio.run(cleanup(anthropic_api)))
 
     return [(llm_prompt_artisan_interface, "LLM Prompt Artisan", "llm_prompt_artisan_interface")]
 
@@ -92,5 +99,5 @@ async def generate_prompt_wrapper(prompt_request, request_history, mode):
 async def improve_prompt_wrapper(prompt_request):
     return await improve_prompt(prompt_request)
 
-async def cleanup(api):
-    await api.cleanup()
+# async def cleanup(api):
+#     await api.cleanup()

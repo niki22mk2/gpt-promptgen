@@ -1,7 +1,10 @@
 import gradio as gr
 from modules import script_callbacks
 import modules.shared as shared
-from scripts.promptgen.ui import create_ui
+from artisan.ui import create_ui
+import atexit
+import asyncio
+from artisan.api.anthropic import AnthropicAPI
 
 def on_ui_settings():
     section = ('LLM Prompt Artisan', "LLM Prompt Artisan")
@@ -16,3 +19,12 @@ def on_ui_settings():
 
 script_callbacks.on_ui_settings(on_ui_settings)
 script_callbacks.on_ui_tabs(create_ui)
+
+def cleanup_anthropic_api():
+    loop = asyncio.get_event_loop()
+    if loop.is_running():
+        loop.create_task(AnthropicAPI.close())
+    else:
+        loop.run_until_complete(AnthropicAPI.close())
+
+atexit.register(cleanup_anthropic_api)

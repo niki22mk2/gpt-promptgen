@@ -3,7 +3,7 @@ import re
 import time
 from .config import config
 from .utils import save_log_to_file, update_params_content
-from scripts.template.prompt_template import (
+from constants.prompt_templates import (
     SYSTEM_PROMPTS,
     BASE_INSTRUCTIONS,
     BASIC_USER_PROMPTS,
@@ -14,7 +14,7 @@ from scripts.template.prompt_template import (
 from .api.anthropic import AnthropicAPI
 
 async def process_prompt(prompt_request, user_prompt_type):
-    anthropic_api = AnthropicAPI()
+    anthropic_api = await AnthropicAPI.get_instance()
     system_prompt = SYSTEM_PROMPTS[config.prompt_lang] + BASE_INSTRUCTIONS[config.output_lang]
     user_prompt = user_prompt_type[config.prompt_lang].format(request=prompt_request)
 
