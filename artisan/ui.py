@@ -3,7 +3,6 @@ import gradio as gr
 from modules import infotext_utils, scripts
 from .core import generate_prompt, improve_prompt
 from .utils import update_request_history
-import asyncio
 
 # インポート時に basedir を取得し保存
 EXTENSION_BASE_DIR = Path(scripts.basedir())
@@ -35,14 +34,18 @@ def create_ui():
                         generate_prompt_button = gr.Button("Send", variant='primary')
                         clear_button = gr.Button("Clear", variant='secondary')
                     
-                    with gr.Accordion("Request History", open=False):
-                        request_history = gr.Markdown()
+                    with gr.Accordion("Request History", open=False, elem_id="request-history-accordion"):
+                        request_history = gr.Markdown(
+                            placeholder="No requests made yet.",
+                            elem_id="request-history-content"
+                        )
 
                 with gr.Column(scale=3):
                     generated_prompt = gr.Textbox(
                         label="Generated Prompt",
                         interactive=False,
-                        lines=5
+                        lines=5,
+                        elem_id="generated-prompt"
                     )
                     supplementary_information = gr.Markdown(
                         label="Supplementary Information"
@@ -58,13 +61,13 @@ def create_ui():
 
             # イベントハンドラーの設定
             generate_prompt_button.click(
-                fn=lambda *args: asyncio.run(generate_prompt_wrapper(*args)),
+                fn=generate_prompt_wrapper,
                 inputs=[prompt_request, request_history, mode_radio],
                 outputs=[generated_prompt, supplementary_information, request_history, full_info_textbox, thinking_information]
             )
 
             improve_button.click(
-                fn=lambda *args: asyncio.run(improve_prompt_wrapper(*args)),
+                fn=improve_prompt_wrapper,
                 inputs=[generated_prompt],
                 outputs=[generated_prompt, supplementary_information, thinking_information]
             )
@@ -86,18 +89,14 @@ def create_ui():
                     )
                 )
 
-        # クリーンアップ処理の追加
-        # gr.on_close(lambda: asyncio.run(cleanup(anthropic_api)))
-
     return [(llm_prompt_artisan_interface, "LLM Prompt Artisan", "llm_prompt_artisan_interface")]
 
-async def generate_prompt_wrapper(prompt_request, request_history, mode):
-    prompt_text, supplementary_info, full_info, thinking_text = await generate_prompt(prompt_request, request_history, mode)
+def generate_prompt_wrapper(prompt_request, request_history, mode):
+    prompt_text, supplementary_info, full_info, thinking_text = generate_prompt(prompt_request, request_history, mode)
     updated_history = update_request_history(prompt_request, request_history)
+    print(f"Debug - Old history: {request_history}")
+    print(f"Debug - New history: {updated_history}")
     return prompt_text, supplementary_info, updated_history, full_info, thinking_text
 
-async def improve_prompt_wrapper(prompt_request):
-    return await improve_prompt(prompt_request)
-
-# async def cleanup(api):
-#     await api.cleanup()
+def improve_prompt_wrapper(prompt_request):
+    return improve_prompt(prompt_request)

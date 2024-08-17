@@ -13,14 +13,14 @@ from constants.prompt_templates import (
 )
 from .api.anthropic import AnthropicAPI
 
-async def process_prompt(prompt_request, user_prompt_type):
-    anthropic_api = await AnthropicAPI.get_instance()
+def process_prompt(prompt_request, user_prompt_type):
+    anthropic_api = AnthropicAPI()
     system_prompt = SYSTEM_PROMPTS[config.prompt_lang] + BASE_INSTRUCTIONS[config.output_lang]
     user_prompt = user_prompt_type[config.prompt_lang].format(request=prompt_request)
 
     for attempt in range(config.max_retry + 1):
         try:
-            response_text = await anthropic_api.generate_message(system_prompt, user_prompt)
+            response_text = anthropic_api.generate_message(system_prompt, user_prompt)
             thinking_text, output_json = parse_response(response_text)
 
             prompt_text = output_json['prompt'].strip()
@@ -58,7 +58,7 @@ def parse_response(response_text):
     else:
         raise ValueError("Output format not found in response")
 
-async def generate_prompt(prompt_request, request_history, mode):
+def generate_prompt(prompt_request, request_history, mode):
     prompt_template = {
         "Prompt Generation": BASIC_USER_PROMPTS,
         "Fill-in-the-Blanks": FILL_IN_THE_BLANKS_USER_PROMPTS,
@@ -66,8 +66,8 @@ async def generate_prompt(prompt_request, request_history, mode):
         "Refine and Enhance": IMPROVE_USER_PROMPTS,
     }.get(mode, BASIC_USER_PROMPTS)
 
-    return await process_prompt(prompt_request, prompt_template)
+    return process_prompt(prompt_request, prompt_template)
 
-async def improve_prompt(prompt_request):
-    prompt_text, supplementary_info, _, thinking_text = await process_prompt(prompt_request, IMPROVE_USER_PROMPTS)
+def improve_prompt(prompt_request):
+    prompt_text, supplementary_info, _, thinking_text = process_prompt(prompt_request, IMPROVE_USER_PROMPTS)
     return prompt_text, supplementary_info, thinking_text

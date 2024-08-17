@@ -32,7 +32,6 @@ list_tag = """
 </ul>"""
 
 def update_request_history(prompt_request, request_history):
-    if prompt_request:
-        new_history_entry = list_tag.format(content=prompt_request)
-        return request_history + new_history_entry
-    return request_history
+    content = prompt_request if prompt_request else "Blank Request"
+    new_history_entry = list_tag.format(content=content)
+    return request_history + new_history_entry

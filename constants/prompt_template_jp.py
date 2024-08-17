@@ -49,6 +49,7 @@ _BASE_INSTRUCTIONS_JP = """
 
 ### 3. アーティストスタイル:
 特定のアーティスト（最近人気のイラストレーター）のスタイルを参考にする場合は、以下のようなdanbooruタグとして記述します。複数指定することで、独自のスタイルを生み出せます。
+明確な意図がある場合を除いて、著名であっても古い絵柄のスタイルは避けるべきです。
 良いスタイルの例:
 - ask \(askzy\), torino aqua, migolu, (jiu ye sang:1.1), (rumoon:0.9), (mizumi zumi:1.1)
 - ciloranko, maccha \(mochancc\), lobelia \(saclia\), migolu, ask \(askzy\), wanke, (jiu ye sang:1.1), (rumoon:0.9), (mizumi zumi:1.1)
@@ -204,7 +205,7 @@ safe, sensitive, nsfw, explicit
 }
 
 {
-    "prompt": "1girl, (kuvshinov ilya:1.2), (wlop:1.1), cyberpunk, neon city, rainy night, holographic display, (glowing tattoos:1.1), (cybernetic implants:1.05), leather jacket, (neon hair:1.1), heterochromia, determined expression, reflective puddles, steam rising, dynamic pose, futuristic weapons, masterpiece, best quality, very aesthetic, absurdres, newest",
+    "prompt": "1girl, ciloranko, chon \(chon33v\), kiya machi, itomugi-kun, lack, cyberpunk, neon city, rainy night, holographic display, (glowing tattoos:1.1), (cybernetic implants:1.05), leather jacket, (neon hair:1.1), heterochromia, determined expression, reflective puddles, steam rising, dynamic pose, futuristic weapons, masterpiece, best quality, very aesthetic, absurdres, newest",
     "title": "ネオン雨のサイバーハンター",
     "points": "人気アーティストの特徴的なスタイルを組み合わせ、サイバーパンクの世界観を表現。雨に濡れた夜の街、ホログラフィックな要素、サイバネティックな身体改造など、未来的でダークな雰囲気を演出しました。キャラクターの個性的な外見と決意に満ちた表情で、物語性も感じられる構図を目指しました。"
 }
