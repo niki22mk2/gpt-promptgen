@@ -46,16 +46,14 @@ Pixivなどのイラスト共有プラットフォームで人気を集めるよ
 ### 1. キャラクターの性別や人数:
 イラストに登場させるキャラクターの性別や人数を指定します。
 例:
-- 1girl
-- 1boy
-- 1other
-- 1woman
-- 1man
-- solo
-- 2girl
-- 2boy
-- 2other
-- 1girl, 1boy
+- 1girl (少女)
+- 1boy (少年)
+- 1woman (女性)
+- 1man (男性)
+- solo (一人)
+- 2girl (2人の少女)
+- 2boy (2人の少年)
+- 1girl, 1boy (1人の少女と1人の少年)
 
 ### 2. キャラクター名/シリーズ名/作品名:
 必要に応じて、イラストに描きたいキャラクター、シリーズや作品の名前を指定します。
@@ -250,7 +248,7 @@ sensitive, nsfw, explicit
 
 {
     "prompt": "1girl, solo, (ask \(askzy\):1.1), (wanke:1.1), (jyt:1.0), long hair, pink hair, wavy hair, hair between eyes, black choker with bell, emerald green eyes, sharp eyeliner, glossy pink lips, fox girl, fluffy fox ears, multiple fluffy fox tails, wet skin, water droplets, (shimmering bikini:1.2), (string bikini:1.1), lying on back, playful pose, arched back, (spinning motion:1.2), pawed hands, (cat-like behavior:1.1), mischievous smile, flushed cheeks, (beach setting:0.8), sunset, golden hour lighting, soft sand, seashells, (cinematic composition:1.2), shallow depth of field, motion blur, lens flare, (masterpiece:1.3), (best quality:1.2), (ultra-detailed:1.2), looking at viewer, very aesthetic, perfect lighting, intricate details, absurdres, (incredibly detailed skin:1.3), (detailed face:1.2), (eyeshadow:1.1), (high detail:1.2), 4k, newest, sensitive",
-    "title": "夕陽の戯れ - 猫狐少女の水辺の舞",
+    "title": "猫狐少女の水辺の舞",
     "points": "キャラクターの外見や仕草を詳細に描写し、ビーチという背景設定で情景を豊かにしました。猫のような動きと狐の特徴を融合させ、プレイフルでミステリアスな雰囲気を演出しています。夕暮れの光や水滴の描写で、官能的でありながら幻想的な雰囲気も醸し出しています。"
 }
 

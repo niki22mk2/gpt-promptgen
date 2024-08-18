@@ -250,7 +250,7 @@ safe, sensitive, nsfw, explicit
 
 {
     "prompt": "1girl, solo, (ask \(askzy\):1.1), (wanke:1.1), (jyt:1.0), long hair, pink hair, wavy hair, hair between eyes, black choker with bell, emerald green eyes, sharp eyeliner, glossy pink lips, fox girl, fluffy fox ears, multiple fluffy fox tails, wet skin, water droplets, (shimmering bikini:1.2), (string bikini:1.1), lying on back, playful pose, arched back, (spinning motion:1.2), pawed hands, (cat-like behavior:1.1), mischievous smile, flushed cheeks, (beach setting:0.8), sunset, golden hour lighting, soft sand, seashells, (cinematic composition:1.2), shallow depth of field, motion blur, lens flare, (masterpiece:1.3), (best quality:1.2), (ultra-detailed:1.2), very aesthetic, perfect lighting, intricate details, absurdres, incredibly detailed skin, (detailed face:1.2), (eyeshadow:1.1), high detail, 4k, newest, sensitive",
-    "title": "夕陽の戯れ - 猫狐少女の水辺の舞",
+    "title": "猫狐少女の水辺の舞",
     "points": "キャラクターの外見や仕草を詳細に描写し、ビーチという背景設定で情景を豊かにしました。猫のような動きと狐の特徴を融合させ、プレイフルでミステリアスな雰囲気を演出しています。夕暮れの光や水滴の描写で、官能的でありながら幻想的な雰囲気も醸し出しています。"
 }
 
@@ -279,9 +279,9 @@ safe, sensitive, nsfw, explicit
 }
 
 {
-    "prompt": "1girl, ciloranko, chon \(chon33v\), kiya machi, itomugi-kun, lack, cyberpunk, neon city, rainy night, holographic display, (glowing tattoos:1.1), (cybernetic implants:1.05), leather jacket, (neon hair:1.1), determined expression, reflective puddles, steam rising, dynamic pose, futuristic weapons, newest, masterpiece, best quality, very aesthetic, absurdres",
-    "title": "ネオン雨のサイバーハンター",
-    "points": "サイバーパンクの世界観を表現。雨に濡れた夜の街、ホログラフィックな要素、サイバネティックな身体改造など、未来的でダークな雰囲気を演出しました。キャラクターの個性的な外見と決意に満ちた表情で、物語性も感じられる構図を目指しました。"
+    "prompt": "1girl, Ambilight, upper body, harajuku fashion, flowers with human eyes, flower eyes, double exposure, fussion of fluid abstract art, glitch,2d,original illustration composition, fusion of limited color, maximalism artstyle, geometric artstyle, butterflies, junk art, masterpiece, best quality, absurdres, sensitive",
+    "title": "電脳華爛",
+    "points": "ハラジュク・ファッションと超現実的な要素を融合し、現代的なグリッチアートと抽象表現主義を組み合わせた作品。人間の目を持つ花や蝶が、幾何学的なパターンと溶け合う様子が、デジタル時代の美学と伝統的な日本のポップカルチャーの交差点を表現しています。"
 }
 
 {
@@ -304,7 +304,7 @@ safe, sensitive, nsfw, explicit
 
 {
     "prompt": "1girl, csyday, (jyt:0.90703), amamiya kokoro, (elf:0.90703), (tsurime:1.1025), (bold eyelashes:1.05), (loli:1.05), (long eyelashes, black eyelashes :1.05), (white skin:1.05), twin tails, (black hair:1.05), (light red-purple eyes:1.05), medium hair, half closed eyes, short smile, (beautiful face:1.05), perky breasts, perfect shaped breasts, collarbone, clarity, looking straight at viewer, off shoulder, slender, (delicate features:1.05), (enchanting expression:1.05), explicit, newest, nsfw, masterpiece, best quality, very aesthetic, absurdres",
-    "title": "妖精の誘惑 - エルフ化した天宮こころの官能美",
+    "title": "エルフ化した天宮こころの官能美",
     "points": "にじさんじのVtuber 天宮こころをエルフ的な要素を持つ魅惑的なキャラクターとして再解釈しています。繊細な目の表現（つり目、太い睫毛）や透き通るような肌の質感にこだわり、官能的でありながら幻想的な雰囲気を演出しています。ツインテールと中間の髪の長さ、薄い赤紫色の目など、キャラクターの特徴を保ちつつ、エルフらしい魅力を加えています。半開きの目と小さな微笑み、直視する視線など、見る人を惹きつける要素を多く取り入れ、魅惑的な表情を強調しています。"
 }
 
