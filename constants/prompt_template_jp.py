@@ -261,7 +261,7 @@ safe, sensitive, nsfw, explicit
 }
 
 {
-    "prompt": "2girls, yuri, (azuuru:1.1), (torino aqua:1.2), (azuuru:1.1), kedama milk, fuzichoco, ask \(askzy\), chen bin, atdan, hito, mignon, school uniform, classroom, sunset, holding hands, blushing, intimate moment, soft lighting, lens flare, detailed eyes, long eyelashes, flowing hair, emotional expression, recent, masterpiece, best quality, very aesthetic, absurdres",
+    "prompt": "2girls, yuri, (azuuru:1.1), (torino aqua:1.2), (azuuru:1.1), kedama milk, fuzichoco, ask \(askzy\), chen bin, atdan, hito, mignon, school uniform, classroom, sunset, holding hands, blushing, intimate moment, soft lighting, lens flare, long eyelashes, flowing hair, emotional expression, recent, masterpiece, best quality, very aesthetic, absurdres",
     "title": "夕陽の教室で紡ぐ愛の旋律",
     "points": "学校制服を着た2人の少女の百合シーンを夕暮れの教室で描写。有名アーティストのスタイルを融合し、柔らかな光や繊細な表情、髪の流れなど細部まで丁寧に表現。親密な瞬間と豊かな感情表現で、見る人の心に響く魅力的な作品を目指しています。"
 }

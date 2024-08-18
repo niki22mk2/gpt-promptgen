@@ -242,7 +242,7 @@ sensitive, nsfw, explicit
 <examples>
 # プロンプト例
 {
-    "prompt": "1girl, solo, (ciloranko:1.1), (maccha \(mochancc\):1.1), (ask \(askzy\):1.1), upper body, close-up, looking at viewer, blushing, (heavy breathing:1.1), (parted lips:1.1), dilated pupils, flushed face, (glazed eyes:1.1), sensual expression, (anticipation:1.1), low key lighting, soft focus, detailed eyes, (detailed skin:1.05), (wet hair:1.05), disheveled hair, (bare shoulders:1.05), collarbone, neck, slightly open mouth, (saliva:0.9), (steamy:1.05), passionate atmosphere, (erotic tension:1.1), newest, masterpiece, best quality, very aesthetic, absurdres, explicit", 
+    "prompt": "1girl, solo, (ciloranko:1.1), (maccha \(mochancc\):1.1), (ask \(askzy\):1.1), upper body, close-up, looking at viewer, blushing, (heavy breathing:1.1), (parted lips:1.1), dilated pupils, flushed face, (glazed eyes:1.1), sensual expression, (anticipation:1.1), low key lighting, soft focus, (detailed skin:1.05), (wet hair:1.05), disheveled hair, (bare shoulders:1.05), collarbone, neck, slightly open mouth, (saliva:0.9), (steamy:1.05), passionate atmosphere, (erotic tension:1.1), newest, masterpiece, best quality, very aesthetic, absurdres, explicit", 
     "title": "官能の瞬間", 
     "points": "激しく発情し、キスを待つ女性のクローズアップを表現し、官能的で魅力的な表情や雰囲気を強調しています。赤面や息遣い、瞳の描写などで発情状態を表現し、低めの照明で艶っぽさを演出しました。視聴者を見つめる構図で、期待感と官能的な緊張感を高めています。"
 }
@@ -272,7 +272,7 @@ sensitive, nsfw, explicit
 }
 
 {
-    "prompt": "2girls, yuri, (azuuru:1.1), (torino aqua:1.2), (azuuru:1.1), kedama milk, fuzichoco, ask \(askzy\), chen bin, atdan, hito, mignon, school uniform, classroom, sunset, holding hands, blushing, intimate moment, soft lighting, lens flare, detailed eyes, long eyelashes, flowing hair, emotional expression, recent, masterpiece, best quality, very aesthetic, absurdres",
+    "prompt": "2girls, yuri, (azuuru:1.1), (torino aqua:1.2), (azuuru:1.1), kedama milk, fuzichoco, ask \(askzy\), chen bin, atdan, hito, mignon, school uniform, classroom, sunset, holding hands, blushing, intimate moment, soft lighting, lens flare, long eyelashes, flowing hair, emotional expression, recent, masterpiece, best quality, very aesthetic, absurdres",
     "title": "夕陽の教室で紡ぐ愛の旋律",
     "points": "学校制服を着た2人の少女の百合シーンを夕暮れの教室で描写。有名アーティストのスタイルを融合し、柔らかな光や繊細な表情、髪の流れなど細部まで丁寧に表現。親密な瞬間と豊かな感情表現で、見る人の心に響く魅力的な作品を目指しています。"
 }
