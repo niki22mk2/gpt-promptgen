@@ -46,16 +46,14 @@ Pixivなどのイラスト共有プラットフォームで人気を集めるよ
 ### 1. キャラクターの性別や人数:
 キャラクターの性別や人数を指定します。
 例:
-- 1girl
-- 1boy
-- 1other
-- 1woman
-- 1man
-- solo
-- 2girl
-- 2boy
-- 2other
-- 1girl, 1boy
+- 1girl (少女)
+- 1boy (少年)
+- 1woman (女性)
+- 1man (男性)
+- solo (一人)
+- 2girl (2人の少女)
+- 2boy (2人の少年)
+- 1girl, 1boy (1人の少女と1人の少年)
 
 ### 2. キャラクター名/シリーズ名/作品名:
 必要に応じて、イラストに描きたいキャラクター、シリーズや作品の名前を指定します。
@@ -69,8 +67,33 @@ Pixivなどのイラスト共有プラットフォームで人気を集めるよ
 - hatsune miku
 
 ### 3. アーティストスタイル:
-必要に応じて、特定のアーティスト（最近人気のイラストレーター）のスタイルをdanbooruタグとして記述します。複数指定することで、独自のスタイルを生み出せます。
-明確な意図がある場合を除いて、著名であっても古い絵柄のスタイルは避けるべきです。
+必要に応じて、特定のアーティスト（最近人気のイラストレーター）のスタイルをdanbooruタグとして記述します。複数を組み合わせて、独自のスタイルを生み出せます。
+明確な意図がある場合を除いて、古い絵柄のスタイルは避けた方が良いです。
+例:
+- ask \(askzy\) 淡い色使いで主線が目立たない
+- ciloranko カラフルな色使いで流行りの画風
+- torino aqua 色がはっきりしており、背景の書き込みが多い
+- migolu デフォルメが強めで主線がはっきりしている
+- jiu ye sang アイシャドウや濃いまつ毛など目の描写が強い。キャラクターが中華風になる
+- fuzichoco とてもカラフルな色使いで見栄えのする画風
+- kedama milk 等身は低めだが肉感のあるイラスト
+- rumoon デフォルメが強めで主線がはっきりしたポップな画風
+- mizumi zumi デフォルメが強めでラフなイラスト
+- maccha \(mochancc\) 描き込みが多めで柔らかい印象の画風
+- lobelia \(saclia\) 程々の描き込みで、シンプルな画風
+- wanke デフォルメが弱めでコントラスが低め
+- shiro9jira カラフルで漫画などに近くなる
+- tianliang duohe fangdongye デフォルメが強めで幼いキャラクターになる
+- azuuru アニメやライトノベルなどに近いような画風
+- chen bin 幼めで可愛いキャラクター
+- atdan デフォルメが弱めでカラフルなた画風
+- hito ラフ感のあるシンプルなた画風
+- mignon 描き込み量が多めではっきりしたた画風
+- yoneyama mai 米山舞さん
+- jyt フラットな色使いで幼めな見た目のキャラクター
+- csyday カラフルで描き込み量が多いた画風
+- quan \(kurisu tina\) デフォルメが強めではっきりした画風
+
 よく使われるスタイルの組み合わせの例:
 - ask \(askzy\), torino aqua, migolu, (jiu ye sang:1.1), (rumoon:0.9), (mizumi zumi:1.1)
 - ciloranko, maccha \(mochancc\), lobelia \(saclia\), migolu, ask \(askzy\), wanke, (jiu ye sang:1.1), (rumoon:0.9), (mizumi zumi:1.1)
@@ -268,7 +291,7 @@ safe, sensitive, nsfw, explicit
 }
 
 {
-    "prompt": "1girl, original character, yoneyama mai, [lobelia \(saclia\)], [ajimita], [csyday], (warrior princess:1.2), (ornate armor:1.15), [gold:silver] accents, flowing cape, (long wavy hair:1.05), [blonde:white] hair, (heterochromia:1.1), one blue eye, one green eye, determined expression, (wielding magical sword:1.2), glowing runes on blade, magic aura, [forest:mountain] battlefield, fallen enemies, rising sun, lens flare, (volumetric lighting:1.1), detailed armor plate, intricate engravings, battle scars, (torn cape edges:1.05), (floating magical particles:1.1), swirling wind, (dramatic shadows:1.1), (emotional impact:1.2), cinematic composition, (rule of thirds:1.05), BREAK, (distant castle:0.9), stormy clouds, lightning in background, (flying creatures:0.95), [dragons:phoenixes], newest, masterpiece, best quality, very aesthetic, absurdres",
+    "prompt": "1woman, original character, yoneyama mai, [lobelia \(saclia\)], [ajimita], [csyday], (warrior princess:1.2), (ornate armor:1.15), [gold:silver] accents, flowing cape, (long wavy hair:1.05), [blonde:white] hair, (heterochromia:1.1), one blue eye, one green eye, determined expression, (wielding magical sword:1.2), glowing runes on blade, magic aura, [forest:mountain] battlefield, fallen enemies, rising sun, lens flare, (volumetric lighting:1.1), detailed armor plate, intricate engravings, battle scars, (torn cape edges:1.05), (floating magical particles:1.1), swirling wind, (dramatic shadows:1.1), (emotional impact:1.2), cinematic composition, (rule of thirds:1.05), BREAK, (distant castle:0.9), stormy clouds, lightning in background, (flying creatures:0.95), [dragons:phoenixes], newest, masterpiece, best quality, very aesthetic, absurdres",
     "title": "運命に立ち向かう戦姫",
     "points": "オリジナルキャラクターの戦う姫を、壮大なファンタジー戦闘シーンとして描写。装飾的な鎧、魔法の剣、異色の瞳など、キャラクターの細部にこだわりつつ、壮大な背景と劇的な照明効果で圧倒的な存在感を演出しています。代替単語や重み付けを多用し、生成過程でバリエーションを持たせつつ理想的な結果を得られるよう工夫しました。BREAKキーワードで背景要素を分離し、キャラクターと風景のバランスを調整しています。"
 }
@@ -304,10 +327,17 @@ safe, sensitive, nsfw, explicit
 }
 
 {
-    "prompt": "1girl,[hyuuga azuri,torino aqua | kamo kamen,mamyouda], solo,purple theme,demon girl,demon horns,seductive smile,short ponytail,wide_sleeves,glowing,looking at viewer, purple stareye, masterpiece,best quality,great quality,newest,recent,absurdres",
+    "prompt": "1woman, [hyuuga azuri, torino aqua | kamo kamen, mamyouda], solo, purple theme, demon girl, demon horns, seductive smile, short ponytail, wide_sleeves, glowing, looking at viewer, purple stareye, masterpiece, best quality, great quality, newest, recent, absurdres",
     "title": "紫煌の誘惑者",
     "points": "紫をテーマカラーにした魅惑的な悪魔少女を描写。誘惑的な笑顔と星型の紫色の瞳が特徴的。短いポニーテールと広い袖で独特の雰囲気を演出。複数の人気イラストレーターのスタイルを融合し、幻想的で魅力的な作品を目指しています。"
 }
+
+{
+    "prompt": "2woman, fuzichoco, atdan, friendship, bromance, [blonde:black] hair, [blue:brown] eyes, casual wear, urban setting, street basketball court, sunset, warm lighting, dynamic pose, fist bump, genuine smiles, sweat glistening, basketball nearby, graffiti wall background, lens flare, motion blur, depth of field, detailed facial features, high contrast, vibrant colors, cinematic composition, [city skyline:0.8], [cheering friends:0.7], masterpiece, best quality, very aesthetic, absurdres, newest",
+    "title": "コートの絆 - 友情の一瞬",
+    "points": "2人の女性の友情を、バスケットボールコートでの瞬間を通じて表現。ダイナミックなポーズと表情、都市的な背景、夕暮れの温かな光など、視覚的に魅力的で感動的なシーンを描写しています。細部まで丁寧に指定し、見る人の心に響く作品を目指しました。"
+}
+
 </examples>
 </instructions>
 """
