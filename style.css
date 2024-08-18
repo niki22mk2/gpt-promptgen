@@ -277,3 +277,52 @@
     word-wrap: break-word;
     max-width: 100%;
 }
+
+/* 既存のスタイルの後に以下を追加 */
+
+.llm-prompt-artisan-container #request-history-content table {
+    table-layout: fixed;
+    width: 100%;
+}
+
+.llm-prompt-artisan-container #request-history-content th,
+.llm-prompt-artisan-container #request-history-content td {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.llm-prompt-artisan-container #request-history-content th:nth-child(1),
+.llm-prompt-artisan-container #request-history-content td:nth-child(1) {
+    width: 9%; /* Timestamp */
+}
+
+.llm-prompt-artisan-container #request-history-content th:nth-child(2),
+.llm-prompt-artisan-container #request-history-content td:nth-child(2) {
+    width: 7%; /* Mode */
+}
+
+.llm-prompt-artisan-container #request-history-content th:nth-child(3),
+.llm-prompt-artisan-container #request-history-content td:nth-child(3) {
+    width: 15%; /* Request */
+}
+
+.llm-prompt-artisan-container #request-history-content th:nth-child(4),
+.llm-prompt-artisan-container #request-history-content td:nth-child(4) {
+    width: 29%; /* Generated Prompt */
+}
+
+.llm-prompt-artisan-container #request-history-content th:nth-child(5),
+.llm-prompt-artisan-container #request-history-content td:nth-child(5) {
+    width: 15%; /* Title */
+}
+
+.llm-prompt-artisan-container #request-history-content th:nth-child(6),
+.llm-prompt-artisan-container #request-history-content td:nth-child(6) {
+    width: 20%; /* Points */
+}
+
+.llm-prompt-artisan-container #request-history-content th:nth-child(7),
+.llm-prompt-artisan-container #request-history-content td:nth-child(7) {
+    width: 5%; /* Action */
+}
