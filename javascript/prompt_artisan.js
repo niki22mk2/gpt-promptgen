@@ -111,9 +111,44 @@ function addCopyButton() {
     });
 }
 
+function setupHistoryTable() {
+    const historyContent = document.querySelector('#request-history-content');
+    if (!historyContent) return;
+
+    historyContent.addEventListener('click', function(e) {
+        if (e.target.classList.contains('view-details-btn')) {
+            const rowId = e.target.getAttribute('data-row-id');
+            const row = document.getElementById(rowId);
+            const cells = row.cells;
+
+            const detailsHtml = `
+                <div class="history-details-modal">
+                    <h3>Details</h3>
+                    <p><strong>Timestamp:</strong> ${cells[0].textContent}</p>
+                    <p><strong>Mode:</strong> ${cells[1].textContent}</p>
+                    <p><strong>Request:</strong> ${cells[2].textContent}</p>
+                    <p><strong>Generated Prompt:</strong> ${cells[3].textContent}</p>
+                    <p><strong>Title:</strong> ${cells[4].textContent}</p>
+                    <p><strong>Points:</strong> ${cells[5].textContent}</p>
+                    <button id="close-details-modal">Close</button>
+                </div>
+            `;
+
+            const detailsContainer = document.getElementById('history-details');
+            detailsContainer.innerHTML = detailsHtml;
+            detailsContainer.style.display = 'block';
+
+            document.getElementById('close-details-modal').addEventListener('click', function() {
+                detailsContainer.style.display = 'none';
+            });
+        }
+    });
+}
+
 function onUiLoaded() {
     console.log('LLM Prompt Artisan UI loaded');
     addCopyButton();
+    setupHistoryTable();
 }
 
 // DOMContentLoadedイベントとGradioのuiUpdateイベントの両方でonUiLoadedを呼び出す

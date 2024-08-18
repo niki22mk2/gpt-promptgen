@@ -223,3 +223,45 @@
     background-color: #f2f2f2;
     font-weight: bold;
 }
+
+.llm-prompt-artisan-container .view-details-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.llm-prompt-artisan-container .view-details-btn:hover {
+    background-color: #0056b3;
+}
+
+.llm-prompt-artisan-container .history-details-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    z-index: 1000;
+    max-width: 80%;
+    max-height: 80%;
+    overflow-y: auto;
+}
+
+.llm-prompt-artisan-container #close-details-modal {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.llm-prompt-artisan-container #close-details-modal:hover {
+    background-color: #c82333;
+}

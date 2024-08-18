@@ -74,15 +74,19 @@ def load_request_history(page=1, items_per_page=15):
     
     logs_page = logs[start_index:end_index]
 
-    html = "<table><tr><th>Timestamp</th><th>Mode</th><th>Request</th><th>Generated Prompt</th><th>Title</th><th>Points</th></tr>"
-    for log in logs_page:
+    html = "<table id='history-table'><tr><th>Timestamp</th><th>Mode</th><th>Request</th><th>Generated Prompt</th><th>Title</th><th>Points</th><th>Action</th></tr>"
+    for index, log in enumerate(logs_page):
+        row_id = f"history-row-{start_index + index}"
         mode = MODE_MAPPING.get(log.get('mode', 0), "Unknown")
         request = truncate_string(log.get('prompt_request', 'Blank'))
         generated_prompt = truncate_string(log.get('response', {}).get('generated_prompt', ''), 120)
         title = truncate_string(log.get('response', {}).get('title', ''))
         points = truncate_string(log.get('response', {}).get('points', ''), 80)
-        html += f"<tr><td>{log['timestamp']}</td><td>{mode}</td><td>{request}</td><td>{generated_prompt}</td><td>{title}</td><td>{points}</td></tr>"
+        html += f"<tr id='{row_id}'><td>{log['timestamp']}</td><td>{mode}</td><td>{request}</td><td>{generated_prompt}</td><td>{title}</td><td>{points}</td><td><button class='view-details-btn' data-row-id='{row_id}'>View</button></td></tr>"
     html += "</table>"
+
+    # 非表示の詳細情報を含むdivを追加
+    html += "<div id='history-details' style='display:none;'></div>"
     
     return html, page, total_pages
 
