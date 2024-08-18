@@ -126,8 +126,20 @@ function setupHistoryTable() {
                     <h3>Details</h3>
                     <p><strong>Timestamp:</strong> ${cells[0].textContent}</p>
                     <p><strong>Mode:</strong> ${cells[1].textContent}</p>
-                    <p><strong>Request:</strong> ${cells[2].textContent}</p>
-                    <p><strong>Generated Prompt:</strong> ${cells[3].textContent}</p>
+                    <p>
+                        <strong>Request:</strong>
+                        <span class="copy-wrapper">
+                            ${cells[2].textContent}
+                            <button class="copy-btn" data-content="${cells[2].textContent}">📋</button>
+                        </span>
+                    </p>
+                    <p>
+                        <strong>Generated Prompt:</strong>
+                        <span class="copy-wrapper">
+                            ${cells[3].textContent}
+                            <button class="copy-btn" data-content="${cells[3].textContent}">📋</button>
+                        </span>
+                    </p>
                     <p><strong>Title:</strong> ${cells[4].textContent}</p>
                     <p><strong>Points:</strong> ${cells[5].textContent}</p>
                     <button id="close-details-modal">Close</button>
@@ -140,6 +152,22 @@ function setupHistoryTable() {
 
             document.getElementById('close-details-modal').addEventListener('click', function() {
                 detailsContainer.style.display = 'none';
+            });
+
+            // コピーボタンのイベントリスナーを追加
+            detailsContainer.querySelectorAll('.copy-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const content = this.getAttribute('data-content');
+                    navigator.clipboard.writeText(content).then(() => {
+                        const originalText = this.textContent;
+                        this.textContent = "✓";
+                        this.disabled = true;
+                        setTimeout(() => {
+                            this.textContent = originalText;
+                            this.disabled = false;
+                        }, 2000);
+                    });
+                });
             });
         }
     });
