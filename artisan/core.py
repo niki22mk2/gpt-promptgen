@@ -26,10 +26,7 @@ def process_prompt(prompt_request, user_prompt_type, mode_number):
             title = output_json['title']
             points = output_json['points']
 
-            # full_info = update_params_content(prompt_text)
-            supplementary_info = f"### Title: {title}\n\nPoints: {points}"
-
-            return prompt_text, supplementary_info, thinking_text
+            return prompt_text, title, points, thinking_text
 
         except Exception as e:
             if attempt < config.max_retry:
@@ -38,7 +35,7 @@ def process_prompt(prompt_request, user_prompt_type, mode_number):
                 time.sleep(2)
             else:
                 print(f"Failed to generate the prompt after {config.max_retry + 1} attempts. Please try again later.")
-                return "", f'### <span style="color: red">Error: Failed to generate the prompt. Please retry Generate Prompt.</span> <br><br>{e}', "", ""
+                return "", "", "", f'### <span style="color: red">Error: Failed to generate the prompt. Please retry Generate Prompt.</span> <br><br>{e}'
 
 def parse_response(response_text):
     thinking_match = re.search(r'<antThinking>(.*?)</antThinking>', response_text, re.DOTALL)

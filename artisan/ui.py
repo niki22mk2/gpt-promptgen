@@ -98,8 +98,6 @@ def create_ui():
                 outputs=[]
             )
 
-
-
             # Send to buttonsの設定
             for tabname, button in send_to_buttons.items():
                 infotext_utils.register_paste_params_button(
@@ -137,19 +135,23 @@ def create_ui():
 
 def generate_prompt_wrapper(prompt_request, mode, fixed_tags):
     mode_number = list(MODE_MAPPING.values()).index(mode)
-    prompt_text, supplementary_info, thinking_text = generate_prompt(prompt_request, mode_number)
+    prompt_text, title, points, thinking_text = generate_prompt(prompt_request, mode_number)
+    
+    # 表示用の文字列を組み立て
+    supplementary_info = f"### Title: {title}\n\nPoints: {points}"
     
     # 固定タグを追加
     full_info_with_tags = update_params_content(prompt_text + (", " + fixed_tags if fixed_tags else ""))
     
     updated_history, current_page, total_pages = update_request_history(prompt_request, mode_number, {
-        "title": supplementary_info.split("\n")[0].replace("### Title: ", ""),
+        "title": title,
         "generated_prompt": prompt_text,
-        "points": "\n".join(supplementary_info.split("\n")[2:])
+        "points": points
     })
     return prompt_text, supplementary_info, updated_history, full_info_with_tags, thinking_text, current_page, total_pages
 
 def improve_prompt_wrapper(prompt_request, fixed_tags):
-    prompt_text, supplementary_info, _, thinking_text = improve_prompt(prompt_request)
+    prompt_text, title, points, thinking_text = improve_prompt(prompt_request)
+    supplementary_info = f"### Title: {title}\n\nPoints: {points}"
     full_info_with_tags = update_params_content(prompt_text + (", " + fixed_tags if fixed_tags else ""))
     return prompt_text, supplementary_info, thinking_text, full_info_with_tags
