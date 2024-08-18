@@ -3,7 +3,7 @@ from ..config import config
 
 class AnthropicAPI:
     def __init__(self):
-        self.client = Anthropic(api_key=config.anthropic_api_key)
+        self.client = Anthropic(api_key=config.anthropic_api_key, timeout=30.0)
 
     def generate_message(self, system_prompt, user_prompt, prefill=""):
         try:
