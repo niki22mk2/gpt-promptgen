@@ -2,7 +2,6 @@ import json
 import re
 import time
 from .config import config
-from .utils import save_log, update_params_content
 from constants.prompt_templates import (
     SYSTEM_PROMPTS,
     BASIC_USER_PROMPTS,
@@ -12,7 +11,7 @@ from constants.prompt_templates import (
 )
 from .api.anthropic import AnthropicAPI
 
-def process_prompt(prompt_request, user_prompt_type, mode_number):
+def process_prompt(prompt_request, user_prompt_type):
     anthropic_api = AnthropicAPI()
     system_prompt = SYSTEM_PROMPTS[config.output_lang]
     user_prompt = user_prompt_type[config.output_lang].format(request=prompt_request)
@@ -57,7 +56,7 @@ def generate_prompt(prompt_request, mode_number):
     }
     prompt_template = mode_mapping.get(mode_number, BASIC_USER_PROMPTS)
 
-    return process_prompt(prompt_request, prompt_template, mode_number)
+    return process_prompt(prompt_request, prompt_template)
 
 def improve_prompt(prompt_request):
     return generate_prompt(prompt_request, 1)  # 1 is the mode number for "Refine"
