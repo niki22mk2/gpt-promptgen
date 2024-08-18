@@ -112,7 +112,7 @@ a) キャラクターの外見:
     - 体型、姿勢（例: slender figure, athletic build, elegant posture）
 
 b) 衣装:
-    - 服の種類、色、スタイル（例: red dress, school uniform, cyberpunk outfit）
+    - 服の種類、色、スタイル（例: red dress, school uniform, lingerie））
     - アクセサリー（例: silver necklace, flower crown, futuristic gadgets）
 
 c) 状況・行動:
