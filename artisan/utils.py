@@ -90,13 +90,13 @@ def load_fixed_tags():
     print("Loading fixed tags...")
     if os.path.exists(FIXED_TAGS_FILE):
         with open(FIXED_TAGS_FILE, 'r') as f:
-            tags = json.load(f).get('fixed_tags', '')
+            tags = json.load(f)
             print(f"Loaded fixed tags: {tags}")
             return tags
     print("No fixed tags found")
-    return ''
+    return {'prefix': '', 'suffix': ''}
 
-def save_fixed_tags(tags):
+def save_fixed_tags(prefix, suffix):
     os.makedirs(OUTPUT_DIR, exist_ok=True)
     with open(FIXED_TAGS_FILE, 'w') as f:
-        json.dump({'fixed_tags': tags}, f)
+        json.dump({'prefix': prefix, 'suffix': suffix}, f)

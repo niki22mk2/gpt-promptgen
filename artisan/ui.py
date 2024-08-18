@@ -28,9 +28,14 @@ def create_ui():
                             clear_button = gr.Button("Clear", variant='secondary')
                         
                         fixed_tags_state = gr.State(load_fixed_tags())
-                        fixed_tags = gr.Textbox(
+                        fixed_tags_prefix = gr.Textbox(
+                            label="Fixed tags to prepend",
+                            placeholder="Enter tags to add at the beginning of all prompts",
+                            value=""
+                        )
+                        fixed_tags_suffix = gr.Textbox(
                             label="Fixed tags to append",
-                            placeholder="Enter tags to append to all prompts",
+                            placeholder="Enter tags to add at the end of all prompts",
                             value=""
                         )
 
@@ -81,13 +86,13 @@ def create_ui():
             # イベントハンドラーの設定
             generate_prompt_button.click(
                 fn=generate_prompt_wrapper,
-                inputs=[prompt_request, mode, fixed_tags, content_type],
+                inputs=[prompt_request, mode, fixed_tags_prefix, fixed_tags_suffix, content_type],
                 outputs=[generated_prompt, supplementary_information, request_history, full_info_textbox, thinking_information, current_page, total_pages]
             )
 
             improve_button.click(
                 fn=improve_prompt_wrapper,
-                inputs=[generated_prompt, fixed_tags, content_type],
+                inputs=[generated_prompt, fixed_tags_prefix, fixed_tags_suffix, content_type],
                 outputs=[generated_prompt, supplementary_information, thinking_information, full_info_textbox]
             )
 
@@ -98,9 +103,14 @@ def create_ui():
             )
 
             # 固定タグの保存
-            fixed_tags.change(
-                fn=lambda x: save_fixed_tags(x),
-                inputs=[fixed_tags],
+            fixed_tags_prefix.change(
+                fn=lambda x, y: save_fixed_tags(x, y),
+                inputs=[fixed_tags_prefix, fixed_tags_suffix],
+                outputs=[]
+            )
+            fixed_tags_suffix.change(
+                fn=lambda x, y: save_fixed_tags(x, y),
+                inputs=[fixed_tags_prefix, fixed_tags_suffix],
                 outputs=[]
             )
 
@@ -132,14 +142,14 @@ def create_ui():
             )
 
         llm_prompt_artisan_interface.load(
-            fn=lambda x: x,
+            fn=lambda x: (x['prefix'], x['suffix']),
             inputs=fixed_tags_state,
-            outputs=fixed_tags
+            outputs=[fixed_tags_prefix, fixed_tags_suffix]
         )
     
     return [(llm_prompt_artisan_interface, "LLM Prompt Artisan", "llm_prompt_artisan_interface")]
 
-def generate_prompt_wrapper(prompt_request, mode, fixed_tags, content_type):
+def generate_prompt_wrapper(prompt_request, mode, fixed_tags_prefix, fixed_tags_suffix, content_type):
     mode_number = list(MODE_MAPPING.values()).index(mode)
     prompt_text, title, points, thinking_text = generate_prompt(prompt_request, mode_number, content_type)
     
@@ -147,7 +157,8 @@ def generate_prompt_wrapper(prompt_request, mode, fixed_tags, content_type):
     supplementary_info = f"### Title: {title}\n\nPoints: {points}"
     
     # 固定タグを追加
-    full_info_with_tags = update_params_content(prompt_text + (", " + fixed_tags if fixed_tags else ""))
+    full_prompt = (fixed_tags_prefix + ", " if fixed_tags_prefix else "") + prompt_text + (", " + fixed_tags_suffix if fixed_tags_suffix else "")
+    full_info_with_tags = update_params_content(full_prompt)
     
     updated_history, current_page, total_pages = update_request_history(prompt_request, mode_number, {
         "title": title,
@@ -156,8 +167,9 @@ def generate_prompt_wrapper(prompt_request, mode, fixed_tags, content_type):
     })
     return prompt_text, supplementary_info, updated_history, full_info_with_tags, thinking_text, current_page, total_pages
 
-def improve_prompt_wrapper(prompt_request, fixed_tags, content_type):
+def improve_prompt_wrapper(prompt_request, fixed_tags_prefix, fixed_tags_suffix, content_type):
     prompt_text, title, points, thinking_text = improve_prompt(prompt_request, content_type)
     supplementary_info = f"### Title: {title}\n\nPoints: {points}"
-    full_info_with_tags = update_params_content(prompt_text + (", " + fixed_tags if fixed_tags else ""))
+    full_prompt = (fixed_tags_prefix + ", " if fixed_tags_prefix else "") + prompt_text + (", " + fixed_tags_suffix if fixed_tags_suffix else "")
+    full_info_with_tags = update_params_content(full_prompt)
     return prompt_text, supplementary_info, thinking_text, full_info_with_tags
