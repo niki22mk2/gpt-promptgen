@@ -35,7 +35,7 @@ class AnthropicAPI:
                 messages=messages
             )
 
-            print(response.usage)
+            print(f"[Prompt-Artisan] {response.usage}")
 
             # レスポンスにprefillを追加
             text = prefill + response.content[0].text.strip() if prefill else response.content[0].text.strip()

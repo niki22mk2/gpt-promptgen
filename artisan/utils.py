@@ -91,12 +91,13 @@ def load_fixed_tags():
     if os.path.exists(FIXED_TAGS_FILE):
         with open(FIXED_TAGS_FILE, 'r') as f:
             tags = json.load(f)
-            print(f"Loaded fixed tags: {tags}")
+            print(f"[Prompt-Artisan] Loaded fixed tags: {tags}")
             return tags
-    print("No fixed tags found")
+    print("[Prompt-Artisan] No fixed tags found")
     return {'prefix': '', 'suffix': ''}
 
 def save_fixed_tags(prefix, suffix):
     os.makedirs(OUTPUT_DIR, exist_ok=True)
     with open(FIXED_TAGS_FILE, 'w') as f:
         json.dump({'prefix': prefix, 'suffix': suffix}, f)
+        print(f"[Prompt-Artisan] Saved fixed tags: prefix: {prefix}, suffix: {suffix}")

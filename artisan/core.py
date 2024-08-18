@@ -31,23 +31,23 @@ def process_prompt(prompt_request, user_prompt_type, content_type):
             points = output_json.get('points', '')
 
             if not title:
-                print('titleが取得できませんでした')
-                print(output_json)
+                print('[Prompt-Artisan] titleが取得できませんでした')
+                print(f"[Prompt-Artisan]\n{output_json}")
                 title = '取得に失敗しました'
             if not points:
-                print('pointsが取得できませんでした')
-                print(output_json)
+                print('[Prompt-Artisan] pointsが取得できませんでした')
+                print(f"[Prompt-Artisan]\n{output_json}")
                 points = '取得に失敗しました'
 
             return prompt_text, title, points, thinking_text
 
         except Exception as e:
             if attempt < config.max_retry:
-                print(f"An error occurred while generating the prompt. Retrying in 2 seconds... (Attempt {attempt + 1}/{config.max_retry + 1})")
-                print(f"Error details: {e}")
+                print(f"[Prompt-Artisan] An error occurred while generating the prompt. Retrying in 2 seconds... (Attempt {attempt + 1}/{config.max_retry + 1})")
+                print(f"[Prompt-Artisan] Error details: {e}")
                 time.sleep(2)
             else:
-                print(f"Failed to generate the prompt after {config.max_retry + 1} attempts. Please try again later.")
+                print(f"[Prompt-Artisan] Failed to generate the prompt after {config.max_retry + 1} attempts. Please try again later.")
                 return "", "", "", f'### <span style="color: red">Error: Failed to generate the prompt. Please retry Generate Prompt.</span> <br><br>{e}'
 
 def parse_response(response_text):

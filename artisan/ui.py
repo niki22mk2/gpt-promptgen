@@ -102,16 +102,20 @@ def create_ui():
                 outputs=[prompt_request, generated_prompt, supplementary_information, request_history, thinking_information]
             )
 
-            # 固定タグの保存
+            # 固定タグの保存と full_info_textbox の更新
+            def update_fixed_tags_and_full_info(prefix, suffix, current_prompt):
+                save_fixed_tags(prefix, suffix)
+                return update_full_info(current_prompt, prefix, suffix)
+
             fixed_tags_prefix.change(
-                fn=lambda x, y: save_fixed_tags(x, y),
-                inputs=[fixed_tags_prefix, fixed_tags_suffix],
-                outputs=[]
+                fn=update_fixed_tags_and_full_info,
+                inputs=[fixed_tags_prefix, fixed_tags_suffix, generated_prompt],
+                outputs=[full_info_textbox]
             )
             fixed_tags_suffix.change(
-                fn=lambda x, y: save_fixed_tags(x, y),
-                inputs=[fixed_tags_prefix, fixed_tags_suffix],
-                outputs=[]
+                fn=update_fixed_tags_and_full_info,
+                inputs=[fixed_tags_prefix, fixed_tags_suffix, generated_prompt],
+                outputs=[full_info_textbox]
             )
 
             # Send to buttonsの設定
@@ -149,6 +153,16 @@ def create_ui():
     
     return [(llm_prompt_artisan_interface, "LLM Prompt Artisan", "llm_prompt_artisan_interface")]
 
+def update_full_info(generated_prompt, fixed_tags_prefix, fixed_tags_suffix):
+    if generated_prompt:
+        full_prompt = (fixed_tags_prefix + ", " if fixed_tags_prefix else "") + generated_prompt + (", " + fixed_tags_suffix if fixed_tags_suffix else "")
+        full_prompt = full_prompt.strip().strip(',')  # 先頭と末尾のカンマと空白を削除
+        print(f"[Prompt-Artisan] Update prompt for send to buttons")
+        full_info_with_tags = update_params_content(full_prompt)
+        # print(f"[Prompt-Artisan] Full info with tags: {full_info_with_tags}")
+        return full_info_with_tags
+    return ""
+
 def generate_prompt_wrapper(prompt_request, mode, fixed_tags_prefix, fixed_tags_suffix, content_type):
     mode_number = list(MODE_MAPPING.values()).index(mode)
     prompt_text, title, points, thinking_text = generate_prompt(prompt_request, mode_number, content_type)
@@ -158,6 +172,7 @@ def generate_prompt_wrapper(prompt_request, mode, fixed_tags_prefix, fixed_tags_
     
     # 固定タグを追加
     full_prompt = (fixed_tags_prefix + ", " if fixed_tags_prefix else "") + prompt_text + (", " + fixed_tags_suffix if fixed_tags_suffix else "")
+    full_prompt = full_prompt.strip().strip(',') 
     full_info_with_tags = update_params_content(full_prompt)
     
     updated_history, current_page, total_pages = update_request_history(prompt_request, mode_number, {
