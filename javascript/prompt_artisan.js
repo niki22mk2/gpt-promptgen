@@ -121,10 +121,6 @@ function setupHistoryTable() {
             const row = document.getElementById(rowId);
             const cells = row.cells;
 
-            // full_infoを設定
-            const generatedPrompt = row.getAttribute('data-generated-prompt');
-            setHistoryFullInfo(generatedPrompt);
-
             const detailsHtml = `
                 <div class="history-details-modal">
                     <h3>Details</h3>
@@ -146,11 +142,7 @@ function setupHistoryTable() {
                     </p>
                     <p><strong>Title:</strong> ${cells[4].textContent}</p>
                     <p><strong>Points:</strong> ${cells[5].textContent}</p>
-                    <div class="modal-actions">
-                        <button id="close-details-modal">Close</button>
-                        <button id="send-to-txt2img">Send to txt2img</button>
-                        <button id="send-to-img2img">Send to img2img</button>
-                    </div>
+                    <button id="close-details-modal">Close</button>
                 </div>
             `;
 
@@ -160,14 +152,6 @@ function setupHistoryTable() {
 
             document.getElementById('close-details-modal').addEventListener('click', function() {
                 detailsContainer.style.display = 'none';
-            });
-
-            document.getElementById('send-to-txt2img').addEventListener('click', function() {
-                gradioApp().querySelector('#history-send-to-txt2img').click();
-            });
-
-            document.getElementById('send-to-img2img').addEventListener('click', function() {
-                gradioApp().querySelector('#history-send-to-img2img').click();
             });
 
             // コピーボタンのイベントリスナーを追加
@@ -187,15 +171,6 @@ function setupHistoryTable() {
             });
         }
     });
-}
-
-function setHistoryFullInfo(generatedPrompt) {
-    // 非表示のテキストボックスにfull_infoを設定
-    const historyFullInfoTextbox = gradioApp().querySelector('#history-full-info-textbox');
-    if (historyFullInfoTextbox) {
-        historyFullInfoTextbox.value = generatedPrompt;
-        updateInput(historyFullInfoTextbox);  // Gradioに変更を通知
-    }
 }
 
 function onUiLoaded() {

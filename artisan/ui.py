@@ -81,11 +81,6 @@ def create_ui():
                 current_page = gr.Number(value=initial_page, visible=False)
                 total_pages = gr.Number(value=initial_total, visible=False)
 
-                # 非表示の要素を追加
-                history_full_info_textbox = gr.Textbox(visible=False, elem_id="history-full-info-textbox")
-                history_send_to_txt2img = gr.Button("Send to txt2img", visible=False, elem_id="history-send-to-txt2img")
-                history_send_to_img2img = gr.Button("Send to img2img", visible=False, elem_id="history-send-to-img2img")
-
             full_info_textbox = gr.Textbox(visible=False)
 
             # イベントハンドラーの設定
@@ -133,24 +128,6 @@ def create_ui():
                         source_image_component=None
                     )
                 )
-            
-            # 履歴用のSend to buttonsの設定
-            infotext_utils.register_paste_params_button(
-                infotext_utils.ParamBinding(
-                    paste_button=history_send_to_txt2img,
-                    tabname="txt2img",
-                    source_text_component=history_full_info_textbox,
-                    source_image_component=None
-                )
-            )
-            infotext_utils.register_paste_params_button(
-                infotext_utils.ParamBinding(
-                    paste_button=history_send_to_img2img,
-                    tabname="img2img",
-                    source_text_component=history_full_info_textbox,
-                    source_image_component=None
-                )
-            )
 
             def update_history(page):
                 history_html, current, total = load_request_history(page=page)
