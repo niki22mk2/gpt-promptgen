@@ -11,10 +11,15 @@ from constants.prompt_templates import (
 )
 from .api.anthropic import AnthropicAPI
 
-def process_prompt(prompt_request, user_prompt_type):
+def get_system_prompt(content_type):
+    if content_type == "NSFW" and config.output_lang == "JP":
+        return SYSTEM_PROMPTS["JP_NSFW"]
+    return SYSTEM_PROMPTS[config.output_lang]
+
+def process_prompt(prompt_request, user_prompt_type, content_type):
     anthropic_api = AnthropicAPI()
-    system_prompt = SYSTEM_PROMPTS[config.output_lang]
     user_prompt = user_prompt_type[config.output_lang].format(request=prompt_request)
+    system_prompt = get_system_prompt(content_type)
 
     for attempt in range(config.max_retry + 1):
         try:
@@ -22,8 +27,17 @@ def process_prompt(prompt_request, user_prompt_type):
             thinking_text, output_json = parse_response(response_text)
 
             prompt_text = output_json['prompt'].strip()
-            title = output_json['title']
-            points = output_json['points']
+            title = output_json.get('title', '')
+            points = output_json.get('points', '')
+
+            if not title:
+                print('titleが取得できませんでした')
+                print(output_json)
+                title = '取得に失敗しました'
+            if not points:
+                print('pointsが取得できませんでした')
+                print(output_json)
+                points = '取得に失敗しました'
 
             return prompt_text, title, points, thinking_text
 
@@ -47,7 +61,7 @@ def parse_response(response_text):
     else:
         raise ValueError("Output format not found in response")
 
-def generate_prompt(prompt_request, mode_number):
+def generate_prompt(prompt_request, mode_number, content_type):
     mode_mapping = {
         0: BASIC_USER_PROMPTS,
         1: IMPROVE_USER_PROMPTS,
@@ -56,7 +70,7 @@ def generate_prompt(prompt_request, mode_number):
     }
     prompt_template = mode_mapping.get(mode_number, BASIC_USER_PROMPTS)
 
-    return process_prompt(prompt_request, prompt_template)
+    return process_prompt(prompt_request, prompt_template, content_type)
 
-def improve_prompt(prompt_request):
-    return generate_prompt(prompt_request, 1)  # 1 is the mode number for "Refine"
+def improve_prompt(prompt_request, content_type):
+    return generate_prompt(prompt_request, 1, content_type)  # 1 is the mode number for "Refine"

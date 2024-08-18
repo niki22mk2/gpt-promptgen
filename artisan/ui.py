@@ -1,6 +1,6 @@
 import gradio as gr
 from modules import infotext_utils, shared
-from .core import generate_prompt, improve_prompt
+from .core import generate_prompt, improve_prompt, get_system_prompt
 from .utils import update_request_history, load_request_history, update_params_content, load_fixed_tags, save_fixed_tags
 from constants.constants import MODE_MAPPING
 
@@ -32,6 +32,12 @@ def create_ui():
                             label="Fixed tags to append",
                             placeholder="Enter tags to append to all prompts",
                             value=""
+                        )
+
+                        content_type = gr.Radio(
+                            choices=["NORMAL", "NSFW"],
+                            label="Content Type",
+                            value="NORMAL"
                         )
 
                     with gr.Column(scale=3):
@@ -75,13 +81,13 @@ def create_ui():
             # イベントハンドラーの設定
             generate_prompt_button.click(
                 fn=generate_prompt_wrapper,
-                inputs=[prompt_request, mode, fixed_tags],
+                inputs=[prompt_request, mode, fixed_tags, content_type],
                 outputs=[generated_prompt, supplementary_information, request_history, full_info_textbox, thinking_information, current_page, total_pages]
             )
 
             improve_button.click(
                 fn=improve_prompt_wrapper,
-                inputs=[generated_prompt, fixed_tags],
+                inputs=[generated_prompt, fixed_tags, content_type],
                 outputs=[generated_prompt, supplementary_information, thinking_information, full_info_textbox]
             )
 
@@ -133,9 +139,9 @@ def create_ui():
     
     return [(llm_prompt_artisan_interface, "LLM Prompt Artisan", "llm_prompt_artisan_interface")]
 
-def generate_prompt_wrapper(prompt_request, mode, fixed_tags):
+def generate_prompt_wrapper(prompt_request, mode, fixed_tags, content_type):
     mode_number = list(MODE_MAPPING.values()).index(mode)
-    prompt_text, title, points, thinking_text = generate_prompt(prompt_request, mode_number)
+    prompt_text, title, points, thinking_text = generate_prompt(prompt_request, mode_number, content_type)
     
     # 表示用の文字列を組み立て
     supplementary_info = f"### Title: {title}\n\nPoints: {points}"
@@ -150,8 +156,8 @@ def generate_prompt_wrapper(prompt_request, mode, fixed_tags):
     })
     return prompt_text, supplementary_info, updated_history, full_info_with_tags, thinking_text, current_page, total_pages
 
-def improve_prompt_wrapper(prompt_request, fixed_tags):
-    prompt_text, title, points, thinking_text = improve_prompt(prompt_request)
+def improve_prompt_wrapper(prompt_request, fixed_tags, content_type):
+    prompt_text, title, points, thinking_text = improve_prompt(prompt_request, content_type)
     supplementary_info = f"### Title: {title}\n\nPoints: {points}"
     full_info_with_tags = update_params_content(prompt_text + (", " + fixed_tags if fixed_tags else ""))
     return prompt_text, supplementary_info, thinking_text, full_info_with_tags
