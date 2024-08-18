@@ -294,12 +294,12 @@
 
 .llm-prompt-artisan-container #request-history-content th:nth-child(1),
 .llm-prompt-artisan-container #request-history-content td:nth-child(1) {
-    width: 9%; /* Timestamp */
+    width: 15%; /* Timestamp */
 }
 
 .llm-prompt-artisan-container #request-history-content th:nth-child(2),
 .llm-prompt-artisan-container #request-history-content td:nth-child(2) {
-    width: 7%; /* Mode */
+    width: 10%; /* Mode */
 }
 
 .llm-prompt-artisan-container #request-history-content th:nth-child(3),
@@ -309,12 +309,12 @@
 
 .llm-prompt-artisan-container #request-history-content th:nth-child(4),
 .llm-prompt-artisan-container #request-history-content td:nth-child(4) {
-    width: 29%; /* Generated Prompt */
+    width: 25%; /* Generated Prompt */
 }
 
 .llm-prompt-artisan-container #request-history-content th:nth-child(5),
 .llm-prompt-artisan-container #request-history-content td:nth-child(5) {
-    width: 15%; /* Title */
+    width: 10%; /* Title */
 }
 
 .llm-prompt-artisan-container #request-history-content th:nth-child(6),
@@ -325,4 +325,53 @@
 .llm-prompt-artisan-container #request-history-content th:nth-child(7),
 .llm-prompt-artisan-container #request-history-content td:nth-child(7) {
     width: 5%; /* Action */
+}
+
+.llm-prompt-artisan-container .history-details-modal .copy-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.llm-prompt-artisan-container .history-details-modal .copy-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 0.8em;
+    padding: 2px 5px;
+    border-radius: 3px;
+    transition: background-color 0.3s ease;
+}
+
+.llm-prompt-artisan-container .history-details-modal .copy-btn:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.llm-prompt-artisan-container .history-details-modal .copy-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.llm-prompt-artisan-container .history-details-modal .modal-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.llm-prompt-artisan-container .history-details-modal .modal-actions button {
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.llm-prompt-artisan-container .history-details-modal #send-to-txt2img,
+.llm-prompt-artisan-container .history-details-modal #send-to-img2img {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+}
+
+.llm-prompt-artisan-container .history-details-modal #send-to-txt2img:hover,
+.llm-prompt-artisan-container .history-details-modal #send-to-img2img:hover {
+    background-color: #45a049;
 }

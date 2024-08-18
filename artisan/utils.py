@@ -81,7 +81,7 @@ def load_request_history(page=1, items_per_page=15):
         generated_prompt = log.get('response', {}).get('generated_prompt', '')
         title = log.get('response', {}).get('title', '')
         points = log.get('response', {}).get('points', '')
-        html += f"<tr id='{row_id}'><td>{log['timestamp']}</td><td>{mode}</td><td class='truncate'>{request}</td><td class='truncate'>{generated_prompt}</td><td class='truncate'>{title}</td><td class='truncate'>{points}</td><td><button class='view-details-btn' data-row-id='{row_id}'>View</button></td></tr>"
+        html += f"<tr id='{row_id}' data-request='{request}' data-generated-prompt='{generated_prompt}' data-title='{title}' data-points='{points}'><td>{log['timestamp']}</td><td>{mode}</td><td class='truncate'>{request}</td><td class='truncate'>{generated_prompt}</td><td class='truncate'>{title}</td><td class='truncate'>{points}</td><td><button class='view-details-btn' data-row-id='{row_id}'>View</button></td></tr>"
     html += "</table>"
 
     # 非表示の詳細情報を含むdivを追加
