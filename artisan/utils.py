@@ -56,7 +56,6 @@ def truncate_string(s, max_length=50):
     return s if len(s) <= max_length else s[:max_length-3] + '...'
 
 def load_request_history(page=1, items_per_page=15):
-    # folder_path = os.path.join(data_path, 'prompt_artisan_logs')
     file_path = os.path.join(OUTPUT_DIR, f"generated_logs.jsonl")
     
     if not os.path.exists(file_path):
@@ -78,11 +77,11 @@ def load_request_history(page=1, items_per_page=15):
     for index, log in enumerate(logs_page):
         row_id = f"history-row-{start_index + index}"
         mode = MODE_MAPPING.get(log.get('mode', 0), "Unknown")
-        request = truncate_string(log.get('prompt_request', 'Blank'))
-        generated_prompt = truncate_string(log.get('response', {}).get('generated_prompt', ''), 120)
-        title = truncate_string(log.get('response', {}).get('title', ''))
-        points = truncate_string(log.get('response', {}).get('points', ''), 80)
-        html += f"<tr id='{row_id}'><td>{log['timestamp']}</td><td>{mode}</td><td>{request}</td><td>{generated_prompt}</td><td>{title}</td><td>{points}</td><td><button class='view-details-btn' data-row-id='{row_id}'>View</button></td></tr>"
+        request = log.get('prompt_request', 'Blank')
+        generated_prompt = log.get('response', {}).get('generated_prompt', '')
+        title = log.get('response', {}).get('title', '')
+        points = log.get('response', {}).get('points', '')
+        html += f"<tr id='{row_id}'><td>{log['timestamp']}</td><td>{mode}</td><td class='truncate'>{request}</td><td class='truncate'>{generated_prompt}</td><td class='truncate'>{title}</td><td class='truncate'>{points}</td><td><button class='view-details-btn' data-row-id='{row_id}'>View</button></td></tr>"
     html += "</table>"
 
     # 非表示の詳細情報を含むdivを追加

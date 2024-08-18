@@ -265,3 +265,15 @@
 .llm-prompt-artisan-container #close-details-modal:hover {
     background-color: #c82333;
 }
+
+.llm-prompt-artisan-container #request-history-content .truncate {
+    max-width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.llm-prompt-artisan-container .history-details-modal p {
+    word-wrap: break-word;
+    max-width: 100%;
+}
