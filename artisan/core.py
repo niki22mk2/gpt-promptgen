@@ -29,23 +29,6 @@ def process_prompt(prompt_request, user_prompt_type, mode_number):
             # full_info = update_params_content(prompt_text)
             supplementary_info = f"### Title: {title}\n\nPoints: {points}"
 
-            try:
-                log_data = {
-                    "prompt_request": prompt_request,
-                    "mode": mode_number,
-                    "response": {
-                        "title": title,
-                        "generated_prompt": prompt_text,
-                        "points": points,
-                    }
-                }
-                
-                if config.save_log:
-                    save_log(log_data)
-
-            except Exception as e:
-                print(f"An error occurred while saving the log: {e}")
-
             return prompt_text, supplementary_info, thinking_text
 
         except Exception as e:

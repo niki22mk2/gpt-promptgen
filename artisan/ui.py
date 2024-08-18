@@ -27,11 +27,11 @@ def create_ui():
                             generate_prompt_button = gr.Button("Send", variant='primary')
                             clear_button = gr.Button("Clear", variant='secondary')
                         
-                        # 新しく追加する固定タグ入力欄
+                        fixed_tags_state = gr.State(load_fixed_tags())
                         fixed_tags = gr.Textbox(
                             label="Fixed tags to append",
                             placeholder="Enter tags to append to all prompts",
-                            value=gr.update(value=load_fixed_tags())  # gr.updateを使用
+                            value=""
                         )
 
                     with gr.Column(scale=3):
@@ -98,6 +98,8 @@ def create_ui():
                 outputs=[]
             )
 
+
+
             # Send to buttonsの設定
             for tabname, button in send_to_buttons.items():
                 infotext_utils.register_paste_params_button(
@@ -125,6 +127,12 @@ def create_ui():
                 outputs=[request_history, current_page, total_pages, page_info]
             )
 
+        llm_prompt_artisan_interface.load(
+            fn=lambda x: x,
+            inputs=fixed_tags_state,
+            outputs=fixed_tags
+        )
+    
     return [(llm_prompt_artisan_interface, "LLM Prompt Artisan", "llm_prompt_artisan_interface")]
 
 def generate_prompt_wrapper(prompt_request, mode, fixed_tags):
@@ -135,8 +143,8 @@ def generate_prompt_wrapper(prompt_request, mode, fixed_tags):
     full_info_with_tags = update_params_content(prompt_text + (", " + fixed_tags if fixed_tags else ""))
     
     updated_history, current_page, total_pages = update_request_history(prompt_request, mode_number, {
-        "generated_prompt": prompt_text,
         "title": supplementary_info.split("\n")[0].replace("### Title: ", ""),
+        "generated_prompt": prompt_text,
         "points": "\n".join(supplementary_info.split("\n")[2:])
     })
     return prompt_text, supplementary_info, updated_history, full_info_with_tags, thinking_text, current_page, total_pages

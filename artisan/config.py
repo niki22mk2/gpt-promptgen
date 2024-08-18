@@ -21,8 +21,4 @@ class Config:
     def output_lang(self):
         return shared.opts.output_lang
 
-    @property
-    def save_log(self):
-        return shared.opts.save_log
-    
 config = Config()

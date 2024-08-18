@@ -8,4 +8,3 @@ def on_ui_settings():
     shared.opts.add_option('opt_temperature', shared.OptionInfo(1, 'Sampling temperature (default=1)', gr.Slider, {'minimum': 0, 'maximum': 2, 'step': 0.1}, section=section))
     shared.opts.add_option('max_retry', shared.OptionInfo(1, 'Number of automatic retries on generation errors (default=1)', gr.Slider, {'minimum': 0, 'maximum': 10, 'step': 1}, section=section))
     shared.opts.add_option('output_lang', shared.OptionInfo('JP', 'Language for generated titles and descriptions (default=JP)', gr.Dropdown, {'choices': ['JP', 'EN']}, section=section))
-    shared.opts.add_option('save_log', shared.OptionInfo(True, 'Save logs to a file. ([webui root folder]/prompt_artisan_logs/)', section=section))

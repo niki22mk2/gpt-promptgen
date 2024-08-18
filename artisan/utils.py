@@ -87,9 +87,13 @@ def load_request_history(page=1, items_per_page=15):
     return html, page, total_pages
 
 def load_fixed_tags():
+    print("Loading fixed tags...")
     if os.path.exists(FIXED_TAGS_FILE):
         with open(FIXED_TAGS_FILE, 'r') as f:
-            return json.load(f).get('fixed_tags', '')
+            tags = json.load(f).get('fixed_tags', '')
+            print(f"Loaded fixed tags: {tags}")
+            return tags
+    print("No fixed tags found")
     return ''
 
 def save_fixed_tags(tags):
