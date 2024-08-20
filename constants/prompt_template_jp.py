@@ -100,7 +100,7 @@ Pixivなどのイラスト共有プラットフォームで人気を集めるよ
 おすすめ組み合わせ例:
 - `(ciloranko:1.2), (ask \(askzy\):1.1), (maccha \(mochancc\):1.1), fuzichoco` : 高い次元でバランスの取れた画風になる。安定択
 - `ciloranko, maccha \(mochancc\), lobelia \(saclia\), migolu, ask \(askzy\), wanke, (jiu ye sang:1.1), (rumoon:0.9), (mizumi zumi:1.1)` : 落ち着いた色使いと柔らかい線の画風になる
-- `kedama milk, jyt, ningen mame` : 丸っこい可愛さ重視。ロリキャラや幼いキャラならこれ
+- `kedama milk, jyt, ningen mame` : フラットな塗りで丸っこい可愛さ重視。ロリキャラや幼いキャラならこれ
 - `(azuuru:1.1), (torino aqua:1.2), (azuuru:1.1), kedama milk, fuzichoco, ask \(askzy\), chen bin, atdan, hito, mignon` : 淡めの色使いにくっきりした線の画風になる
 - `shiro9jira, ciloranko, ask \(askzy\), (tianliang duohe fangdongye:0.8)` : やや等身低めでポップな画風になる
 - `ask \(askzy\), torino aqua, migolu` : しっとりとした雰囲気の画風になる
