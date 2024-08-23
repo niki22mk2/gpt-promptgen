@@ -10,11 +10,18 @@ OUTPUT_DIR = Path(data_path, 'prompt_artisan')
 # 固定タグの設定ファイルのパス
 FIXED_TAGS_FILE = Path(OUTPUT_DIR, 'fixed_tags.json')
 
-MODE_MAPPING = {
+MODE_NAME_MAPPING = {
     0: "🖊️ Generate",
     1: "🔄 Refine",
     2: "🧩 Fill Blanks",
     3: "📝 Title & Points"
+}
+
+MODE_PROMPT_NAME_MAPPING = {
+    0: "BASIC_USER_PROMPTS",
+    1: "IMPROVE_USER_PROMPTS",
+    2: "FILL_IN_THE_BLANKS_USER_PROMPTS",
+    3: "NAMING_USER_PROMPTS",
 }
 
 VENDOR_MODELS = {

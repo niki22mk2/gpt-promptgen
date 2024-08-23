@@ -21,4 +21,8 @@ class Config:
     def output_lang(self):
         return shared.opts.output_lang
 
+    @property
+    def anthropic_cache_enabled(self):
+        return shared.opts.anthropic_cache_enabled
+
 config = Config()

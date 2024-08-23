@@ -1,14 +1,15 @@
-import os
+import pathlib
 import json
 import datetime
 from modules.paths import data_path
-from constants.constants import MODE_MAPPING, OUTPUT_DIR, FIXED_TAGS_FILE
+from constants.constants import MODE_NAME_MAPPING, OUTPUT_DIR, FIXED_TAGS_FILE
 import math
 
 def save_log(log_data):
     timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    file_path = os.path.join(OUTPUT_DIR, f"generated_logs.jsonl")
-    os.makedirs(OUTPUT_DIR, exist_ok=True)
+    file_path = pathlib.Path(OUTPUT_DIR, f"generated_logs.jsonl")
+    output_dir = pathlib.Path(OUTPUT_DIR)
+    output_dir.mkdir(parents=True, exist_ok=True)
     
     log_entry = {
         "timestamp": timestamp,
@@ -20,7 +21,7 @@ def save_log(log_data):
         f.write('\n')
 
 def get_params_content():
-    filename = os.path.join(data_path, "params.txt")
+    filename = pathlib.Path(data_path, "params.txt")
     try:
         with open(filename, "r", encoding="utf8") as file:
             return file.read()
@@ -56,9 +57,9 @@ def truncate_string(s, max_length=50):
     return s if len(s) <= max_length else s[:max_length-3] + '...'
 
 def load_request_history(page=1, items_per_page=15):
-    file_path = os.path.join(OUTPUT_DIR, f"generated_logs.jsonl")
+    file_path = pathlib.Path(OUTPUT_DIR, f"generated_logs.jsonl")
     
-    if not os.path.exists(file_path):
+    if not file_path.exists():
         return "<p>No requests made yet.</p>", 0, 0
 
     with open(file_path, 'r', encoding='utf-8') as f:
@@ -76,7 +77,7 @@ def load_request_history(page=1, items_per_page=15):
     html = "<table id='history-table'><tr><th>Timestamp</th><th>Mode</th><th>Request</th><th>Generated Prompt</th><th>Title</th><th>Points</th><th>Action</th></tr>"
     for index, log in enumerate(logs_page):
         row_id = f"history-row-{start_index + index}"
-        mode = MODE_MAPPING.get(log.get('mode', 0), "Unknown")
+        mode = MODE_NAME_MAPPING.get(log.get('mode', 0), "Unknown")
         request = log.get('prompt_request', 'Blank')
         generated_prompt = log.get('response', {}).get('generated_prompt', '')
         title = log.get('response', {}).get('title', '')
@@ -91,7 +92,7 @@ def load_request_history(page=1, items_per_page=15):
 
 def load_fixed_tags():
     print("Loading fixed tags...")
-    if os.path.exists(FIXED_TAGS_FILE):
+    if pathlib.Path(FIXED_TAGS_FILE).exists():
         with open(FIXED_TAGS_FILE, 'r') as f:
             tags = json.load(f)
             print(f"[Prompt-Artisan] Loaded fixed tags: {tags}")
@@ -100,7 +101,8 @@ def load_fixed_tags():
     return {'prefix': '', 'suffix': ''}
 
 def save_fixed_tags(prefix, suffix):
-    os.makedirs(OUTPUT_DIR, exist_ok=True)
+    output_dir = pathlib.Path(OUTPUT_DIR)
+    output_dir.mkdir(parents=True, exist_ok=True)
     with open(FIXED_TAGS_FILE, 'w') as f:
         json.dump({'prefix': prefix, 'suffix': suffix}, f)
         print(f"[Prompt-Artisan] Saved fixed tags: prefix: {prefix}, suffix: {suffix}")

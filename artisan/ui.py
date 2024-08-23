@@ -1,13 +1,13 @@
 import gradio as gr
 from modules import infotext_utils, shared
 from .core import generate_prompt, improve_prompt, get_system_prompt
-from .utils import update_request_history, load_request_history, update_params_content, load_fixed_tags, save_fixed_tags
-from constants.constants import MODE_MAPPING, VENDOR_MODELS
+from utilities.utils import update_request_history, load_request_history, update_params_content, load_fixed_tags, save_fixed_tags
+from constants.constants import MODE_NAME_MAPPING, VENDOR_MODELS
 
 def create_ui():
     with gr.Blocks() as llm_prompt_artisan_interface:
         with gr.Column(elem_classes="llm-prompt-artisan-container"):
-            gr.Markdown("# LLM Prompt Artisan")
+            # gr.Markdown("# LLM Prompt Artisan")
             
             with gr.Tab("Prompt Generation"):
                 with gr.Row():
@@ -19,7 +19,7 @@ def create_ui():
                         )
                         with gr.Row():
                             mode = gr.Radio(
-                                choices=list(MODE_MAPPING.values()),
+                                choices=list(MODE_NAME_MAPPING.values()),
                                 label="Mode",
                                 value="🖊️ Generate"
                             )
@@ -183,7 +183,7 @@ def update_full_info(generated_prompt, fixed_tags_prefix, fixed_tags_suffix):
     return ""
 
 def generate_prompt_wrapper(prompt_request, mode, fixed_tags_prefix, fixed_tags_suffix, content_type, vendor, model):
-    mode_number = list(MODE_MAPPING.values()).index(mode)
+    mode_number = list(MODE_NAME_MAPPING.values()).index(mode)
     prompt_text, title, points, thinking_text = generate_prompt(prompt_request, mode_number, content_type, vendor, model)
     
     # 表示用の文字列を組み立て

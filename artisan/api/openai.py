@@ -7,6 +7,8 @@ class OpenAIAPI:
 
     def generate_message(self, system_prompt, user_prompt, prefill="", model="gpt-4o-2024-08-06"):
         try:
+            # print(f"system_prompt:\n{system_prompt}")
+            # print(f"user_prompt:\n{user_prompt}")
             messages = [
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": user_prompt + prefill if prefill else user_prompt}
@@ -24,4 +26,5 @@ class OpenAIAPI:
             text = prefill + response.choices[0].message.content.strip() if prefill else response.choices[0].message.content.strip()
             return text
         except Exception as e:
+            # print(f"response:\n{response}")
             raise Exception(f"Error generating message with OpenAI: {str(e)}")
