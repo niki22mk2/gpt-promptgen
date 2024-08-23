@@ -1,9 +1,8 @@
 import pathlib
 import json
 import datetime
-from modules.paths import data_path
-from constants.constants import MODE_NAME_MAPPING, OUTPUT_DIR, FIXED_TAGS_FILE
 import math
+from constants.constants import MODE_NAME_MAPPING, OUTPUT_DIR
 
 def save_log(log_data):
     timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -19,42 +18,6 @@ def save_log(log_data):
     with open(file_path, 'a', encoding='utf-8') as f:
         json.dump(log_entry, f, ensure_ascii=False)
         f.write('\n')
-
-def get_params_content():
-    filename = pathlib.Path(data_path, "params.txt")
-    try:
-        with open(filename, "r", encoding="utf8") as file:
-            return file.read()
-    except OSError:
-        return "temp prompt\nNegative prompt:"
-
-def update_params_content(prompt_text):
-    params_content = get_params_content()
-    params_lines = params_content.split('\n')
-    
-    # "Negative prompt:"の行を探す
-    negative_prompt_index = next((i for i, line in enumerate(params_lines) if line.startswith("Negative prompt:")), -1)
-    
-    if negative_prompt_index != -1:
-        # "Negative prompt:"より上の行を新しいプロンプトで置き換える
-        params_lines[:negative_prompt_index] = [prompt_text]
-    else:
-        # "Negative prompt:"が見つからない場合は、最初の行を置き換える
-        params_lines[0] = prompt_text
-    
-    return '\n'.join(params_lines)
-
-def update_request_history(prompt_request, mode_number, response_data):
-    log_data = {
-        "prompt_request": prompt_request,
-        "mode": mode_number,
-        "response": response_data
-    }
-    save_log(log_data)
-    return load_request_history()
-
-def truncate_string(s, max_length=50):
-    return s if len(s) <= max_length else s[:max_length-3] + '...'
 
 def load_request_history(page=1, items_per_page=15):
     file_path = pathlib.Path(OUTPUT_DIR, f"generated_logs.jsonl")
@@ -90,19 +53,11 @@ def load_request_history(page=1, items_per_page=15):
     
     return html, page, total_pages
 
-def load_fixed_tags():
-    print("Loading fixed tags...")
-    if pathlib.Path(FIXED_TAGS_FILE).exists():
-        with open(FIXED_TAGS_FILE, 'r') as f:
-            tags = json.load(f)
-            print(f"[Prompt-Artisan] Loaded fixed tags: {tags}")
-            return tags
-    print("[Prompt-Artisan] No fixed tags found")
-    return {'prefix': '', 'suffix': ''}
-
-def save_fixed_tags(prefix, suffix):
-    output_dir = pathlib.Path(OUTPUT_DIR)
-    output_dir.mkdir(parents=True, exist_ok=True)
-    with open(FIXED_TAGS_FILE, 'w') as f:
-        json.dump({'prefix': prefix, 'suffix': suffix}, f)
-        print(f"[Prompt-Artisan] Saved fixed tags: prefix: {prefix}, suffix: {suffix}")
+def update_request_history(prompt_request, mode_number, response_data):
+    log_data = {
+        "prompt_request": prompt_request,
+        "mode": mode_number,
+        "response": response_data
+    }
+    save_log(log_data)
+    return load_request_history()

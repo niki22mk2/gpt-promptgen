@@ -1,7 +1,9 @@
 import gradio as gr
-from modules import infotext_utils, shared
-from .core import generate_prompt, improve_prompt, get_system_prompt
-from utilities.utils import update_request_history, load_request_history, update_params_content, load_fixed_tags, save_fixed_tags
+from modules import infotext_utils
+from .core import generate_prompt, improve_prompt
+from utilities.logs import update_request_history, load_request_history
+from utilities.params import update_params_content
+from utilities.fixed_tags import load_fixed_tags, save_fixed_tags
 from constants.constants import MODE_NAME_MAPPING, VENDOR_MODELS
 
 def create_ui():
