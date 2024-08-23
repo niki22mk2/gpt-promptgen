@@ -6,8 +6,8 @@ class Config:
         return shared.opts.anthropic_api_key
 
     @property
-    def anthropic_model(self):
-        return shared.opts.anthropic_model
+    def openai_api_key(self):
+        return shared.opts.openai_api_key
 
     @property
     def opt_temperature(self):

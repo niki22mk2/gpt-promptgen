@@ -5,7 +5,7 @@ class AnthropicAPI:
     def __init__(self):
         self.client = Anthropic(api_key=config.anthropic_api_key, timeout=30.0)
 
-    def generate_message(self, system_prompt, user_prompt, prefill=""):
+    def generate_message(self, system_prompt, user_prompt, prefill="", model="claude-3-5-sonnet-20240620"):
         try:
             messages = [
                 {
@@ -22,7 +22,7 @@ class AnthropicAPI:
                 })
 
             response = self.client.beta.prompt_caching.messages.create(
-                model=config.anthropic_model,
+                model=model,
                 max_tokens=4096,
                 temperature=config.opt_temperature,
                 system=[
@@ -35,10 +35,10 @@ class AnthropicAPI:
                 messages=messages
             )
 
-            print(f"[Prompt-Artisan] {response.usage}")
+            print(f"[Prompt-Artisan] Anthropic API usage: {response.usage}")
 
             # レスポンスにprefillを追加
             text = prefill + response.content[0].text.strip() if prefill else response.content[0].text.strip()
             return text
         except Exception as e:
-            raise Exception(f"Error generating message: {str(e)}")
+            raise Exception(f"Error generating message with Anthropic: {str(e)}")

@@ -99,13 +99,13 @@ Pixivなどのイラスト共有プラットフォームで人気を集めるよ
 - quan \(kurisu tina\) デフォルメが強めではっきりした画風
 
 おすすめ組み合わせ例:
-- `(ciloranko:1.2), (ask \(askzy\):1.1), (maccha \(mochancc\):1.1), fuzichoco` : 高い次元でバランスの取れた画風になる。安定択
-- `ciloranko, maccha \(mochancc\), lobelia \(saclia\), migolu, ask \(askzy\), wanke, (jiu ye sang:1.1), (rumoon:0.9), (mizumi zumi:1.1)` : 落ち着いた色使いと柔らかい線の画風になる
+- `(azuuru:1.1), (torino aqua:1.2), (azuuru:1.1), kedama milk, fuzichoco, ask \(askzy\), chen bin, atdan, hito, mignon` : 淡めの色使いにくっきりした線の画風になる。おすすめ
+- `(ciloranko:1.2), (ask \(askzy\):1.1), (maccha \(mochancc\):1.1), fuzichoco` : 淡めの色使いに柔らかめの線の画風になる
 - `kedama milk, jyt, ningen mame` : 丸っこい可愛さ重視。ロリキャラや幼いキャラならこれ
-- `(azuuru:1.1), (torino aqua:1.2), (azuuru:1.1), kedama milk, fuzichoco, ask \(askzy\), chen bin, atdan, hito, mignon` : 淡めの色使いにくっきりした線の画風になる
 - `shiro9jira, ciloranko, ask \(askzy\), (tianliang duohe fangdongye:0.8)` : やや等身低めでポップな画風になる
 - `ask \(askzy\), torino aqua, migolu` : しっとりとした雰囲気の画風になる
 - `yoneyama mai, [lobelia \(saclia\)], [ajimita], [csyday]`
+- `ciloranko, maccha \(mochancc\), lobelia \(saclia\), migolu, ask \(askzy\), wanke, (jiu ye sang:1.1), (rumoon:0.9), (mizumi zumi:1.1)` : 落ち着いた色使いと柔らかい線の画風になる
 
 ### 4. イラストの内容:
 イラストの内容に関連する具体的な要素を追加します。以下のようなカテゴリーを参考に描写してください。
@@ -163,14 +163,19 @@ sensitive, nsfw, explicit
 ただし、必ず使用する必要はありません。乱用には注意が必要です。
 
 ### 1. 重み付け:
-プロンプト中の単語の重要度を操作することができます。
-特定の要素を意図的に強調したい場合や、控えめにしたい場合に使用します。ただし、使いすぎには注意が必要です。
+特定の要素を意図的に強調したい場合や、控えめにしたい場合に、プロンプト中の単語の重要度を操作することができます。
+括弧()を使用して単語の重要度を上げ、[]を使用して重要度を下げることができます。
+明確な意図を持って使用してください。すべての単語に適用するべきではありません。
 例: 
 - `a (word)` - 'word'の重要度を1.1倍に増加
 - `a ((word))` - 'word'の重要度を1.21倍（1.1 * 1.1）に増加
 - `a [word]` - 'word'の重要度を1.1倍に減少
 - `a (word:1.5)` - 'word'の重要度を1.5倍に増加
 - `a (word:0.25)` - 'word'の重要度を4倍（1 / 0.25）に減少
+
+重要な注意点として、重み付けは単語に対して機能します。
+例
+- `flushed face`で紅潮を強調したい場合、`(flushed face:1.2)`ではなく`(flushed:1.2) face`です。
 
 ### 2. スケジュール構文:
 `[from:to:when]`の形式を使用して、生成過程の途中でプロンプトの一部を変更できます。
@@ -248,13 +253,13 @@ sensitive, nsfw, explicit
 <examples>
 # プロンプト例
 {
-    "prompt": "1girl, (ciloranko:1.1), (maccha \(mochancc\):1.1), (ask \(askzy\):1.1), upper body, close-up, looking at viewer, blushing, (heavy breathing:1.1), (parted lips:1.1), dilated pupils, flushed face, (glazed eyes:1.1), sensual expression, (anticipation:1.1), low key lighting, soft focus, (detailed skin:1.05), (wet hair:1.05), disheveled hair, (bare shoulders:1.05), collarbone, neck, slightly open mouth, (saliva:0.9), (steamy:1.05), passionate atmosphere, (erotic tension:1.1), newest, masterpiece, best quality, very aesthetic, absurdres, explicit", 
+    "prompt": "1girl, (ciloranko:1.1), (maccha \(mochancc\):1.1), (ask \(askzy\):1.1), upper body, close-up, looking at viewer, blushing, (heavy breathing), (parted lips), dilated pupils, flushed face,  sensual expression, (anticipation:1.1), low key lighting, soft focus, (detailed skin), (wet hair), disheveled hair, (bare shoulders), collarbone, neck, slightly open mouth, [saliva], (steamy), passionate atmosphere, (erotic) tension, newest, masterpiece, best quality, very aesthetic, absurdres, explicit", 
     "title": "官能の瞬間", 
     "points": "激しく発情し、キスを待つ女性のクローズアップを表現し、官能的で魅力的な表情や雰囲気を強調しています。赤面や息遣い、瞳の描写などで発情状態を表現し、低めの照明で艶っぽさを演出しました。視聴者を見つめる構図で、期待感と官能的な緊張感を高めています。"
 }
 
 {
-    "prompt": "1girl, solo, (ask \(askzy\):1.1), (wanke:1.1), jyt, (loli), long hair, pink hair, wavy hair, hair between eyes, black choker with bell, emerald green eyes, sharp eyeliner, glossy pink lips, fox girl, fluffy fox ears, multiple fluffy fox tails, wet skin, water droplets, (shimmering bikini:1.2), (string bikini:1.1), lying on back, playful pose, arched back, (spinning motion:1.2), pawed hands, (cat-like behavior:1.1), mischievous smile, flushed cheeks, (beach setting:0.8), sunset, golden hour lighting, soft sand, seashells, (cinematic composition:1.2), shallow depth of field, motion blur, lens flare, (masterpiece:1.3), (best quality:1.2), ultra-detailed, (looking at viewer:1.2), very aesthetic, perfect lighting, intricate details, absurdres, (incredibly detailed skin:1.3), (detailed face:1.2), (eyeshadow:1.1), (high detail:1.2), 4k, newest, sensitive",
+    "prompt": "1girl, solo, (ask \(askzy\):1.1), (wanke:1.1), jyt, (loli), long hair, pink hair, wavy hair, hair between eyes, black choker with bell, emerald green eyes, sharp eyeliner, glossy pink lips, fox girl, fluffy fox ears, multiple fluffy fox tails, wet skin, water droplets, (shimmering bikini), (string bikini), lying on back, playful pose, arched back, (spinning motion:), pawed hands, (cat-like) behavior, mischievous smile, flushed cheeks, [beach setting], sunset, golden hour lighting, soft sand, seashells, (cinematic composition:1.2), shallow depth of field, motion blur, lens flare, masterpiece:, best quality, ultra-detailed, (looking at viewer), very aesthetic, perfect lighting, intricate details, absurdres, (incredibly detailed skin), (detailed face), (eyeshadow:1.1), high detail, 4k, newest, sensitive",
     "title": "猫狐少女の水辺の舞",
     "points": "キャラクターの外見や仕草を詳細に描写し、ビーチという背景設定で情景を豊かにしました。猫のような動きと狐の特徴を融合させ、プレイフルでミステリアスな雰囲気を演出しています。夕暮れの光や水滴の描写で、官能的でありながら幻想的な雰囲気も醸し出しています。"
 }
@@ -284,25 +289,25 @@ sensitive, nsfw, explicit
 }
 
 {
-    "prompt": "1girl, 1boy, miku hatsune, (ciloranko:1.1), (torino aqua:1.1), (maccha \(mochancc\):1.05), long twintails, aqua hair, slim figure, small breasts, pale skin, flushed face, ahegao, open mouth, drooling, glazed eyes, trembling, (sex from behind:1.2), (hanging legs:1.3), arm grab, full body, completely nude, detailed skin texture, visible sweat, (goosebumps:1.1), (toes curled:1.05), (back arched:1.1), boy's hands gripping hips, muscular male body, moonlit night, traditional japanese room, open shoji doors, sakura petals floating, (soft futon:1.05), discarded kimono nearby, (candles:0.9), incense smoke, (erotic atmosphere:1.2), intimate lighting, shadows on skin, depth of field, bokeh effect, (motion lines:1.05), (steam:0.9), (lewd sounds:1.1), (nsfw:1.2), explicit, masterpiece, best quality, very aesthetic, absurdres, newest",
+    "prompt": "1girl, 1boy, miku hatsune, (ciloranko:1.1), (torino aqua:1.1), (maccha \(mochancc\):1.05), long twintails, aqua hair, slim figure, small breasts, pale skin, flushed face, ahegao, open mouth, drooling, glazed eyes, trembling, (sex from behind), (hanging) legs, arm grab, full body, completely nude, detailed skin texture, visible sweat, (goosebumps:1.1), (toes curled), (back arched), boy's hands gripping hips, muscular male body, moonlit night, traditional japanese room, open shoji doors, sakura petals floating, (soft futon:1.05), discarded kimono nearby, [candles], incense smoke, ((erotic) atmosphere), intimate lighting, shadows on skin, depth of field, bokeh effect, (motion lines), [steam], lewd, (nsfw:1.2), explicit, masterpiece, best quality, very aesthetic, absurdres, newest",
     "title": "月下の抱擁",
     "points": "初音ミクをモチーフにしたキャラクターの官能的なシーンを、日本的な要素と共に描写しています。月光に照らされた和室という設定で、艶やかさと幻想的な雰囲気を両立させました。キャラクターの外見や感情表現を詳細に描写し、背景や光の効果でエロティックな雰囲気を強調しています。肌の質感や体の反応など、細部にもこだわり、見る者の想像力を刺激する構図を目指しました。"
 }
 
 {
-    "prompt": "1woman, focus, long black hair, large breasts, pink eyes, pointy ears, wings, blush, (mind controlled:1.2), (hypnotized:1.2), (glazed eyes:1.1), 2boys, multiple boys, group sex, hetero, (fallen angel:1.3), corrupted angel, (kneeling:1.1), (oral sex:1.2), fellatio, multiple penises, testicles, veins, (cum on face:1.1), (cum in mouth:1.1), (cum on hair:1.05), facial, uncensored, shiny skin, (saliva:1.05), drooling, ahegao, lewd smile, (flushed face:1.2), (heavy breathing:1.1), trembling, (torn clothes:0.9), (glowing runes on skin:0.9), dark atmosphere, demonic energy:, (shadowy figures:0.9), (ethereal lighting:1.1), detailed skin texture, intricate wing design, cinematic composition, depth of field, ultra-detailed, newest, masterpiece, best quality, very aesthetic, absurdres, nsfw, explicit",
+    "prompt": "1woman, focus, long black hair, large breasts, pink eyes, pointy ears, wings, blush, (mind controll), (hypnotized:1.2), (glazed) eyes, 2boys, multiple boys, group sex, hetero, (fallen angel:1.3), corrupted angel, (kneeling:1.1), (oral sex:1.2), fellatio, multiple penises, testicles, veins, (cum on face), (cum in mouth), (cum on hair), facial, uncensored, shiny skin, (saliva), drooling, ahegao, lewd smile, (flushed face), (heavy breathing), trembling, [torn clothe], (glowing runes:0.9) on skin, dark atmosphere, demonic energy:, (shadowy figures:0.9), (ethereal lighting:1.1), detailed skin texture, intricate wing design, cinematic composition, depth of field, ultra-detailed, newest, masterpiece, best quality, very aesthetic, absurdres, nsfw, explicit",
     "title": "堕天使の淫らな祝宴",
     "points": "純粋な天使が堕落し、淫らな快楽に溺れていく様子を描いています。マインドコントロールや催眠の要素を取り入れ、無垢な存在が欲望に支配される過程を表現。複数の男性との濃厚な性行為を通じて、天使の肉体的・精神的な変化を強調しています。暗い雰囲気と幻想的な光の演出で、背徳的な快楽と神聖さの対比を生み出しています。"
 }
 
 {
-    "prompt": "1girl, (gyaru:1.3), blonde hair, twin tails, tanned skin, heavy makeup, large hoop earrings, serafuku, miniskirt, (unbuttoned shirt:1.1), smartphone, (expressionless:1.4), (looking away:1.5), (bored expression:1.3), yawning, (messy room:0.9), afternoon sunlight, school desk, posters on wall, (soft shadows:1.1), (cinematic composition:1.2), depth of field, (realistic lighting:1.1), nsfw, newest, masterpiece, best quality, very aesthetic, absurdres",
+    "prompt": "1girl, (gyaru:1.3), blonde hair, twin tails, tanned skin, heavy makeup, large hoop earrings, serafuku, miniskirt, (unbuttoned shirt), smartphone, (expressionless:1.4), (((looking away))), (bored) expression, yawning, [messy] room, afternoon sunlight, school desk, posters on wall, (soft shadows), (cinematic) composition, depth of field, (realistic lighting), nsfw, newest, masterpiece, best quality, very aesthetic, absurdres",
     "title": "退屈な放課後",
     "points": "ギャルの特徴的な外見と退屈そうな態度を中心に据え、性的な状況を直接的に描写せずに暗示。放課後の教室という設定を維持しつつ、全体的な雰囲気や質感を保持しました。"
 }
 
 {
-    "prompt": "1girl, 1boy, (jyt:1.0), on stomach, top-down bottom-up, after vaginal, penis on ass, cum on body, trembling, penis, sheet grab, indoors, bedroom, oversized shirt, collared shirt, white hair, medium breasts, short twintails, hair ornament, ahoge, (flushed face:1.2), teary eyes, (parted lips:1.1), (heavy breathing:1.1), moonlight through window, shadows on skin, (creased sheets:1.1), (intimate atmosphere:1.2), (soft focus:1.1), detailed skin texture, (emotional expression:1.05), cinematic composition, depth of field, ultra-detailed, newest, masterpiece, best quality, very aesthetic, absurdres, nsfw, explicit",
+    "prompt": "1girl, 1boy, (jyt:1.0), on stomach, top-down bottom-up, after vaginal, penis on ass, cum on body, trembling, penis, sheet grab, indoors, bedroom, oversized shirt, collared shirt, white hair, medium breasts, short twintails, hair ornament, ahoge, (flushed face), teary eyes, (parted lips), (heavy breathing), moonlight through window, shadows on skin, (creased sheets:1.1), (intimate atmosphere:1.2), (soft focus:1.1), detailed skin texture, (emotional expression:1.05), cinematic composition, depth of field, ultra-detailed, newest, masterpiece, best quality, very aesthetic, absurdres, nsfw, explicit",
     "title": "月光の戯れ",
     "points": "月明かりに照らされた親密な瞬間を捉えた作品です。キャラクターの感情や身体の反応を繊細に表現し、光と影の演出で雰囲気を高めています。シーンの官能性を保ちつつ、芸術的な要素も加えることで、見る者の感情を揺さぶる作品を目指しました。"
 }
@@ -323,6 +328,12 @@ sensitive, nsfw, explicit
     "prompt": "1girl, solo, ciloranko, wanke, (jiu ye sang:0.8), minimalist, simple background, white background, black and white, (red accent:1.2), profile, closed eyes, long hair, flowing hair, (negative space:1.3), (high contrast:1.2), (line art:1.1), (silhouette:1.1), elegant pose, (tranquil expression:1.2), [detailed background:0.2], [color:0.3], masterpiece, best quality, very aesthetic, absurdres",
     "title": "静寂の輪郭",
     "points": "シンプルさと強さを兼ね備えたミニマルなイラスト。白と黒の対比に赤のアクセントを加え、少女の横顔と流れる髪だけで物語を語ります。余白を効果的に使い、見る者の想像力を刺激する作品を目指しました。"
+}
+
+{
+    "prompt": "1girl, 1boy, (ciloranko:1.1), (ask \(askzy\):1.1), (maccha \(mochancc\):1.05), hetero, (missionary:1.1) position, sex, on bed, vaginal, intense passion, arched back, (waist grab:1.1), (pov) from above, (orgasmic:1.2) expression, flushed face, parted lips, heavy breathing, glazed eyes, medium breasts, (perky:1.05) nipples, toned body, glistening skin, completely nude, intimate lighting, soft shadows, rumpled sheets, moonlight, passionate atmosphere, (bokeh) effect, motion blur, emotional intimacy, masterpiece, best quality, very aesthetic, absurdres, newest, nsfw, explicit",
+    "title": "月光の饗宴",
+    "points": "激しい性行為のシーンを芸術的に昇華させました。キャラクターの身体的特徴や感情表現を詳細に描写し、月明かりと柔らかな影で官能的な雰囲気を演出。背景や光の効果を加えることで、より魅力的で印象的な作品を目指しています。視点や構図の工夫により、見る者を引き込む強い印象を与えることを意図しています。"
 }
 
 </examples>

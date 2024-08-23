@@ -1,5 +1,6 @@
 import json
 import re
+import random
 import time
 from .config import config
 from constants.prompt_templates import (
@@ -10,20 +11,21 @@ from constants.prompt_templates import (
     NAMING_USER_PROMPTS,
 )
 from .api.anthropic import AnthropicAPI
+from .api.openai import OpenAIAPI
 
 def get_system_prompt(content_type):
     if content_type == "NSFW" and config.output_lang == "JP":
         return SYSTEM_PROMPTS["JP_NSFW"]
     return SYSTEM_PROMPTS[config.output_lang]
 
-def process_prompt(prompt_request, user_prompt_type, content_type):
-    anthropic_api = AnthropicAPI()
-    user_prompt = user_prompt_type[config.output_lang].format(request=prompt_request)
+def process_prompt(prompt_request, user_prompt_type, content_type, vendor, model):
+    api = AnthropicAPI() if vendor == "Anthropic" else OpenAIAPI()
+    user_prompt = user_prompt_type[config.output_lang].format(request=prompt_request, seed=random.randint(1, 1000000))
     system_prompt = get_system_prompt(content_type)
 
     for attempt in range(config.max_retry + 1):
         try:
-            response_text = anthropic_api.generate_message(system_prompt, user_prompt, prefill="<antThinking>")
+            response_text = api.generate_message(system_prompt, user_prompt, prefill="<antThinking>", model=model)
             thinking_text, output_json = parse_response(response_text)
 
             prompt_text = output_json['prompt'].strip()
@@ -61,7 +63,7 @@ def parse_response(response_text):
     else:
         raise ValueError("Output format not found in response")
 
-def generate_prompt(prompt_request, mode_number, content_type):
+def generate_prompt(prompt_request, mode_number, content_type, vendor, model):
     mode_mapping = {
         0: BASIC_USER_PROMPTS,
         1: IMPROVE_USER_PROMPTS,
@@ -70,7 +72,7 @@ def generate_prompt(prompt_request, mode_number, content_type):
     }
     prompt_template = mode_mapping.get(mode_number, BASIC_USER_PROMPTS)
 
-    return process_prompt(prompt_request, prompt_template, content_type)
+    return process_prompt(prompt_request, prompt_template, content_type, vendor, model)
 
-def improve_prompt(prompt_request, content_type):
-    return generate_prompt(prompt_request, 1, content_type)  # 1 is the mode number for "Refine"
+def improve_prompt(prompt_request, content_type, vendor, model):
+    return generate_prompt(prompt_request, 1, content_type, vendor, model)  # 1 is the mode number for "Refine"

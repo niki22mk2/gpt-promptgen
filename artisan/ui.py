@@ -2,7 +2,7 @@ import gradio as gr
 from modules import infotext_utils, shared
 from .core import generate_prompt, improve_prompt, get_system_prompt
 from .utils import update_request_history, load_request_history, update_params_content, load_fixed_tags, save_fixed_tags
-from constants.constants import MODE_MAPPING
+from constants.constants import MODE_MAPPING, VENDOR_MODELS
 
 def create_ui():
     with gr.Blocks() as llm_prompt_artisan_interface:
@@ -22,6 +22,17 @@ def create_ui():
                                 choices=list(MODE_MAPPING.values()),
                                 label="Mode",
                                 value="🖊️ Generate"
+                            )
+                        with gr.Row():
+                            vendor = gr.Dropdown(
+                                choices=list(VENDOR_MODELS.keys()),
+                                label="Vendor",
+                                value="Anthropic"
+                            )
+                            model = gr.Dropdown(
+                                choices=VENDOR_MODELS["Anthropic"],
+                                label="Model",
+                                value=VENDOR_MODELS["Anthropic"][0]
                             )
                         with gr.Row():
                             generate_prompt_button = gr.Button("Send", variant='primary')
@@ -86,13 +97,13 @@ def create_ui():
             # イベントハンドラーの設定
             generate_prompt_button.click(
                 fn=generate_prompt_wrapper,
-                inputs=[prompt_request, mode, fixed_tags_prefix, fixed_tags_suffix, content_type],
+                inputs=[prompt_request, mode, fixed_tags_prefix, fixed_tags_suffix, content_type, vendor, model],
                 outputs=[generated_prompt, supplementary_information, request_history, full_info_textbox, thinking_information, current_page, total_pages]
             )
 
             improve_button.click(
                 fn=improve_prompt_wrapper,
-                inputs=[generated_prompt, fixed_tags_prefix, fixed_tags_suffix, content_type],
+                inputs=[prompt_request, fixed_tags_prefix, fixed_tags_suffix, content_type, vendor, model],
                 outputs=[generated_prompt, supplementary_information, thinking_information, full_info_textbox]
             )
 
@@ -144,6 +155,9 @@ def create_ui():
                 inputs=[current_page, total_pages],
                 outputs=[request_history, current_page, total_pages, page_info]
             )
+            
+            # ベンダー選択が変更されたときにモデル選択を更新
+            vendor.change(fn=update_model_choices, inputs=[vendor], outputs=[model])
 
         llm_prompt_artisan_interface.load(
             fn=lambda x: (x['prefix'], x['suffix']),
@@ -151,7 +165,12 @@ def create_ui():
             outputs=[fixed_tags_prefix, fixed_tags_suffix]
         )
     
+    
     return [(llm_prompt_artisan_interface, "LLM Prompt Artisan", "llm_prompt_artisan_interface")]
+
+# ベンダー選択に応じてモデル選択を更新する関数
+def update_model_choices(vendor):
+    return gr.Dropdown.update(choices=VENDOR_MODELS[vendor], value=VENDOR_MODELS[vendor][0])
 
 def update_full_info(generated_prompt, fixed_tags_prefix, fixed_tags_suffix):
     if generated_prompt:
@@ -163,9 +182,9 @@ def update_full_info(generated_prompt, fixed_tags_prefix, fixed_tags_suffix):
         return full_info_with_tags
     return ""
 
-def generate_prompt_wrapper(prompt_request, mode, fixed_tags_prefix, fixed_tags_suffix, content_type):
+def generate_prompt_wrapper(prompt_request, mode, fixed_tags_prefix, fixed_tags_suffix, content_type, vendor, model):
     mode_number = list(MODE_MAPPING.values()).index(mode)
-    prompt_text, title, points, thinking_text = generate_prompt(prompt_request, mode_number, content_type)
+    prompt_text, title, points, thinking_text = generate_prompt(prompt_request, mode_number, content_type, vendor, model)
     
     # 表示用の文字列を組み立て
     supplementary_info = f"### Title: {title}\n\nPoints: {points}"
@@ -182,8 +201,8 @@ def generate_prompt_wrapper(prompt_request, mode, fixed_tags_prefix, fixed_tags_
     })
     return prompt_text, supplementary_info, updated_history, full_info_with_tags, thinking_text, current_page, total_pages
 
-def improve_prompt_wrapper(prompt_request, fixed_tags_prefix, fixed_tags_suffix, content_type):
-    prompt_text, title, points, thinking_text = improve_prompt(prompt_request, content_type)
+def improve_prompt_wrapper(prompt_request, fixed_tags_prefix, fixed_tags_suffix, content_type, vendor, model):
+    prompt_text, title, points, thinking_text = improve_prompt(prompt_request, content_type, vendor, model)
     supplementary_info = f"### Title: {title}\n\nPoints: {points}"
     full_prompt = (fixed_tags_prefix + ", " if fixed_tags_prefix else "") + prompt_text + (", " + fixed_tags_suffix if fixed_tags_suffix else "")
     full_info_with_tags = update_params_content(full_prompt)

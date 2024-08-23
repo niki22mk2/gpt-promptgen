@@ -98,13 +98,13 @@ Pixivなどのイラスト共有プラットフォームで人気を集めるよ
 - `quan \(kurisu tina\)` デフォルメが強めではっきりした画風
 
 おすすめ組み合わせ例:
-- `(ciloranko:1.2), (ask \(askzy\):1.1), (maccha \(mochancc\):1.1), fuzichoco` : 高い次元でバランスの取れた画風になる。安定択
-- `ciloranko, maccha \(mochancc\), lobelia \(saclia\), migolu, ask \(askzy\), wanke, (jiu ye sang:1.1), (rumoon:0.9), (mizumi zumi:1.1)` : 落ち着いた色使いと柔らかい線の画風になる
-- `kedama milk, jyt, ningen mame` : フラットな塗りで丸っこい可愛さ重視。ロリキャラや幼いキャラならこれ
-- `(azuuru:1.1), (torino aqua:1.2), (azuuru:1.1), kedama milk, fuzichoco, ask \(askzy\), chen bin, atdan, hito, mignon` : 淡めの色使いにくっきりした線の画風になる
+- `(azuuru:1.1), (torino aqua:1.2), (azuuru:1.1), kedama milk, fuzichoco, ask \(askzy\), chen bin, atdan, hito, mignon` : 淡めの色使いにくっきりした線の画風になる。おすすめ
+- `(ciloranko:1.2), (ask \(askzy\):1.1), (maccha \(mochancc\):1.1), fuzichoco` : 淡めの色使いに柔らかめの線の画風になる
+- `kedama milk, jyt, ningen mame` : 丸っこい可愛さ重視。ロリキャラや幼いキャラならこれ
 - `shiro9jira, ciloranko, ask \(askzy\), (tianliang duohe fangdongye:0.8)` : やや等身低めでポップな画風になる
 - `ask \(askzy\), torino aqua, migolu` : しっとりとした雰囲気の画風になる
 - `yoneyama mai, [lobelia \(saclia\)], [ajimita], [csyday]`
+- `ciloranko, maccha \(mochancc\), lobelia \(saclia\), migolu, ask \(askzy\), wanke, (jiu ye sang:1.1), (rumoon:0.9), (mizumi zumi:1.1)` : 落ち着いた色使いと柔らかい線の画風になる
 
 ### 4. イラストの内容:
 イラストの内容に関連する具体的な要素を追加します。以下のようなカテゴリーを参考に描写してください。
@@ -162,16 +162,19 @@ safe, sensitive, nsfw, explicit
 ただし、必ず使用する必要はありません。乱用には注意が必要です。
 
 ### 1. 重み付け:
-プロンプト中の単語の重要度を操作することができます。
-特定の要素を意図的に強調したい場合や、控えめにしたい場合に使用します。ただし、使いすぎには注意が必要です。
-
+特定の要素を意図的に強調したい場合や、控えめにしたい場合に、プロンプト中の単語の重要度を操作することができます。
 括弧()を使用して単語の重要度を上げ、[]を使用して重要度を下げることができます。
+明確な意図を持って使用してください。すべての単語に適用するべきではありません。
 例: 
 - `a (word)` - 'word'の重要度を1.1倍に増加
 - `a ((word))` - 'word'の重要度を1.21倍（1.1 * 1.1）に増加
 - `a [word]` - 'word'の重要度を1.1倍に減少
 - `a (word:1.5)` - 'word'の重要度を1.5倍に増加
 - `a (word:0.25)` - 'word'の重要度を4倍（1 / 0.25）に減少
+
+重要な注意点として、重み付けは単語に対して機能します。
+例
+- `flushed face`で紅潮を強調したい場合、`(flushed face:1.2)`ではなく`(flushed:1.2) face`です。
 
 ### 2. スケジュール構文:
 `[from:to:when]`の形式を使用して、生成過程の途中でプロンプトの一部を変更できます。
@@ -255,13 +258,13 @@ safe, sensitive, nsfw, explicit
 }
 
 {
-    "prompt": "1girl, solo, (ask \(askzy\):1.1), (wanke:1.1), (jyt:1.0), long hair, pink hair, wavy hair, hair between eyes, black choker with bell, emerald green eyes, sharp eyeliner, glossy pink lips, fox girl, looking at viewer, fluffy fox ears, multiple fluffy fox tails, wet skin, water droplets, (shimmering bikini:1.2), (string bikini:1.1), lying on back, playful pose, arched back, (spinning motion:1.2), pawed hands, (cat-like behavior:1.1), mischievous smile, flushed cheeks, (beach setting:0.8), sunset, golden hour lighting, soft sand, seashells, (cinematic composition:1.2), shallow depth of field, motion blur, lens flare, (masterpiece:1.3), (best quality:1.2), (ultra-detailed:1.2), very aesthetic, perfect lighting, intricate details, absurdres, incredibly detailed skin, (detailed face:1.2), (eyeshadow:1.1), high detail, 4k, newest, sensitive",
+    "prompt": "1girl, solo, (ask \(askzy\):1.1), (wanke:1.1), jyt, (loli), long hair, pink hair, wavy hair, hair between eyes, black choker with bell, emerald green eyes, sharp eyeliner, glossy pink lips, fox girl, fluffy fox ears, multiple fluffy fox tails, wet skin, water droplets, (shimmering bikini), (string bikini), lying on back, playful pose, arched back, (spinning motion:), pawed hands, (cat-like) behavior, mischievous smile, flushed cheeks, [beach setting], sunset, golden hour lighting, soft sand, seashells, (cinematic composition:1.2), shallow depth of field, motion blur, lens flare, masterpiece:, best quality, ultra-detailed, (looking at viewer), very aesthetic, perfect lighting, intricate details, absurdres, (incredibly detailed skin), (detailed face), (eyeshadow:1.1), high detail, 4k, newest, sensitive",
     "title": "猫狐少女の水辺の舞",
     "points": "キャラクターの外見や仕草を詳細に描写し、ビーチという背景設定で情景を豊かにしました。猫のような動きと狐の特徴を融合させ、プレイフルでミステリアスな雰囲気を演出しています。夕暮れの光や水滴の描写で、官能的でありながら幻想的な雰囲気も醸し出しています。"
 }
 
 {
-    "prompt": "1girl, lam \(ramdayo\), (fuzichoco:1.1),  (ask \(askzy\):1.1), breasts, solo, sword, (blood red background:1.2), black hair, holding weapon, (unsheathing katana:1.3), large breasts, holding sword, black armored gloves, intense gaze, sheath with intricate designs, long flowing hair, upper body, bare shoulders, deep cleavage, short eyebrows, (simple gradiant background:0.8), katana with glowing runes, blunt bangs, glowing red eyes, closed mouth with determination, elegant makeup, red eyeshadow, (multicolored hair:1.1), breast curtains, ornate gauntlets, (red ribbon in hair:0.9), (detailed armor pieces:1.1), (cherry blossom petals floating:0.8), dramatic lighting, (motion blur on sword:1.1), reflective blade, (tense atmosphere:1.1), (high contrast:1.1), cinematic composition, depth of field, ultra-detailed, newest, masterpiece, best quality, very aesthetic, absurdres",
+    "prompt": "1girl, lam \(ramdayo\), (fuzichoco:1.1),  (ask \(askzy\):1.1), breasts, solo, sword, (blood red background:1.2), black hair, holding weapon, (unsheathing katana:1.3), large breasts, holding sword, black armored gloves, intense gaze, sheath with intricate designs, long flowing hair, upper body, bare shoulders, deep cleavage, short eyebrows, [simple gradiant background], katana with glowing runes, blunt bangs, glowing red eyes, closed mouth with determination, elegant makeup, red eyeshadow, ((multicolored hair)), breast curtains, ornate gauntlets, (red ribbon in hair), (detailed armor pieces), [[cherry blossom petals floating]], dramatic lighting, (motion blur on sword), reflective blade, (tense atmosphere), high contrast, cinematic composition, depth of field, ultra-detailed, newest, masterpiece, best quality, very aesthetic, absurdres",
     "title": "紅蓮の剣姫、覚醒の瞬間",
     "points": "このプロンプトでは、キャラクターの力強さと美しさを同時に表現することを目指しました。刀を抜く瞬間という動的なシーンを中心に、赤と黒を基調とした色彩で緊張感と情熱を表現しています。キャラクターの特徴的な外見（大きな胸、黒髪と赤目、特徴的な眉）を強調しつつ、装飾的な要素（光る刀身の文様、装飾的な鞘、桜の花びら）を加えて視覚的な魅力を高めています。背景は単純にしつつも、ドラマチックな照明効果で立体感を出し、キャラクターを引き立てています。全体として、力強さと優雅さを兼ね備えた、印象的な剣術の達人の姿を描くことを目指しました。"
 }
@@ -291,13 +294,13 @@ safe, sensitive, nsfw, explicit
 }
 
 {
-    "prompt": "1girl, hatsune miku, vocaloid, (nishizawa 5mm:1.2), (fuji choko:1.1), twintails, aqua hair, aqua eyes, headphones, detached sleeves, tie, (singing:1.1), (music notes:1.05), stage lights, concert hall, enthusiastic crowd, dynamic pose, microphone stand, (glowing aura:1.05), electric guitar, (sound waves:1.1), lens flare, motion blur, detailed clothing folds, expressive face, [simple background], newest, masterpiece, best quality, very aesthetic, absurdres",
+    "prompt": "1girl, hatsune miku, vocaloid, (nishizawa 5mm:1.2), (fuji choko:1.1), twintails, aqua hair, aqua eyes, headphones, detached sleeves, tie, (singing:1.1), (music notes), stage lights, concert hall, enthusiastic crowd, dynamic pose, microphone stand, (glowing aura), electric guitar, (sound waves), lens flare, motion blur, detailed clothing folds, expressive face, [simple background], newest, masterpiece, best quality, very aesthetic, absurdres",
     "title": "未来のディーヴァ",
     "points": "人気ボーカロイドキャラクター初音ミクのコンサートシーンを表現。ダイナミックなポーズと表情、ステージ上の様々な要素（照明、観客、楽器など）を詳細に描写し、音楽の躍動感と熱気を視覚的に表現しました。光や動きのエフェクトを強調し、ミクの歌声が聴こえてくるような臨場感あふれる構図を目指しました。"
 }
 
 {
-    "prompt": "1woman, original character, yoneyama mai, [lobelia \(saclia\)], [ajimita], [csyday], (warrior princess:1.2), (ornate armor:1.15), [gold:silver] accents, flowing cape, (long wavy hair:1.05), [blonde:white] hair, (heterochromia:1.1), one blue eye, one green eye, determined expression, (wielding magical sword:1.2), glowing runes on blade, magic aura, [forest:mountain] battlefield, fallen enemies, rising sun, lens flare, (volumetric lighting:1.1), detailed armor plate, intricate engravings, battle scars, (torn cape edges:1.05), (floating magical particles:1.1), swirling wind, (dramatic shadows:1.1), (emotional impact:1.2), cinematic composition, (rule of thirds:1.05), BREAK, (distant castle:0.9), stormy clouds, lightning in background, (flying creatures:0.95), [dragons:phoenixes], newest, masterpiece, best quality, very aesthetic, absurdres",
+    "prompt": "1woman, original character, yoneyama mai, [lobelia \(saclia\)], [ajimita], [csyday], (warrior:1.2) princess, (ornate armor:1.15), [gold:silver] accents, flowing cape, (long wavy hair:1.05), [blonde:white] hair, (heterochromia:1.1), one blue eye, one green eye, determined expression, ((wielding magical sword)), glowing runes on blade, magic aura, [forest:mountain] battlefield, fallen enemies, rising sun, lens flare, ((volumetric lighting)), detailed armor plate, intricate engravings, battle scars, (torn cape edges), ((floating magical particles)), swirling wind, (dramatic shadows), ((emotional impact)), cinematic composition, (rule of thirds), BREAK, [[distant castle]], stormy clouds, lightning in background, [flying creatures], [dragons:phoenixes], newest, masterpiece, best quality, very aesthetic, absurdres",
     "title": "運命に立ち向かう戦姫",
     "points": "オリジナルキャラクターの戦う姫を、壮大なファンタジー戦闘シーンとして描写。装飾的な鎧、魔法の剣、異色の瞳など、キャラクターの細部にこだわりつつ、壮大な背景と劇的な照明効果で圧倒的な存在感を演出しています。代替単語や重み付けを多用し、生成過程でバリエーションを持たせつつ理想的な結果を得られるよう工夫しました。BREAKキーワードで背景要素を分離し、キャラクターと風景のバランスを調整しています。"
 }
@@ -309,7 +312,7 @@ safe, sensitive, nsfw, explicit
 }
 
 {
-    "prompt": "1girl, csyday, (jyt:0.90703), amamiya kokoro, (elf:0.90703), (tsurime:1.1025), (bold eyelashes:1.05), (loli:1.05), (long eyelashes, black eyelashes :1.05), (white skin:1.05), twin tails, (black hair:1.05), (light red-purple eyes:1.05), medium hair, half closed eyes, short smile, (beautiful face:1.05), perky breasts, perfect shaped breasts, collarbone, clarity, looking straight at viewer, off shoulder, slender, (delicate features:1.05), (enchanting expression:1.05), explicit, newest, nsfw, masterpiece, best quality, very aesthetic, absurdres",
+    "prompt": "1girl, csyday, (jyt:0.90703), amamiya kokoro, [elf], (tsurime), ((bold eyelashes)), (loli), (long eyelashes, black eyelashes), (white skin), twin tails, (black hair), (light red-purple eyes), medium hair, half closed eyes, short smile, (beautiful face), perky breasts, perfect shaped breasts, collarbone, clarity, (looking straight at viewer), off shoulder, slender, (delicate features:), enchanting expression, explicit, newest, nsfw, masterpiece, best quality, very aesthetic, absurdres",
     "title": "エルフ化した天宮こころの官能美",
     "points": "にじさんじのVtuber 天宮こころをエルフ的な要素を持つ魅惑的なキャラクターとして再解釈しています。繊細な目の表現（つり目、太い睫毛）や透き通るような肌の質感にこだわり、官能的でありながら幻想的な雰囲気を演出しています。ツインテールと中間の髪の長さ、薄い赤紫色の目など、キャラクターの特徴を保ちつつ、エルフらしい魅力を加えています。半開きの目と小さな微笑み、直視する視線など、見る人を惹きつける要素を多く取り入れ、魅惑的な表情を強調しています。"
 }
@@ -327,7 +330,7 @@ safe, sensitive, nsfw, explicit
 }
 
 {
-    "prompt": "1girl, rio \(blue archive\), ask \(askzy\), ciloranko, tianliang duohe fangdongye, chen bin, (muka tsuku:0.9), (shiro9jira:1.1), breasts, apron, long hair, ribbon, frills, cream, wrist cuffs, food, large breasts, (looking at viewer:1.1), naked apron, bangs, bow, hairclip, thigh strap, frilled apron, maid headdress, nail polish, convenient censoring, cowboy shot,thigh ribbon,whipped cream,food on body,leg ribbon,bare shoulders,white apron,heart,thigh gap,strawberry,detached collar,thighs,bowtie,red ribbon,skindentation, groin, cleavage, parted lips, hands up, standing, wide hips, fingernails, cake, red eyes, black hair, fruit, food on breasts, very long hair, halo, food on face, (cream censoring:1.2), areola, masterpiece, best quality, sensitive,",
+    "prompt": "1girl, rio \(blue archive\), ask \(askzy\), ciloranko, tianliang duohe fangdongye, chen bin, (muka tsuku:0.9), (shiro9jira:1.1), breasts, apron, long hair, ribbon, frills, cream, wrist cuffs, food, large breasts, ((looking at viewer)), naked apron, bangs, bow, hairclip, thigh strap, frilled apron, maid headdress, nail polish, convenient censoring, cowboy shot,thigh ribbon,whipped cream,food on body,leg ribbon,bare shoulders,white apron,heart,thigh gap,strawberry,detached collar,thighs,bowtie,red ribbon,skindentation, groin, cleavage, parted lips, hands up, standing, wide hips, fingernails, cake, red eyes, black hair, fruit, food on breasts, very long hair, halo, food on face, ((cream censoring)), areola, masterpiece, best quality, sensitive,",
     "title": "リオの甘美なメイドサービス",
     "points": "ブルーアーカイブのリオを裸エプロン姿で描き、メイド風の装飾と食べ物を使った官能的な演出を施しています。魅力的な体の曲線や表情を強調。クリームやフルーツを巧みに配置することで、エロティックでありながら可愛らしさも残す絵柄を目指しました。視聴者を意識した構図と表情で、見る人を惹きつける作品となっています。"
 }
@@ -339,7 +342,7 @@ safe, sensitive, nsfw, explicit
 }
 
 {
-    "prompt": "1girl, solo, ciloranko, wanke, (jiu ye sang:0.8), minimalist, simple background, white background, black and white, (red accent:1.2), profile, closed eyes, long hair, flowing hair, (negative space:1.3), (high contrast:1.2), (line art:1.1), (silhouette:1.1), elegant pose, (tranquil expression:1.2), [detailed background:0.2], [color:0.3], masterpiece, best quality, very aesthetic, absurdres",
+    "prompt": "1girl, solo, ciloranko, wanke, (jiu ye sang:0.8), minimalist, simple background, white background, black and white, (red accent:1.2), profile, closed eyes, long hair, flowing hair, (negative space:1.3), (high contrast), (line art), (silhouette), elegant pose, ((tranquil)) expression, [[detailed background]], (color:0.3), masterpiece, best quality, very aesthetic, absurdres",
     "title": "静寂の輪郭",
     "points": "シンプルさと強さを兼ね備えたミニマルなイラスト。白と黒の対比に赤のアクセントを加え、少女の横顔と流れる髪だけで物語を語ります。余白を効果的に使い、見る者の想像力を刺激する作品を目指しました。"
 }
@@ -349,6 +352,8 @@ safe, sensitive, nsfw, explicit
 """
 
 _BASIC_USER_PROMPT_JP = """
+Seed: {seed}
+
 リクエスト内容に基づきプロンプトを作成してください。
 リクエストはテーマを示しており、必要な内容は想像して良いです。
 また、出力フォーマット(<output_format>)で指示されている出力形式を厳密に守ってください。
@@ -359,6 +364,8 @@ _BASIC_USER_PROMPT_JP = """
 """
 
 _IMPROVE_USER_PROMPT_JP = """
+Seed: {seed}
+
 以下のプロンプト(input_prompt)の元のテーマ性を維持しつつ、イラストを改善してください。
 例えば、プロンプトの整理だけでも良いですし、詳細な描写（例えば、状況、雰囲気、人物の外見、背景など）を加えたり、逆に要素を絞ってシンプルにしたりしても良いです。
 また、出力フォーマット(<output_format>)で指示されている出力形式を厳密に守ってください。
@@ -369,6 +376,8 @@ _IMPROVE_USER_PROMPT_JP = """
 """
 
 _FILL_IN_THE_BLANKS_USER_PROMPTS_JP = """
+Seed: {seed}
+
 以下のプロンプト(input_prompt)の「____」の部分を想像して、イラストを完成させてください。外見や状況、雰囲気など、具体的な内容を適宜盛り込んでください。「____」に入れる要素は、いくつでも構いません。
 また、出力フォーマット(<output_format>)で指示されている出力形式を厳密に守ってください。
 
@@ -378,6 +387,8 @@ _FILL_IN_THE_BLANKS_USER_PROMPTS_JP = """
 """
 
 _NAMING_USER_PROMPTS_JP = """
+Seed: {seed}
+
 以下のプロンプト(input_prompt)のタイトルとポイントを考えてください。
 プロンプトは変更せずにオリジナルのまま記述し、出力フォーマット(<output_format>)で指示されている出力形式を厳密に守ってください。
 
