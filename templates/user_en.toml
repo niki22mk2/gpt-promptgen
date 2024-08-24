@@ -1,0 +1,63 @@
+[BASIC_USER_PROMPTS]
+EN = '''
+Seed: {seed}
+
+Please create a prompt based on the request content.
+The request indicates a theme, and you may imagine any necessary details.
+Also, please strictly adhere to the output format specified in the <output_format> instructions.
+
+<request>
+{request}
+</request>
+'''
+
+[IMPROVE_USER_PROMPTS]
+EN = '''
+Seed: {seed}
+
+Please improve the illustration while maintaining the original theme of the following prompt (input_prompt).
+For example, you can simply organize the prompt, add detailed descriptions (e.g., situation, atmosphere, character appearance, background, etc.), or conversely, simplify by narrowing down elements.
+Also, please strictly adhere to the output format specified in the <output_format> instructions.
+
+<input_prompt>
+{request}
+</input_prompt>
+'''
+
+[FILL_IN_THE_BLANKS_USER_PROMPTS]
+EN = '''
+Seed: {seed}
+
+Please use your imagination to complete the illustration by filling in the "____" parts of the following prompt (input_prompt). Include specific details such as appearance, situation, atmosphere, etc., as appropriate. You may add any number of elements to fill in the "____" blanks.
+Also, please strictly adhere to the output format specified in the <output_format> instructions.
+
+<input_prompt>
+{request}
+</input_prompt>
+'''
+
+[NAMING_USER_PROMPTS]
+EN = '''
+Seed: {seed}
+
+Please think of a title and key points for the following prompt (input_prompt).
+Describe the prompt without changing it from the original, and strictly adhere to the output format specified in the <output_format> instructions.
+
+<input_prompt>
+{request}
+</input_prompt>
+'''
+
+[CONVERSATIONAL_USER_PROMPTS]
+EN = '''
+Please create a prompt based on the request and conversation history.
+The request is merely a theme. Please imagine and add any necessary details for the illustration.
+
+<history>
+{history}
+</history>
+
+<request>
+{request}
+</request>
+'''

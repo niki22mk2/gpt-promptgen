@@ -9,8 +9,6 @@ from constants.constants import MODE_NAME_MAPPING, VENDOR_MODELS
 def create_ui():
     with gr.Blocks() as llm_prompt_gen_interface:
         with gr.Column(elem_classes="llm-prompt-gen-container"):
-            # gr.Markdown("# LLM Prompt Gen")
-            
             with gr.Tab("Prompt Generation"):
                 with gr.Row():
                     with gr.Column(scale=2):
@@ -25,52 +23,53 @@ def create_ui():
                                 label="Mode",
                                 value="🖊️ Generate"
                             )
+                        
+                        image_model_type = gr.Radio(
+                            choices=["SDXL", "FLUX"],
+                            label="Image Model Type (SDXL: Danbooru tag prompts for Animagine XL, FLUX: Natural language prompts)",
+                            value="SDXL"
+                        )
+
+                        content_type = gr.Radio(
+                            choices=["NORMAL", "NSFW"],
+                            label="Content Type (Account bans due to NSFW content generation are at your own risk)",
+                            value="NORMAL"
+                        )
+
                         with gr.Row():
                             vendor = gr.Dropdown(
                                 choices=list(VENDOR_MODELS.keys()),
-                                label="Vendor",
+                                label="LLM Vendor",
                                 value="Anthropic"
                             )
                             model = gr.Dropdown(
                                 choices=VENDOR_MODELS["Anthropic"],
-                                label="Model",
+                                label="LLM Model",
                                 value=VENDOR_MODELS["Anthropic"][0]
                             )
-                        
-                        # 画像生成モデル種別の選択を追加
-                        image_model_type = gr.Radio(
-                            choices=["SDXL", "FLUX"],
-                            label="Image Model Type",
-                            value="SDXL"
-                        )
 
                         with gr.Row():
                             generate_prompt_button = gr.Button("Send", variant='primary')
                             clear_button = gr.Button("Clear", variant='secondary')
                         
-                        fixed_tags_state = gr.State(load_fixed_tags())
-                        fixed_tags_prefix = gr.Textbox(
-                            label="Fixed tags to prepend",
-                            placeholder="Enter tags to add at the beginning of all prompts",
-                            value=""
-                        )
-                        fixed_tags_suffix = gr.Textbox(
-                            label="Fixed tags to append",
-                            placeholder="Enter tags to add at the end of all prompts",
-                            value=""
-                        )
+                        with gr.Accordion("Optional Settings", open=False):
+                            fixed_tags_state = gr.State(load_fixed_tags())
+                            fixed_tags_prefix = gr.Textbox(
+                                label="Fixed tags to prepend",
+                                placeholder="Enter tags to add at the beginning of all prompts",
+                                value=""
+                            )
+                            fixed_tags_suffix = gr.Textbox(
+                                label="Fixed tags to append",
+                                placeholder="Enter tags to add at the end of all prompts",
+                                value=""
+                            )
 
-                        content_type = gr.Radio(
-                            choices=["NORMAL", "NSFW"],
-                            label="Content Type",
-                            value="NORMAL"
-                        )
-
-                        # 画像アップロード用のコンポーネントを追加
-                        reference_image = gr.Image(
-                            label="Reference Image (optional)",
-                            type="pil"
-                        )
+                            # 画像アップロード用のコンポーネントを追加
+                            reference_image = gr.Image(
+                                label="Reference Image (optional)",
+                                type="pil"
+                            )
 
                     with gr.Column(scale=3):
                         generated_prompt = gr.Textbox(

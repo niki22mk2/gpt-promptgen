@@ -12,7 +12,7 @@ def load_templates():
         try:
             with open(toml_path, 'r', encoding='utf-8') as f:
                 content = f.read()
-                
+            
             # マルチラインストリング内のダブルクオーテーションをエスケープ
             content = re.sub(r'(\'\'\'[\s\S]*?\'\'\')', lambda m: m.group(1).replace('"', '\\"'), content)
             
@@ -30,8 +30,14 @@ def load_templates():
                 else:
                     return obj
             
-            # パースしたTOMLを統合
-            all_templates.update(unescape_quotes(parsed_toml))
+            parsed_toml = unescape_quotes(parsed_toml)
+            
+            # 既存のテンプレートと新しいテンプレートをマージ
+            for template_type, templates in parsed_toml.items():
+                if template_type not in all_templates:
+                    all_templates[template_type] = {}
+                all_templates[template_type].update(templates)
+
         except FileNotFoundError:
             print(f"Error: {toml_path} file not found.")
             raise
@@ -41,6 +47,6 @@ def load_templates():
 
     return all_templates
 
-def get_template(template_type, prompt_key='JP_SDXL_NORMAL'):
+def get_template(template_type, prompt_key):
     templates = load_templates()
     return templates[template_type][prompt_key]
