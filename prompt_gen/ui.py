@@ -36,6 +36,14 @@ def create_ui():
                                 label="Model",
                                 value=VENDOR_MODELS["Anthropic"][0]
                             )
+                        
+                        # 画像生成モデル種別の選択を追加
+                        image_model_type = gr.Radio(
+                            choices=["SDXL", "FLUX"],
+                            label="Image Model Type",
+                            value="SDXL"
+                        )
+
                         with gr.Row():
                             generate_prompt_button = gr.Button("Send", variant='primary')
                             clear_button = gr.Button("Clear", variant='secondary')
@@ -105,13 +113,13 @@ def create_ui():
             # イベントハンドラーの設定
             generate_prompt_button.click(
                 fn=generate_prompt_wrapper,
-                inputs=[prompt_request, mode, fixed_tags_prefix, fixed_tags_suffix, content_type, vendor, model, reference_image],
+                inputs=[prompt_request, mode, fixed_tags_prefix, fixed_tags_suffix, content_type, vendor, model, image_model_type, reference_image],
                 outputs=[generated_prompt, supplementary_information, request_history, full_info_textbox, thinking_information, current_page, total_pages]
             )
 
             improve_button.click(
                 fn=improve_prompt_wrapper,
-                inputs=[prompt_request, fixed_tags_prefix, fixed_tags_suffix, content_type, vendor, model],
+                inputs=[prompt_request, fixed_tags_prefix, fixed_tags_suffix, content_type, vendor, model, image_model_type],
                 outputs=[generated_prompt, supplementary_information, thinking_information, full_info_textbox]
             )
 
@@ -190,9 +198,9 @@ def update_full_info(generated_prompt, fixed_tags_prefix, fixed_tags_suffix):
         return full_info_with_tags
     return ""
 
-def generate_prompt_wrapper(prompt_request, mode, fixed_tags_prefix, fixed_tags_suffix, content_type, vendor, model, reference_image):
+def generate_prompt_wrapper(prompt_request, mode, fixed_tags_prefix, fixed_tags_suffix, content_type, vendor, model, image_model_type, reference_image):
     mode_number = list(MODE_NAME_MAPPING.values()).index(mode)
-    prompt_text, title, points, thinking_text = generate_prompt(prompt_request, mode_number, content_type, vendor, model, reference_image)
+    prompt_text, title, points, thinking_text = generate_prompt(prompt_request, mode_number, content_type, vendor, model, image_model_type, reference_image)
     
     # 表示用の文字列を組み立て
     supplementary_info = f"### Title: {title}\n\nPoints: {points}"
@@ -209,8 +217,8 @@ def generate_prompt_wrapper(prompt_request, mode, fixed_tags_prefix, fixed_tags_
     })
     return prompt_text, supplementary_info, updated_history, full_info_with_tags, thinking_text, current_page, total_pages
 
-def improve_prompt_wrapper(prompt_request, fixed_tags_prefix, fixed_tags_suffix, content_type, vendor, model):
-    prompt_text, title, points, thinking_text = improve_prompt(prompt_request, content_type, vendor, model)
+def improve_prompt_wrapper(prompt_request, fixed_tags_prefix, fixed_tags_suffix, content_type, vendor, model, image_model_type):
+    prompt_text, title, points, thinking_text = improve_prompt(prompt_request, content_type, vendor, model, image_model_type)
     supplementary_info = f"### Title: {title}\n\nPoints: {points}"
     full_prompt = (fixed_tags_prefix + ", " if fixed_tags_prefix else "") + prompt_text + (", " + fixed_tags_suffix if fixed_tags_suffix else "")
     full_info_with_tags = update_params_content(full_prompt)

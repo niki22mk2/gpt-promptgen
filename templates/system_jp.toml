@@ -1,5 +1,5 @@
 [SYSTEM_PROMPTS]
-JP = '''
+JP_SDXL_NORMAL = '''
 <instructions>
 <persona>
 あなたは高梨香織、年齢は24歳の日本人女性です。創造性・想像力に富んだ優秀なイラストレーターです。
@@ -353,7 +353,7 @@ safe, sensitive, nsfw, explicit
 '''
 
 
-JP_NSFW = '''
+JP_SDXL_NSFW = '''
 <instructions>
 <persona>
 あなたは高梨香織、年齢は24歳の日本人女性です。創造性・想像力に富んだ優秀なエロ同人作家です。

@@ -8,18 +8,24 @@ from .api.anthropic import AnthropicAPI
 from .api.openai import OpenAIAPI
 from constants.constants import MODE_PROMPT_NAME_MAPPING
 
-def get_system_prompt(content_type):
-    if content_type == "NSFW" and config.output_lang == "JP":
-        return get_template('SYSTEM_PROMPTS', 'JP_NSFW')
-    return get_template('SYSTEM_PROMPTS', config.output_lang)
+def get_system_prompt(content_type, image_model_type):
+    prompt_key = f"{config.output_lang}_{image_model_type}_{content_type}"
+    try:
+        system_prompt = get_template('SYSTEM_PROMPTS', prompt_key)
+        print(f"[Prompt-Gen] Using System Prompt: {prompt_key}")
+        return system_prompt
+    except KeyError:
+        print(f"[Prompt-Gen] Warning: System prompt for '{prompt_key}' not found. Using default JP_SDXL_NORMAL.")
+        return get_template('SYSTEM_PROMPTS', 'JP_SDXL_NORMAL')
 
-def process_prompt(prompt_request, user_prompt_type, content_type, vendor, model, reference_image=None):
+def process_prompt(prompt_request, user_prompt_type, content_type, vendor, model, image_model_type="SDXL", reference_image=None):
     print(f"[Prompt-Gen] Selected User Prompt Type: {user_prompt_type}")
     user_prompt = get_template(user_prompt_type, config.output_lang).format(
         request=prompt_request, 
         seed=random.randint(1, 1000000)
     )
-    system_prompt = get_system_prompt(content_type)
+    
+    system_prompt = get_system_prompt(content_type, image_model_type)
 
     api = AnthropicAPI() if vendor == "Anthropic" else OpenAIAPI()
 
@@ -63,10 +69,10 @@ def parse_response(response_text):
     else:
         raise ValueError("Output format not found in response")
 
-def generate_prompt(prompt_request, mode_number, content_type, vendor, model, reference_image=None):
+def generate_prompt(prompt_request, mode_number, content_type, vendor, model, image_model_type, reference_image=None):
     user_prompt_type = MODE_PROMPT_NAME_MAPPING.get(mode_number, "BASIC_USER_PROMPTS")
 
-    return process_prompt(prompt_request, user_prompt_type, content_type, vendor, model, reference_image)
+    return process_prompt(prompt_request, user_prompt_type, content_type, vendor, model, image_model_type, reference_image)
 
-def improve_prompt(prompt_request, content_type, vendor, model):
-    return generate_prompt(prompt_request, 1, content_type, vendor, model)  # 1 is the mode number for "Refine"
+def improve_prompt(prompt_request, content_type, vendor, model, image_model_type):
+    return generate_prompt(prompt_request, 1, content_type, vendor, model, image_model_type)  # 1 is the mode number for "Refine"

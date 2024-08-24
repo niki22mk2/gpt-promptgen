@@ -41,6 +41,6 @@ def load_templates():
 
     return all_templates
 
-def get_template(template_type, lang='JP'):
+def get_template(template_type, prompt_key='JP_SDXL_NORMAL'):
     templates = load_templates()
-    return templates[template_type][lang]
+    return templates[template_type][prompt_key]
