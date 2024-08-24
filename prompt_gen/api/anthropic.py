@@ -30,7 +30,7 @@ class AnthropicAPI:
             # キャッシュが有効の場合、cache_controlを追加
             if config.anthropic_cache_enabled:
                 system[0]["cache_control"] = {"type": "ephemeral"}
-                print(f"[Prompt-Artisan] Anthropic Prompt cache enabled")
+                print(f"[Prompt-Gen] Anthropic Prompt cache enabled")
 
             response = self.client.beta.prompt_caching.messages.create(
                 model=model,
@@ -40,7 +40,7 @@ class AnthropicAPI:
                 messages=messages
             )
 
-            print(f"[Prompt-Artisan] Anthropic API usage: {response.usage}")
+            print(f"[Prompt-Gen] Anthropic API usage: {response.usage}")
 
             text = prefill + response.content[0].text.strip() if prefill else response.content[0].text.strip()
             return text

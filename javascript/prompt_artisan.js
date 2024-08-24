@@ -1,4 +1,4 @@
-console.log('LLM Prompt Artisan script loaded');
+console.log('LLM Prompt Gen script loaded');
 
 /**
  * wait until element is loaded and returns
@@ -174,7 +174,7 @@ function setupHistoryTable() {
 }
 
 function onUiLoaded() {
-    console.log('LLM Prompt Artisan UI loaded');
+    console.log('LLM Prompt Gen UI loaded');
     addCopyButton();
     setupHistoryTable();
 }

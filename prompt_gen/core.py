@@ -14,7 +14,7 @@ def get_system_prompt(content_type):
     return get_template('SYSTEM_PROMPTS', config.output_lang)
 
 def process_prompt(prompt_request, user_prompt_type, content_type, vendor, model):
-    print(f"[Prompt-Artisan] Selected User Prompt Type: {user_prompt_type}")
+    print(f"[Prompt-Gen] Selected User Prompt Type: {user_prompt_type}")
     user_prompt = get_template(user_prompt_type, config.output_lang).format(
         request=prompt_request, 
         seed=random.randint(1, 1000000)
@@ -33,23 +33,23 @@ def process_prompt(prompt_request, user_prompt_type, content_type, vendor, model
             points = output_json.get('points', '')
 
             if not title:
-                print('[Prompt-Artisan] titleが取得できませんでした')
-                print(f"[Prompt-Artisan]\n{output_json}")
+                print('[Prompt-Gen] titleが取得できませんでした')
+                print(f"[Prompt-Gen]\n{output_json}")
                 title = '取得に失敗しました'
             if not points:
-                print('[Prompt-Artisan] pointsが取得できませんでした')
-                print(f"[Prompt-Artisan]\n{output_json}")
+                print('[Prompt-Gen] pointsが取得できませんでした')
+                print(f"[Prompt-Gen]\n{output_json}")
                 points = '取得に失敗しました'
 
             return prompt_text, title, points, thinking_text
 
         except Exception as e:
             if attempt < config.max_retry:
-                print(f"[Prompt-Artisan] An error occurred while generating the prompt. Retrying in 2 seconds... (Attempt {attempt + 1}/{config.max_retry + 1})")
-                print(f"[Prompt-Artisan] Error details: {e}")
+                print(f"[Prompt-Gen] An error occurred while generating the prompt. Retrying in 2 seconds... (Attempt {attempt + 1}/{config.max_retry + 1})")
+                print(f"[Prompt-Gen] Error details: {e}")
                 time.sleep(2)
             else:
-                print(f"[Prompt-Artisan] Failed to generate the prompt after {config.max_retry + 1} attempts. Please try again later.")
+                print(f"[Prompt-Gen] Failed to generate the prompt after {config.max_retry + 1} attempts. Please try again later.")
                 return "", "", "", f'### <span style="color: red">Error: Failed to generate the prompt. Please retry Generate Prompt.</span> <br><br>{e}'
 
 def parse_response(response_text):

@@ -7,9 +7,9 @@ def load_fixed_tags():
     if pathlib.Path(FIXED_TAGS_FILE).exists():
         with open(FIXED_TAGS_FILE, 'r') as f:
             tags = json.load(f)
-            print(f"[Prompt-Artisan] Loaded fixed tags: {tags}")
+            print(f"[Prompt-Gen] Loaded fixed tags: {tags}")
             return tags
-    print("[Prompt-Artisan] No fixed tags found")
+    print("[Prompt-Gen] No fixed tags found")
     return {'prefix': '', 'suffix': ''}
 
 def save_fixed_tags(prefix, suffix):
@@ -17,4 +17,4 @@ def save_fixed_tags(prefix, suffix):
     output_dir.mkdir(parents=True, exist_ok=True)
     with open(FIXED_TAGS_FILE, 'w') as f:
         json.dump({'prefix': prefix, 'suffix': suffix}, f)
-        print(f"[Prompt-Artisan] Saved fixed tags: prefix: {prefix}, suffix: {suffix}")
+        print(f"[Prompt-Gen] Saved fixed tags: prefix: {prefix}, suffix: {suffix}")

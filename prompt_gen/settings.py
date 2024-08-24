@@ -2,7 +2,7 @@ import gradio as gr
 import modules.shared as shared
 
 def on_ui_settings():
-    section = ('LLM Prompt Artisan', 'LLM Prompt Artisan')
+    section = ('LLM Prompt Gen', 'LLM Prompt Gen')
     shared.opts.add_option('anthropic_api_key', shared.OptionInfo('', 'Anthropic API Key', section=section))
     shared.opts.add_option('anthropic_cache_enabled', shared.OptionInfo(True, 'Enable Anthropic Prompt cache', gr.Checkbox, {}, section=section))
     shared.opts.add_option('openai_api_key', shared.OptionInfo('', 'OpenAI API Key', section=section))

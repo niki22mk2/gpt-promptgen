@@ -7,9 +7,9 @@ from utilities.fixed_tags import load_fixed_tags, save_fixed_tags
 from constants.constants import MODE_NAME_MAPPING, VENDOR_MODELS
 
 def create_ui():
-    with gr.Blocks() as llm_prompt_artisan_interface:
-        with gr.Column(elem_classes="llm-prompt-artisan-container"):
-            # gr.Markdown("# LLM Prompt Artisan")
+    with gr.Blocks() as llm_prompt_gen_interface:
+        with gr.Column(elem_classes="llm-prompt-gen-container"):
+            # gr.Markdown("# LLM Prompt Gen")
             
             with gr.Tab("Prompt Generation"):
                 with gr.Row():
@@ -161,14 +161,14 @@ def create_ui():
             # ベンダー選択が変更されたときにモデル選択を更新
             vendor.change(fn=update_model_choices, inputs=[vendor], outputs=[model])
 
-        llm_prompt_artisan_interface.load(
+        llm_prompt_gen_interface.load(
             fn=lambda x: (x['prefix'], x['suffix']),
             inputs=fixed_tags_state,
             outputs=[fixed_tags_prefix, fixed_tags_suffix]
         )
     
     
-    return [(llm_prompt_artisan_interface, "LLM Prompt Artisan", "llm_prompt_artisan_interface")]
+    return [(llm_prompt_gen_interface, "LLM Prompt Gen", "llm_prompt_gen_interface")]
 
 # ベンダー選択に応じてモデル選択を更新する関数
 def update_model_choices(vendor):
@@ -178,9 +178,9 @@ def update_full_info(generated_prompt, fixed_tags_prefix, fixed_tags_suffix):
     if generated_prompt:
         full_prompt = (fixed_tags_prefix + ", " if fixed_tags_prefix else "") + generated_prompt + (", " + fixed_tags_suffix if fixed_tags_suffix else "")
         full_prompt = full_prompt.strip().strip(',')  # 先頭と末尾のカンマと空白を削除
-        print(f"[Prompt-Artisan] Update prompt for send to buttons")
+        print(f"[Prompt-Gen] Update prompt for send to buttons")
         full_info_with_tags = update_params_content(full_prompt)
-        # print(f"[Prompt-Artisan] Full info with tags: {full_info_with_tags}")
+        # print(f"[Prompt-Gen] Full info with tags: {full_info_with_tags}")
         return full_info_with_tags
     return ""
 

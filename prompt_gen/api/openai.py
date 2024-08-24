@@ -21,7 +21,7 @@ class OpenAIAPI:
                 max_tokens=4096
             )
 
-            print(f"[Prompt-Artisan] OpenAI API usage: {response.usage}")
+            print(f"[Prompt-Gen] OpenAI API usage: {response.usage}")
 
             text = prefill + response.choices[0].message.content.strip() if prefill else response.choices[0].message.content.strip()
             return text

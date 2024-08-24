@@ -1,92 +1,92 @@
 /* 拡張機能のコンテナにユニークなクラスを追加 */
-.llm-prompt-artisan-container {
+.llm-prompt-gen-container {
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
 @media (min-width: 768px) {
-    .llm-prompt-artisan-container {
+    .llm-prompt-gen-container {
         flex-direction: row;
     }
 }
 
-.llm-prompt-artisan-container > * {
+.llm-prompt-gen-container > * {
     flex: 1;
 }
 
-.llm-prompt-artisan-container .gr-form {
+.llm-prompt-gen-container .gr-form {
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
 /* より具体的なセレクタを使用 */
-.llm-prompt-artisan-container .full-width {
+.llm-prompt-gen-container .full-width {
     width: 100% !important;
 }
 
-.llm-prompt-artisan-container .overflow-auto {
+.llm-prompt-gen-container .overflow-auto {
     overflow: auto !important;
 }
 
-.llm-prompt-artisan-container .height-100px {
+.llm-prompt-gen-container .height-100px {
     height: 100px !important;
 }
 
 /* Gradioのクラスを上書きする場合は!importantを使用 */
-.llm-prompt-artisan-container .gradio-container {
+.llm-prompt-gen-container .gradio-container {
     font-family: 'Arial', sans-serif !important;
 }
 
-.llm-prompt-artisan-container .gr-button {
+.llm-prompt-gen-container .gr-button {
     transition: all 0.3s ease !important;
 }
 
-.llm-prompt-artisan-container .gr-button:hover {
+.llm-prompt-gen-container .gr-button:hover {
     transform: translateY(-2px) !important;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
 }
 
-.llm-prompt-artisan-container .gr-form {
+.llm-prompt-gen-container .gr-form {
     background-color: #f5f5f5 !important;
     border-radius: 8px !important;
     padding: 20px !important;
     margin-bottom: 20px !important;
 }
 
-.llm-prompt-artisan-container .gr-input,
-.llm-prompt-artisan-container .gr-textarea {
+.llm-prompt-gen-container .gr-input,
+.llm-prompt-gen-container .gr-textarea {
     border: 1px solid #ddd !important;
     border-radius: 4px !important;
     padding: 8px !important;
 }
 
-.llm-prompt-artisan-container .gr-input:focus,
-.llm-prompt-artisan-container .gr-textarea:focus {
+.llm-prompt-gen-container .gr-input:focus,
+.llm-prompt-gen-container .gr-textarea:focus {
     border-color: #007bff !important;
     outline: none !important;
     box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25) !important;
 }
 
-.llm-prompt-artisan-container #request-history-content ul {
+.llm-prompt-gen-container #request-history-content ul {
     list-style-type: none;
     padding: 0;
     margin: 0;
 }
 
-.llm-prompt-artisan-container .history-item {
+.llm-prompt-gen-container .history-item {
     padding: 8px;
     border-bottom: 1px solid #eee;
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
-.llm-prompt-artisan-container .history-item:hover {
+.llm-prompt-gen-container .history-item:hover {
     background-color: #f0f0f0;
 }
 
-.llm-prompt-artisan-container .mode-button {
+.llm-prompt-gen-container .mode-button {
     flex: 1;
     margin: 0 5px;
     padding: 10px;
@@ -96,8 +96,8 @@
     transition: all 0.3s;
 }
 
-.llm-prompt-artisan-container .mode-button:hover,
-.llm-prompt-artisan-container .mode-button.active {
+.llm-prompt-gen-container .mode-button:hover,
+.llm-prompt-gen-container .mode-button.active {
     background-color: #e0e0e0;
     transform: translateY(-2px);
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
@@ -105,22 +105,22 @@
 
 /* 既存のスタイルはそのまま保持し、以下を修正または追加 */
 
-.llm-prompt-artisan-container #generated-prompt label {
+.llm-prompt-gen-container #generated-prompt label {
     display: flex;
     flex-direction: column;
 }
 
-.llm-prompt-artisan-container #generated-prompt .label-wrapper {
+.llm-prompt-gen-container #generated-prompt .label-wrapper {
     /* display: flex; を削除 */
     align-items: center;
     /* margin-bottom: 5px; */
 }
 
-.llm-prompt-artisan-container #generated-prompt .label-wrapper span {
+.llm-prompt-gen-container #generated-prompt .label-wrapper span {
     flex-grow: 1;
 }
 
-.llm-prompt-artisan-container .copy-button {
+.llm-prompt-gen-container .copy-button {
     padding: 2px 6px;
     font-size: 0.8em;
     background-color: transparent;
@@ -130,50 +130,50 @@
     vertical-align: middle;
 }
 
-/* .llm-prompt-artisan-container .copy-button:hover {
+/* .llm-prompt-gen-container .copy-button:hover {
     background-color: rgba(0, 0, 0, 0.1);
 } */
 
-.llm-prompt-artisan-container .copy-button:disabled {
+.llm-prompt-gen-container .copy-button:disabled {
     opacity: 0.5;
     cursor: not-allowed;
 }
 
-.llm-prompt-artisan-container #generated-prompt textarea {
+.llm-prompt-gen-container #generated-prompt textarea {
     width: 100%;
     /* margin-top: 5px; */
 }
 
 /* テキストエリアのホバー効果を無効化 */
-.llm-prompt-artisan-container #generated-prompt:hover {
+.llm-prompt-gen-container #generated-prompt:hover {
     background-color: transparent;
 }
 
 /* コピーボタンのホバー効果を明示的に設定 */
-/* .llm-prompt-artisan-container .label-wrapper:hover .copy-button {
+/* .llm-prompt-gen-container .label-wrapper:hover .copy-button {
     background-color: transparent;
 } */
 
-/* .llm-prompt-artisan-container .label-wrapper .copy-button:hover {
+/* .llm-prompt-gen-container .label-wrapper .copy-button:hover {
     background-color: rgba(0, 0, 0, 0.1);
 } */
 
 /* 既存のスタイルはそのまま保持し、以下を追加 */
 
-.llm-prompt-artisan-container #pagination-row {
+.llm-prompt-gen-container #pagination-row {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 20px;
 }
 
-.llm-prompt-artisan-container #pagination-row > div {
+.llm-prompt-gen-container #pagination-row > div {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.llm-prompt-artisan-container .pagination-button {
+.llm-prompt-gen-container .pagination-button {
     width: 40px !important;
     height: 40px !important;
     padding: 0 !important;
@@ -188,11 +188,11 @@
     transition: background-color 0.3s ease !important;
 }
 
-.llm-prompt-artisan-container .pagination-button:hover {
+.llm-prompt-gen-container .pagination-button:hover {
     background-color: #e0e0e0 !important;
 }
 
-.llm-prompt-artisan-container #page-info {
+.llm-prompt-gen-container #page-info {
     font-size: 16px !important;
     margin: 0 10px !important;
     text-align: center;
@@ -202,29 +202,29 @@
     align-items: center;
 }
 
-.llm-prompt-artisan-container #request-history-content {
+.llm-prompt-gen-container #request-history-content {
     width: 100%;
     overflow-x: auto;
 }
 
-.llm-prompt-artisan-container #request-history-content table {
+.llm-prompt-gen-container #request-history-content table {
     width: 100%;
     border-collapse: collapse;
 }
 
-.llm-prompt-artisan-container #request-history-content th,
-.llm-prompt-artisan-container #request-history-content td {
+.llm-prompt-gen-container #request-history-content th,
+.llm-prompt-gen-container #request-history-content td {
     padding: 8px;
     text-align: left;
     border-bottom: 1px solid #ddd;
 }
 
-.llm-prompt-artisan-container #request-history-content th {
+.llm-prompt-gen-container #request-history-content th {
     background-color: #f2f2f2;
     font-weight: bold;
 }
 
-.llm-prompt-artisan-container .view-details-btn {
+.llm-prompt-gen-container .view-details-btn {
     background-color: #007bff;
     color: white;
     border: none;
@@ -233,11 +233,11 @@
     cursor: pointer;
 }
 
-.llm-prompt-artisan-container .view-details-btn:hover {
+.llm-prompt-gen-container .view-details-btn:hover {
     background-color: #0056b3;
 }
 
-.llm-prompt-artisan-container .history-details-modal {
+.llm-prompt-gen-container .history-details-modal {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -252,7 +252,7 @@
     overflow-y: auto;
 }
 
-.llm-prompt-artisan-container #close-details-modal {
+.llm-prompt-gen-container #close-details-modal {
     background-color: #dc3545;
     color: white;
     border: none;
@@ -262,67 +262,67 @@
     margin-top: 10px;
 }
 
-.llm-prompt-artisan-container #close-details-modal:hover {
+.llm-prompt-gen-container #close-details-modal:hover {
     background-color: #c82333;
 }
 
-.llm-prompt-artisan-container #request-history-content .truncate {
+.llm-prompt-gen-container #request-history-content .truncate {
     max-width: 200px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
-.llm-prompt-artisan-container .history-details-modal p {
+.llm-prompt-gen-container .history-details-modal p {
     word-wrap: break-word;
     max-width: 100%;
 }
 
 /* 既存のスタイルの後に以下を追加 */
 
-.llm-prompt-artisan-container #request-history-content table {
+.llm-prompt-gen-container #request-history-content table {
     table-layout: fixed;
     width: 100%;
 }
 
-.llm-prompt-artisan-container #request-history-content th,
-.llm-prompt-artisan-container #request-history-content td {
+.llm-prompt-gen-container #request-history-content th,
+.llm-prompt-gen-container #request-history-content td {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
 
-.llm-prompt-artisan-container #request-history-content th:nth-child(1),
-.llm-prompt-artisan-container #request-history-content td:nth-child(1) {
+.llm-prompt-gen-container #request-history-content th:nth-child(1),
+.llm-prompt-gen-container #request-history-content td:nth-child(1) {
     width: 9%; /* Timestamp */
 }
 
-.llm-prompt-artisan-container #request-history-content th:nth-child(2),
-.llm-prompt-artisan-container #request-history-content td:nth-child(2) {
+.llm-prompt-gen-container #request-history-content th:nth-child(2),
+.llm-prompt-gen-container #request-history-content td:nth-child(2) {
     width: 7%; /* Mode */
 }
 
-.llm-prompt-artisan-container #request-history-content th:nth-child(3),
-.llm-prompt-artisan-container #request-history-content td:nth-child(3) {
+.llm-prompt-gen-container #request-history-content th:nth-child(3),
+.llm-prompt-gen-container #request-history-content td:nth-child(3) {
     width: 15%; /* Request */
 }
 
-.llm-prompt-artisan-container #request-history-content th:nth-child(4),
-.llm-prompt-artisan-container #request-history-content td:nth-child(4) {
+.llm-prompt-gen-container #request-history-content th:nth-child(4),
+.llm-prompt-gen-container #request-history-content td:nth-child(4) {
     width: 29%; /* Generated Prompt */
 }
 
-.llm-prompt-artisan-container #request-history-content th:nth-child(5),
-.llm-prompt-artisan-container #request-history-content td:nth-child(5) {
+.llm-prompt-gen-container #request-history-content th:nth-child(5),
+.llm-prompt-gen-container #request-history-content td:nth-child(5) {
     width: 15%; /* Title */
 }
 
-.llm-prompt-artisan-container #request-history-content th:nth-child(6),
-.llm-prompt-artisan-container #request-history-content td:nth-child(6) {
+.llm-prompt-gen-container #request-history-content th:nth-child(6),
+.llm-prompt-gen-container #request-history-content td:nth-child(6) {
     width: 20%; /* Points */
 }
 
-.llm-prompt-artisan-container #request-history-content th:nth-child(7),
-.llm-prompt-artisan-container #request-history-content td:nth-child(7) {
+.llm-prompt-gen-container #request-history-content th:nth-child(7),
+.llm-prompt-gen-container #request-history-content td:nth-child(7) {
     width: 5%; /* Action */
 }

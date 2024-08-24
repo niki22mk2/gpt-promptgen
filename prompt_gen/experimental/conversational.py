@@ -142,11 +142,11 @@ def process_prompt(prompt_request):
 
         except Exception as e:
             if attempt < max_retries - 1:
-                print(f"[Prompt-Artisan] An error occurred while generating the prompt. Retrying in {retry_interval} seconds... (Attempt {attempt + 1}/{max_retries})")
-                print(f"[Prompt-Artisan] Error details: {e}")
+                print(f"[Prompt-Gen] An error occurred while generating the prompt. Retrying in {retry_interval} seconds... (Attempt {attempt + 1}/{max_retries})")
+                print(f"[Prompt-Gen] Error details: {e}")
                 time.sleep(retry_interval)
             else:
-                print(f"[Prompt-Artisan] Failed to generate the prompt after {max_retries} attempts. Please try again later.")
+                print(f"[Prompt-Gen] Failed to generate the prompt after {max_retries} attempts. Please try again later.")
                 return "", f'### <span style="color: red">Error: Failed to generate the prompt. Please retry Generate Prompt.</span> <br><br>{e}'
 
 def generate_prompt(prompt_request):
