@@ -13,7 +13,7 @@ def get_system_prompt(content_type):
         return get_template('SYSTEM_PROMPTS', 'JP_NSFW')
     return get_template('SYSTEM_PROMPTS', config.output_lang)
 
-def process_prompt(prompt_request, user_prompt_type, content_type, vendor, model):
+def process_prompt(prompt_request, user_prompt_type, content_type, vendor, model, reference_image=None):
     print(f"[Prompt-Gen] Selected User Prompt Type: {user_prompt_type}")
     user_prompt = get_template(user_prompt_type, config.output_lang).format(
         request=prompt_request, 
@@ -25,7 +25,7 @@ def process_prompt(prompt_request, user_prompt_type, content_type, vendor, model
 
     for attempt in range(config.max_retry + 1):
         try:
-            response_text = api.generate_message(system_prompt, user_prompt, prefill="<antThinking>", model=model)
+            response_text = api.generate_message(system_prompt, user_prompt, prefill="<antThinking>", model=model, reference_image=reference_image)
             thinking_text, output_json = parse_response(response_text)
 
             prompt_text = output_json['prompt'].strip()
@@ -63,10 +63,10 @@ def parse_response(response_text):
     else:
         raise ValueError("Output format not found in response")
 
-def generate_prompt(prompt_request, mode_number, content_type, vendor, model):
+def generate_prompt(prompt_request, mode_number, content_type, vendor, model, reference_image=None):
     user_prompt_type = MODE_PROMPT_NAME_MAPPING.get(mode_number, "BASIC_USER_PROMPTS")
 
-    return process_prompt(prompt_request, user_prompt_type, content_type, vendor, model)
+    return process_prompt(prompt_request, user_prompt_type, content_type, vendor, model, reference_image)
 
 def improve_prompt(prompt_request, content_type, vendor, model):
     return generate_prompt(prompt_request, 1, content_type, vendor, model)  # 1 is the mode number for "Refine"

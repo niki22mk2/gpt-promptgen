@@ -1,18 +1,38 @@
 from anthropic import Anthropic
 from ..config import config
+from utilities.image_utils import process_reference_image
 
 class AnthropicAPI:
     def __init__(self):
         self.client = Anthropic(api_key=config.anthropic_api_key, timeout=30.0)
 
-    def generate_message(self, system_prompt, user_prompt, prefill="", model="claude-3-5-sonnet-20240620"):
+    def generate_message(self, system_prompt, user_prompt, prefill="", model="claude-3-5-sonnet-20240620", reference_image=None):
         try:
             messages = [
                 {
                     "role": "user",
-                    "content": user_prompt
+                    "content": []
                 }
             ]
+
+            # テキストコンテンツを追加
+            messages[0]["content"].append({
+                "type": "text",
+                "text": user_prompt
+            })
+
+            # 参考画像が提供された場合、画像コンテンツを追加
+            if reference_image:
+                img_str = process_reference_image(reference_image)
+                if img_str:
+                    messages[0]["content"].append({
+                        "type": "image",
+                        "source": {
+                            "type": "base64",
+                            "media_type": "image/png",
+                            "data": img_str
+                        }
+                    })
 
             if prefill:
                 messages.append({

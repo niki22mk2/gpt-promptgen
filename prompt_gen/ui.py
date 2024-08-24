@@ -58,6 +58,12 @@ def create_ui():
                             value="NORMAL"
                         )
 
+                        # 画像アップロード用のコンポーネントを追加
+                        reference_image = gr.Image(
+                            label="Reference Image (optional)",
+                            type="pil"
+                        )
+
                     with gr.Column(scale=3):
                         generated_prompt = gr.Textbox(
                             label="Generated Prompt",
@@ -99,7 +105,7 @@ def create_ui():
             # イベントハンドラーの設定
             generate_prompt_button.click(
                 fn=generate_prompt_wrapper,
-                inputs=[prompt_request, mode, fixed_tags_prefix, fixed_tags_suffix, content_type, vendor, model],
+                inputs=[prompt_request, mode, fixed_tags_prefix, fixed_tags_suffix, content_type, vendor, model, reference_image],
                 outputs=[generated_prompt, supplementary_information, request_history, full_info_textbox, thinking_information, current_page, total_pages]
             )
 
@@ -184,9 +190,9 @@ def update_full_info(generated_prompt, fixed_tags_prefix, fixed_tags_suffix):
         return full_info_with_tags
     return ""
 
-def generate_prompt_wrapper(prompt_request, mode, fixed_tags_prefix, fixed_tags_suffix, content_type, vendor, model):
+def generate_prompt_wrapper(prompt_request, mode, fixed_tags_prefix, fixed_tags_suffix, content_type, vendor, model, reference_image):
     mode_number = list(MODE_NAME_MAPPING.values()).index(mode)
-    prompt_text, title, points, thinking_text = generate_prompt(prompt_request, mode_number, content_type, vendor, model)
+    prompt_text, title, points, thinking_text = generate_prompt(prompt_request, mode_number, content_type, vendor, model, reference_image)
     
     # 表示用の文字列を組み立て
     supplementary_info = f"### Title: {title}\n\nPoints: {points}"
