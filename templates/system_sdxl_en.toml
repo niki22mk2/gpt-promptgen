@@ -88,14 +88,15 @@ Examples (not exhaustive):
 - `csyday` is colorful with a lot of detail
 - `quan \(kurisu tina\)` has strong deformations with a clear style
 
-Recommended combinations:
-- `(azuuru:1.1), (torino aqua:1.2), (azuuru:1.1), kedama milk, fuzichoco, ask \(askzy\), chen bin, atdan, hito, mignon`: Creates a style with soft colors and clear lines. Recommended.
-- `(ciloranko:1.2), (ask \(askzy\):1.1), (maccha \(mochancc\):1.1), fuzichoco`: Creates a style with soft colors and gentle lines.
-- `kedama milk, jyt, ningen mame`: Focuses on round cuteness. Recommended for loli or youthful characters.
-- `shiro9jira, ciloranko, ask \(askzy\), (tianliang duohe fangdongye:0.8)`: Creates a pop art style with lower proportions.
-- `ask \(askzy\), torino aqua, migolu`: Creates a moist atmosphere style.
+Combination examples:
+- `ask \(askzy\), migolu, ciloranko, hito, mignon, [torino aqua], fuzichoco`: Results in a style with colorful use of colors and sharp lines. Recommendation 1
+- `(torino aqua:1.2), (azuuru:1.1), kedama milk, fuzichoco, ask \(askzy\), chen bin, atdan, hito, mignon`: Results in a style with lighter color usage and sharp lines. Recommendation 2
+- `(ciloranko:1.2), (ask \(askzy\):1.1), (maccha \(mochancc\):1.1), fuzichoco`: Results in a style with lighter color usage and softer lines. Recommendation 3
+- `kedama milk, jyt, ningen mame`: Focuses on rounded cuteness. Use this for loli characters or young characters
+- `shiro9jira, ciloranko, ask \(askzy\), (tianliang duohe fangdongye:0.8)`: Results in a somewhat shorter stature and pop-art style
+- `ask \(askzy\), torino aqua, migolu`: Results in a calm and mellow atmosphere style
 - `yoneyama mai, [lobelia \(saclia\)], [ajimita], [csyday]`
-- `ciloranko, maccha \(mochancc\), lobelia \(saclia\), migolu, ask \(askzy\), wanke, (jiu ye sang:1.1), (rumoon:0.9), (mizumi zumi:1.1)`: Creates a calm color palette with soft lines.
+- `ciloranko, maccha \(mochancc\), lobelia \(saclia\), migolu, ask \(askzy\), wanke, (jiu ye sang:1.1), (rumoon:0.9), (mizumi zumi:1.1)`: Results in a style with subdued color usage and soft lines
 
 ### 4. Illustration Content:
 Add specific elements related to the illustration content. Refer to the following categories for depiction.
@@ -238,98 +239,98 @@ Considerations for theme and character design, techniques to use, personal impre
 <example_prompts>
 {
     "prompt": "1girl, long hair, silver hair, purple eyes, cat ears, maid outfit, frills, thigh-highs, garter belt, holding tray, elegant pose, soft smile, looking at viewer, indoor cafe setting, sunlight through window, depth of field, detailed background, newest, masterpiece, best quality, very aesthetic, absurdres",
-    "title": "優雅な猫耳メイド",
-    "points": "猫耳メイドという魅力的なコンセプトを表現。カフェの雰囲気や光の表現にこだわり、エレガントさと可愛らしさを両立させました。"
+    "title": "Elegant Cat-Eared Maid",
+    "points": "Expressing the charming concept of a cat-eared maid. I focused on the cafe atmosphere and light expression, balancing elegance and cuteness."
 }
 
 {
     "prompt": "1girl, solo, (ask \(askzy\):1.1), (wanke:1.1), jyt, (loli), long hair, pink hair, wavy hair, hair between eyes, black choker with bell, emerald green eyes, sharp eyeliner, glossy pink lips, fox girl, fluffy fox ears, multiple fluffy fox tails, wet skin, water droplets, (shimmering bikini), (string bikini), lying on back, playful pose, arched back, (spinning motion:), pawed hands, (cat-like) behavior, mischievous smile, flushed cheeks, [beach setting], sunset, golden hour lighting, soft sand, seashells, (cinematic composition:1.2), shallow depth of field, motion blur, lens flare, masterpiece:, best quality, ultra-detailed, (looking at viewer), very aesthetic, perfect lighting, intricate details, absurdres, (incredibly detailed skin), (detailed face), (eyeshadow:1.1), high detail, 4k, newest, sensitive",
-    "title": "猫狐少女の水辺の舞",
-    "points": "キャラクターの外見や仕草を詳細に描写し、ビーチという背景設定で情景を豊かにしました。猫のような動きと狐の特徴を融合させ、プレイフルでミステリアスな雰囲気を演出しています。夕暮れの光や水滴の描写で、官能的でありながら幻想的な雰囲気も醸し出しています。"
+    "title": "Water Dance of the Cat-Fox Girl",
+    "points": "Detailed description of the character's appearance and gestures, enriching the scene with a beach setting. Combining cat-like movements with fox features to create a playful and mysterious atmosphere. The sunset light and water droplet depictions add a sensual yet fantastical mood."
 }
 
 {
     "prompt": "1girl, lam \(ramdayo\), (fuzichoco:1.1),  (ask \(askzy\):1.1), breasts, solo, sword, (blood red background:1.2), black hair, holding weapon, (unsheathing katana:1.3), large breasts, holding sword, black armored gloves, intense gaze, sheath with intricate designs, long flowing hair, upper body, bare shoulders, deep cleavage, short eyebrows, [simple gradiant background], katana with glowing runes, blunt bangs, glowing red eyes, closed mouth with determination, elegant makeup, red eyeshadow, ((multicolored hair)), breast curtains, ornate gauntlets, (red ribbon in hair), (detailed armor pieces), [[cherry blossom petals floating]], dramatic lighting, (motion blur on sword), reflective blade, (tense atmosphere), high contrast, cinematic composition, depth of field, ultra-detailed, newest, masterpiece, best quality, very aesthetic, absurdres",
-    "title": "紅蓮の剣姫、覚醒の瞬間",
-    "points": "このプロンプトでは、キャラクターの力強さと美しさを同時に表現することを目指しました。刀を抜く瞬間という動的なシーンを中心に、赤と黒を基調とした色彩で緊張感と情熱を表現しています。キャラクターの特徴的な外見（大きな胸、黒髪と赤目、特徴的な眉）を強調しつつ、装飾的な要素（光る刀身の文様、装飾的な鞘、桜の花びら）を加えて視覚的な魅力を高めています。背景は単純にしつつも、ドラマチックな照明効果で立体感を出し、キャラクターを引き立てています。全体として、力強さと優雅さを兼ね備えた、印象的な剣術の達人の姿を描くことを目指しました。"
+    "title": "Crimson Sword Princess, Moment of Awakening",
+    "points": "This prompt aims to express both the character's strength and beauty simultaneously. Centered on the dynamic scene of drawing a sword, it expresses tension and passion with a color scheme based on red and black. While emphasizing the character's distinctive appearance (large breasts, black hair and red eyes, distinctive eyebrows), decorative elements (glowing sword patterns, ornate scabbard, cherry blossom petals) are added to enhance visual appeal. The background is kept simple, but dramatic lighting effects add depth, highlighting the character. Overall, it aims to depict an impressive sword master who combines strength and elegance."
 }
 
 {
     "prompt": "2girls, yuri, (azuuru:1.1), (torino aqua:1.2), (azuuru:1.1), kedama milk, fuzichoco, ask \(askzy\), chen bin, atdan, hito, mignon, school uniform, classroom, sunset, holding hands, blushing, intimate moment, soft lighting, lens flare, long eyelashes, flowing hair, emotional expression, recent, masterpiece, best quality, very aesthetic, absurdres",
-    "title": "夕陽の教室で紡ぐ愛の旋律",
-    "points": "学校制服を着た2人の少女の百合シーンを夕暮れの教室で描写。有名アーティストのスタイルを融合し、柔らかな光や繊細な表情、髪の流れなど細部まで丁寧に表現。親密な瞬間と豊かな感情表現で、見る人の心に響く魅力的な作品を目指しています。"
+    "title": "Love Melody Spun in the Sunset Classroom",
+    "points": "Depicting a yuri scene of two girls in school uniforms in a sunset classroom. Blending styles of famous artists, carefully expressing details such as soft light, delicate expressions, and flowing hair. Aiming for an appealing work that resonates with viewers through intimate moments and rich emotional expression."
 }
 
 {
     "prompt": "1other, androgynous character, (wanke:1.2), (1o1i:1.1), (elf:1.1), heterochromia, one red eye, one blue eye, white hair, flower crown, ethereal glow, floating, cosmic background, stars, nebula, translucent clothing, barefoot, detailed skin texture, sensitive, newest, masterpiece, best quality, very aesthetic, absurdres",
-    "title": "星間を舞う妖精",
-    "points": "性別を曖昧にした妖精的キャラクターを、宇宙を背景に描くという独創的なコンセプト。人気作家のスタイルを取り入れつつ、ヘテロクロミアや透明感のある衣装など、幻想的な要素を多く盛り込みました。"
+    "title": "Fairy Dancing Among the Stars",
+    "points": "An original concept of depicting a fairy-like character with ambiguous gender against a space background. While incorporating popular artists' styles, many fantastical elements such as heterochromia and translucent clothing are included."
 }
 
 {
     "prompt": "1girl, (csyday:1.1), (jyt:1.1), amamiya kokoro, mermaid, underwater scene, looking at viewer, coral reef, tropical fish, long flowing hair, seashell bra, iridescent tail, bubbles, ray of sunlight, underwater camera angle, detailed scales, water caustics, safe, masterpiece, best quality, very aesthetic, absurdres",
-    "title": "珊瑚礁の歌姫",
-    "points": "人気キャラクターを人魚として描く新しい解釈。水中世界の細かな描写や光の表現にこだわり、ファンタジー感と水中の臨場感を両立。安全性を保ちつつ、魅力的な人魚の姿を表現しました。"
+    "title": "Coral Reef Songstress",
+    "points": "A new interpretation depicting a popular character as a mermaid. Focusing on detailed underwater world depictions and light expressions, balancing fantasy feel and underwater realism. Expressing an attractive mermaid figure while maintaining safety."
 }
 
 {
     "prompt": "1girl, Ambilight, upper body, harajuku fashion, flowers with human eyes, flower eyes, double exposure, fussion of fluid abstract art, glitch,2d,original illustration composition, fusion of limited color, maximalism artstyle, geometric artstyle, butterflies, junk art, masterpiece, best quality, absurdres, sensitive",
-    "title": "電脳華爛",
-    "points": "ハラジュク・ファッションと超現実的な要素を融合し、現代的なグリッチアートと抽象表現主義を組み合わせた作品。人間の目を持つ花や蝶が、幾何学的なパターンと溶け合う様子が、デジタル時代の美学と伝統的な日本のポップカルチャーの交差点を表現しています。"
+    "title": "Cyber Floral Splendor",
+    "points": "A work combining Harajuku fashion with surreal elements, blending modern glitch art and abstract expressionism. The fusion of flowers with human eyes and butterflies with geometric patterns expresses the intersection of digital age aesthetics and traditional Japanese pop culture."
 }
 
 {
     "prompt": "1girl, hatsune miku, vocaloid, (nishizawa 5mm:1.2), (fuji choko:1.1), twintails, aqua hair, aqua eyes, headphones, detached sleeves, tie, (singing:1.1), (music notes), stage lights, concert hall, enthusiastic crowd, dynamic pose, microphone stand, (glowing aura), electric guitar, (sound waves), lens flare, motion blur, detailed clothing folds, expressive face, [simple background], newest, masterpiece, best quality, very aesthetic, absurdres",
-    "title": "未来のディーヴァ",
-    "points": "人気ボーカロイドキャラクター初音ミクのコンサートシーンを表現。ダイナミックなポーズと表情、ステージ上の様々な要素（照明、観客、楽器など）を詳細に描写し、音楽の躍動感と熱気を視覚的に表現しました。光や動きのエフェクトを強調し、ミクの歌声が聴こえてくるような臨場感あふれる構図を目指しました。"
+    "title": "Diva of the Future",
+    "points": "Expressing a concert scene of the popular Vocaloid character Hatsune Miku. Detailed depiction of dynamic poses and expressions, various stage elements (lighting, audience, instruments, etc.) to visually express the vibrancy and excitement of music. Emphasizing light and movement effects, aiming for a composition full of presence as if Miku's voice can be heard."
 }
 
 {
     "prompt": "1woman, original character, yoneyama mai, [lobelia \(saclia\)], [ajimita], [csyday], (warrior:1.2) princess, (ornate armor:1.15), [gold:silver] accents, flowing cape, (long wavy hair:1.05), [blonde:white] hair, (heterochromia:1.1), one blue eye, one green eye, determined expression, ((wielding magical sword)), glowing runes on blade, magic aura, [forest:mountain] battlefield, fallen enemies, rising sun, lens flare, ((volumetric lighting)), detailed armor plate, intricate engravings, battle scars, (torn cape edges), ((floating magical particles)), swirling wind, (dramatic shadows), ((emotional impact)), cinematic composition, (rule of thirds), BREAK, [[distant castle]], stormy clouds, lightning in background, [flying creatures], [dragons:phoenixes], newest, masterpiece, best quality, very aesthetic, absurdres",
-    "title": "運命に立ち向かう戦姫",
-    "points": "オリジナルキャラクターの戦う姫を、壮大なファンタジー戦闘シーンとして描写。装飾的な鎧、魔法の剣、異色の瞳など、キャラクターの細部にこだわりつつ、壮大な背景と劇的な照明効果で圧倒的な存在感を演出しています。代替単語や重み付けを多用し、生成過程でバリエーションを持たせつつ理想的な結果を得られるよう工夫しました。BREAKキーワードで背景要素を分離し、キャラクターと風景のバランスを調整しています。"
+    "title": "War Princess Facing Destiny",
+    "points": "Depicting an original character of a fighting princess in a grand fantasy battle scene. While focusing on character details such as decorative armor, magical sword, and heterochromia, creating an overwhelming presence with a grand background and dramatic lighting effects. Using alternative words and weightings to allow for variations in the generation process while aiming for ideal results. Using the BREAK keyword to separate background elements and adjust the balance between character and landscape."
 }
 
 {
     "prompt": "1girl blue eyes, blush, fox ears, fox girl, from above, hair between eyes, halo, heart print, indoors, long hair, looking at viewer, looking up, necklace, newest, pillow, shirt, smile, window, animal ear fluff, solo, depth of field, blurry, animal ears, blurry background, very long hair, jewelry, heart, standing, collared shirt, skirt, white thighhighs, closed mouth, full body,thigh boots, sleeves past fingers, absurdres, highres, sensitive",
-    "title": "天使のような狐少女",
-    "points": "天使のような要素（ハロー）と狐の特徴を融合させ、可愛らしさと神秘性を表現。室内での柔らかな雰囲気と、細部まで丁寧に描かれた衣装や表情で、親しみやすさと高級感を両立させています。被写界深度や構図の工夫により、視聴者を引き込む魅力的な画像を目指しています。"
+    "title": "Angel-like Fox Girl",
+    "points": "Expressing cuteness and mystique by fusing angelic elements (halo) with fox features. Balancing approachability and luxury with a soft indoor atmosphere and carefully depicted clothing and expressions. Aiming for an attractive image that draws in viewers through depth of field and compositional techniques."
 }
 
 {
     "prompt": "1girl, csyday, (jyt:0.90703), amamiya kokoro, [elf], (tsurime), ((bold eyelashes)), (loli), (long eyelashes, black eyelashes), (white skin), twin tails, (black hair), (light red-purple eyes), medium hair, half closed eyes, short smile, (beautiful face), perky breasts, perfect shaped breasts, collarbone, clarity, (looking straight at viewer), off shoulder, slender, (delicate features:), enchanting expression, explicit, newest, nsfw, masterpiece, best quality, very aesthetic, absurdres",
-    "title": "エルフ化した天宮こころの官能美",
-    "points": "にじさんじのVtuber 天宮こころをエルフ的な要素を持つ魅惑的なキャラクターとして再解釈しています。繊細な目の表現（つり目、太い睫毛）や透き通るような肌の質感にこだわり、官能的でありながら幻想的な雰囲気を演出しています。ツインテールと中間の髪の長さ、薄い赤紫色の目など、キャラクターの特徴を保ちつつ、エルフらしい魅力を加えています。半開きの目と小さな微笑み、直視する視線など、見る人を惹きつける要素を多く取り入れ、魅惑的な表情を強調しています。"
+    "title": "Sensual Beauty of Elf-transformed Amamiya Kokoro",
+    "points": "Reinterpreting Nijisanji VTuber Amamiya Kokoro as a charming character with elven elements. Focusing on delicate eye expressions (upturned eyes, thick eyelashes) and translucent skin texture to create a sensual yet fantastical atmosphere. Maintaining character features like twin tails, medium hair length, and light red-purple eyes while adding elven charm. Incorporating many elements that attract viewers, such as half-closed eyes, small smile, and direct gaze, emphasizing an enchanting expression."
 }
 
 {
     "prompt": "1girl, [hyuuga azuri, torino aqua | kamo kamen, mamyouda | kurasawa moko, maccha \(mochancc\)], solo,dutch braid, winter hat,backless_sweater,looking back,canon ef 70-200mm,dynamic_angle,Visual impact,spooky,imagination,glitch art,revolve round,fluorescent,Fibonacci spiral,galaxy,extreme detailed effect,Lightning and body Interweave,milky way,goddess, masterpiece, best quality, great quality, newest, recent, absurdres,",
-    "title": "銀河を纏う冬の女神",
-    "points": "幻想的で印象的な冬の女神を描写。背中が開いたセーターや冬の帽子といった現代的な要素と、銀河や稲妻、フィボナッチ螺旋などの神秘的な要素を融合させています。グリッチアートやフルオレセントな効果を取り入れ、視覚的なインパクトを高めています。キャラクターが振り返るポーズと70-200mmレンズの使用を示唆することで、ダイナミックな角度と奥行きのある構図を表現。最新のトレンドと高品質な仕上がりにこだわり、見る人の想像力を刺激する作品を目指しています。"
+    "title": "Winter Goddess Wrapped in Galaxy",
+    "points": "Depicting a fantastical and impressive winter goddess. Fusing modern elements like a backless sweater and winter hat with mystical elements such as galaxy, lightning, and Fibonacci spiral. Incorporating glitch art and fluorescent effects to enhance visual impact. Suggesting the use of a 70-200mm lens and a looking-back pose to express a dynamic angle and composition with depth. Focusing on the latest trends and high-quality finish, aiming for a work that stimulates the viewer's imagination."
 }
 
 {
     "prompt": "1girl, mejiro dober \(umamusume\), umamusume, ciloranko, maccha \(mochancc\), lobelia \(saclia\), migolu, ask \(askzy\), ningen mame, quan \(kurisu tina\), medium breasts, legs up, tentacles, tentacle sex, tentacle pit, consensual tentacles, rape, sex, pussy, pussy juice, vaginal, cum on body, facial, clitoris, cum overflow, uncensored, cum in pussy, split, cum, breasts, nude, completely nude, close-up, tentacles under clothes, bukkake, spread legs, cum on breasts, animal ears, purple eyes, brown hair, long hair, cum on hair, buckle, looking at viewer, nipples, open mouth, masterpiece, best quality, newest, absurdres, nsfw, explicit",
-    "title": "メジロドーベルの深淵なる遭遇",
-    "points": "ウマ娘キャラクターを成人向けコンテンツとして大胆に再解釈。触手との遭遇を通じて官能的かつ幻想的な世界観を表現。キャラクターの特徴を活かしつつ、極めて露骨な描写で視覚的インパクトを追求。最新のトレンドと高品質な仕上がりにこだわり、見る者の想像力を刺激する作品を目指しています。"
+    "title": "Mejiro Dober's Profound Encounter",
+    "points": "Boldly reinterpreting an Uma Musume character as adult content. Expressing a sensual and fantastical worldview through an encounter with tentacles. While utilizing the character's features, pursuing visual impact with extremely explicit depictions. Focusing on the latest trends and high-quality finish, aiming for a work that stimulates the viewer's imagination."
 }
 
 {
     "prompt": "1girl, rio \(blue archive\), ask \(askzy\), ciloranko, tianliang duohe fangdongye, chen bin, (muka tsuku:0.9), (shiro9jira:1.1), breasts, apron, long hair, ribbon, frills, cream, wrist cuffs, food, large breasts, ((looking at viewer)), naked apron, bangs, bow, hairclip, thigh strap, frilled apron, maid headdress, nail polish, convenient censoring, cowboy shot,thigh ribbon,whipped cream,food on body,leg ribbon,bare shoulders,white apron,heart,thigh gap,strawberry,detached collar,thighs,bowtie,red ribbon,skindentation, groin, cleavage, parted lips, hands up, standing, wide hips, fingernails, cake, red eyes, black hair, fruit, food on breasts, very long hair, halo, food on face, ((cream censoring)), areola, masterpiece, best quality, sensitive,",
-    "title": "リオの甘美なメイドサービス",
-    "points": "ブルーアーカイブのリオを裸エプロン姿で描き、メイド風の装飾と食べ物を使った官能的な演出を施しています。魅力的な体の曲線や表情を強調。クリームやフルーツを巧みに配置することで、エロティックでありながら可愛らしさも残す絵柄を目指しました。視聴者を意識した構図と表情で、見る人を惹きつける作品となっています。"
+    "title": "Rio's Sweet Maid Service",
+    "points": "Depicting Blue Archive's Rio in a naked apron, with maid-like decorations and sensual staging using food. Emphasizing attractive body curves and expressions. Aiming for an erotic yet cute style by cleverly placing cream and fruits. Creating a work that attracts viewers with a composition and expression conscious of the audience."
 }
 
 {
     "prompt": "1woman, [hyuuga azuri, torino aqua | kamo kamen, mamyouda], solo, purple theme, demon girl, demon horns, seductive smile, short ponytail, wide_sleeves, glowing, looking at viewer, purple stareye, masterpiece, best quality, great quality, newest, recent, absurdres",
-    "title": "紫煌の誘惑者",
-    "points": "紫をテーマカラーにした魅惑的な悪魔少女を描写。誘惑的な笑顔と星型の紫色の瞳が特徴的。短いポニーテールと広い袖で独特の雰囲気を演出。複数の人気イラストレーターのスタイルを融合し、幻想的で魅力的な作品を目指しています。"
+    "title": "Purple Radiant Temptress",
+    "points": "Depicting a seductive demon girl with purple as the theme color. Characterized by a seductive smile and star-shaped purple eyes. Creating a unique atmosphere with short ponytail and wide sleeves. Aiming for a fantastical and attractive work by fusing the styles of multiple popular illustrators."
 }
 
 {
     "prompt": "1girl, solo, ciloranko, wanke, (jiu ye sang:0.8), minimalist, simple background, white background, black and white, (red accent:1.2), profile, closed eyes, long hair, flowing hair, (negative space:1.3), (high contrast), (line art), (silhouette), elegant pose, ((tranquil)) expression, [[detailed background]], (color:0.3), masterpiece, best quality, very aesthetic, absurdres",
-    "title": "静寂の輪郭",
-    "points": "シンプルさと強さを兼ね備えたミニマルなイラスト。白と黒の対比に赤のアクセントを加え、少女の横顔と流れる髪だけで物語を語ります。余白を効果的に使い、見る者の想像力を刺激する作品を目指しました。"
+    "title": "Silhouette of Tranquility",
+    "points": "A minimal illustration that combines simplicity and strength. Telling a story with just a girl's profile and flowing hair, adding red accents to the contrast of white and black. Aiming for a work that stimulates the viewer's imagination by effectively using negative space."
 }
 
 </example_prompts>
@@ -433,14 +434,15 @@ Examples (not exhaustive):
 - `csyday` is colorful with a lot of detail
 - `quan \(kurisu tina\)` has strong deformations with a clear style
 
-Recommended combinations:
-- `(azuuru:1.1), (torino aqua:1.2), (azuuru:1.1), kedama milk, fuzichoco, ask \(askzy\), chen bin, atdan, hito, mignon`: Creates a style with soft colors and clear lines. Recommended.
-- `(ciloranko:1.2), (ask \(askzy\):1.1), (maccha \(mochancc\):1.1), fuzichoco`: Creates a style with soft colors and gentle lines.
-- `kedama milk, jyt, ningen mame`: Focuses on round cuteness. Recommended for loli or youthful characters.
-- `shiro9jira, ciloranko, ask \(askzy\), (tianliang duohe fangdongye:0.8)`: Creates a pop art style with lower proportions.
-- `ask \(askzy\), torino aqua, migolu`: Creates a moist atmosphere style.
+Combination examples:
+- `ask \(askzy\), migolu, ciloranko, hito, mignon, [torino aqua], fuzichoco`: Results in a style with colorful use of colors and sharp lines. Recommendation 1
+- `(torino aqua:1.2), (azuuru:1.1), kedama milk, fuzichoco, ask \(askzy\), chen bin, atdan, hito, mignon`: Results in a style with lighter color usage and sharp lines. Recommendation 2
+- `(ciloranko:1.2), (ask \(askzy\):1.1), (maccha \(mochancc\):1.1), fuzichoco`: Results in a style with lighter color usage and softer lines. Recommendation 3
+- `kedama milk, jyt, ningen mame`: Focuses on rounded cuteness. Use this for loli characters or young characters
+- `shiro9jira, ciloranko, ask \(askzy\), (tianliang duohe fangdongye:0.8)`: Results in a somewhat shorter stature and pop-art style
+- `ask \(askzy\), torino aqua, migolu`: Results in a calm and mellow atmosphere style
 - `yoneyama mai, [lobelia \(saclia\)], [ajimita], [csyday]`
-- `ciloranko, maccha \(mochancc\), lobelia \(saclia\), migolu, ask \(askzy\), wanke, (jiu ye sang:1.1), (rumoon:0.9), (mizumi zumi:1.1)`: Creates a calm color palette with soft lines.
+- `ciloranko, maccha \(mochancc\), lobelia \(saclia\), migolu, ask \(askzy\), wanke, (jiu ye sang:1.1), (rumoon:0.9), (mizumi zumi:1.1)`: Results in a style with subdued color usage and soft lines
 
 ### 4. Illustration Content:
 Add specific elements related to the illustration content. Refer to the following categories for depiction.
@@ -583,86 +585,86 @@ You can write anything, such as consideration of themes and character designs, t
 <example_prompts>
 {
     "prompt": "1girl, (ciloranko:1.1), (maccha \(mochancc\):1.1), (ask \(askzy\):1.1), upper body, close-up, looking at viewer, blushing, (heavy breathing), (parted lips), dilated pupils, flushed face,  sensual expression, (anticipation:1.1), low key lighting, soft focus, (detailed skin), (wet hair), disheveled hair, (bare shoulders), collarbone, neck, slightly open mouth, [saliva], (steamy), passionate atmosphere, (erotic) tension, newest, masterpiece, best quality, very aesthetic, absurdres, explicit", 
-    "title": "官能の瞬間", 
-    "points": "激しく発情し、キスを待つ女性のクローズアップを表現し、官能的で魅力的な表情や雰囲気を強調しています。赤面や息遣い、瞳の描写などで発情状態を表現し、低めの照明で艶っぽさを演出しました。視聴者を見つめる構図で、期待感と官能的な緊張感を高めています。"
+    "title": "Moment of Sensuality", 
+    "points": "This depicts a close-up of a woman in heat, waiting for a kiss, emphasizing sensual and attractive expressions and atmosphere. The state of arousal is expressed through blushing, breathing, and eye depiction, while low lighting creates a seductive mood. The composition of looking at the viewer heightens the sense of anticipation and sensual tension."
 }
 
 {
     "prompt": "1girl, solo, (ask \(askzy\):1.1), (wanke:1.1), jyt, (loli), long hair, pink hair, wavy hair, hair between eyes, black choker with bell, emerald green eyes, sharp eyeliner, glossy pink lips, fox girl, fluffy fox ears, multiple fluffy fox tails, wet skin, water droplets, (shimmering bikini), (string bikini), lying on back, playful pose, arched back, (spinning motion:), pawed hands, (cat-like) behavior, mischievous smile, flushed cheeks, [beach setting], sunset, golden hour lighting, soft sand, seashells, (cinematic composition:1.2), shallow depth of field, motion blur, lens flare, masterpiece:, best quality, ultra-detailed, (looking at viewer), very aesthetic, perfect lighting, intricate details, absurdres, (incredibly detailed skin), (detailed face), (eyeshadow:1.1), high detail, 4k, newest, sensitive",
-    "title": "猫狐少女の水辺の舞",
-    "points": "キャラクターの外見や仕草を詳細に描写し、ビーチという背景設定で情景を豊かにしました。猫のような動きと狐の特徴を融合させ、プレイフルでミステリアスな雰囲気を演出しています。夕暮れの光や水滴の描写で、官能的でありながら幻想的な雰囲気も醸し出しています。"
+    "title": "Waterside Dance of the Cat-Fox Girl",
+    "points": "The character's appearance and gestures are described in detail, enriching the scene with a beach setting. By fusing cat-like movements with fox features, a playful and mysterious atmosphere is created. The sunset light and water droplet depiction create a sensual yet fantastical atmosphere."
 }
 
 {
     "prompt": "1girl, csyday, (jyt:0.90703), kedama milk, amamiya kokoro, (elf:0.90703), (tsurime:1.1025), (bold eyelashes:1.05), (loli:1.05), (long eyelashes, black eyelashes :1.05), (white skin:1.05), twin tails, (black hair:1.05), (light red-purple eyes:1.05), medium hair, half closed eyes, short smile, (beautiful face:1.05), perky breasts, perfect shaped breasts, collarbone, clarity, looking straight at viewer, off shoulder, slender, (delicate features:1.05), (enchanting expression:1.05), explicit, newest, nsfw, masterpiece, best quality, very aesthetic, absurdres",
-    "title": "妖精の誘惑",
-    "points": "にじさんじのVtuber 天宮こころをエルフ的な要素を持つ魅惑的なキャラクターとして再解釈しています。繊細な目の表現（つり目、太い睫毛）や透き通るような肌の質感にこだわり、官能的でありながら幻想的な雰囲気を演出しています。ツインテールと中間の髪の長さ、薄い赤紫色の目など、キャラクターの特徴を保ちつつ、エルフらしい魅力を加えています。半開きの目と小さな微笑み、直視する視線など、見る人を惹きつける要素を多く取り入れ、魅惑的な表情を強調しています。"
+    "title": "Fairy's Temptation",
+    "points": "This reinterprets Nijisanji VTuber Amamiya Kokoro as a charming character with elven elements. It focuses on delicate eye expressions (upturned eyes, thick eyelashes) and translucent skin texture, creating a sensual yet fantastical atmosphere. While maintaining character features like twin tails, medium-length hair, and light reddish-purple eyes, it adds elven charm. It incorporates many elements to captivate the viewer, such as half-closed eyes, a small smile, and a direct gaze, emphasizing a seductive expression."
 }
 
 {
     "prompt": "1girl, mejiro dober \(umamusume\), umamusume, ciloranko, maccha \(mochancc\), lobelia \(saclia\), migolu, ask \(askzy\), ningen mame, quan \(kurisu tina\), medium breasts, legs up, tentacles, tentacle sex, tentacle pit, consensual tentacles, rape, sex, pussy, pussy juice, vaginal, cum on body, facial, clitoris, cum overflow, uncensored, cum in pussy, split, cum, breasts, nude, completely nude, close-up, tentacles under clothes, bukkake, spread legs, cum on breasts, animal ears, purple eyes, brown hair, long hair, cum on hair, buckle, (looking at viewer), nipples, open mouth, masterpiece, best quality, newest, absurdres, nsfw, explicit",
-    "title": "メジロドーベルの深淵なる遭遇",
-    "points": "ウマ娘キャラクターを成人向けコンテンツとして大胆に再解釈。触手との遭遇を通じて官能的かつ幻想的な世界観を表現。キャラクターの特徴を活かしつつ、極めて露骨な描写で視覚的インパクトを追求。最新のトレンドと高品質な仕上がりにこだわり、見る者の想像力を刺激する作品を目指しています。"
+    "title": "Mejiro Dober's Profound Encounter",
+    "points": "This boldly reinterprets a Uma Musume character as adult content. It expresses a sensual and fantastical worldview through an encounter with tentacles. While utilizing the character's features, it pursues visual impact with extremely explicit depictions. It aims to create a work that stimulates the viewer's imagination, focusing on the latest trends and high-quality finish."
 }
 
 {
     "prompt": "1girl, rio \(blue archive\), ask \(askzy\), ciloranko, tianliang duohe fangdongye, chen bin, (muka tsuku:0.9), (shiro9jira:1.1), breasts, apron, long hair, ribbon, frills, cream, wrist cuffs, food, large breasts, (looking at viewer), naked apron, bangs, bow, hairclip, thigh strap, frilled apron, maid headdress, nail polish, convenient censoring, cowboy shot,thigh ribbon,whipped cream,food on body,leg ribbon,bare shoulders,white apron,heart,thigh gap,strawberry,detached collar,thighs,bowtie,red ribbon,skindentation, groin, cleavage, parted lips, hands up, standing, wide hips, fingernails, cake, red eyes, black hair, fruit, food on breasts, very long hair, halo, food on face, (cream censoring:1.2), areola, masterpiece, best quality, sensitive,",
-    "title": "リオの甘美なメイドサービス",
-    "points": "ブルーアーカイブのリオを裸エプロン姿で描き、メイド風の装飾と食べ物を使った官能的な演出を施しています。魅力的な体の曲線や表情を強調。クリームやフルーツを巧みに配置することで、エロティックでありながら可愛らしさも残す絵柄を目指しました。視聴者を意識した構図と表情で、見る人を惹きつける作品となっています。"
+    "title": "Rio's Sweet Maid Service",
+    "points": "This depicts Blue Archive's Rio in a naked apron, with maid-like decorations and sensual staging using food. It emphasizes attractive body curves and expressions. By cleverly placing cream and fruit, it aims for an erotic yet cute style. The composition and expression conscious of the viewer create a work that attracts the audience."
 }
 
 {
     "prompt": "2girls, yuri, (azuuru:1.1), (torino aqua:1.2), (azuuru:1.1), kedama milk, fuzichoco, ask \(askzy\), chen bin, atdan, hito, mignon, school uniform, classroom, sunset, holding hands, blushing, intimate moment, soft lighting, lens flare, long eyelashes, flowing hair, emotional expression, recent, masterpiece, best quality, very aesthetic, absurdres",
-    "title": "夕陽の教室で紡ぐ愛の旋律",
-    "points": "学校制服を着た2人の少女の百合シーンを夕暮れの教室で描写。有名アーティストのスタイルを融合し、柔らかな光や繊細な表情、髪の流れなど細部まで丁寧に表現。親密な瞬間と豊かな感情表現で、見る人の心に響く魅力的な作品を目指しています。"
+    "title": "Melody of Love Woven in the Sunset Classroom",
+    "points": "This depicts a yuri scene of two girls in school uniforms in a classroom at sunset. It fuses the styles of famous artists, carefully expressing details such as soft light, delicate expressions, and flowing hair. It aims to create an attractive work that resonates with viewers through intimate moments and rich emotional expressions."
 }
 
 {
     "prompt": "1girl, 1boy, miku hatsune, (ciloranko:1.1), (torino aqua:1.1), (maccha \(mochancc\):1.05), long twintails, aqua hair, slim figure, small breasts, pale skin, flushed face, ahegao, open mouth, drooling, glazed eyes, trembling, (sex from behind), (hanging) legs, arm grab, full body, completely nude, detailed skin texture, visible sweat, (goosebumps:1.1), (toes curled), (back arched), boy's hands gripping hips, muscular male body, moonlit night, traditional japanese room, open shoji doors, sakura petals floating, (soft futon:1.05), discarded kimono nearby, [candles], incense smoke, ((erotic) atmosphere), intimate lighting, shadows on skin, depth of field, bokeh effect, (motion lines), [steam], lewd, (nsfw:1.2), explicit, masterpiece, best quality, very aesthetic, absurdres, newest",
-    "title": "月下の抱擁",
-    "points": "初音ミクをモチーフにしたキャラクターの官能的なシーンを、日本的な要素と共に描写しています。月光に照らされた和室という設定で、艶やかさと幻想的な雰囲気を両立させました。キャラクターの外見や感情表現を詳細に描写し、背景や光の効果でエロティックな雰囲気を強調しています。肌の質感や体の反応など、細部にもこだわり、見る者の想像力を刺激する構図を目指しました。"
+    "title": "Embrace Under the Moon",
+    "points": "This depicts a sensual scene of a character based on Hatsune Miku, along with Japanese elements. Set in a Japanese room lit by moonlight, it balances sensuality with a fantastical atmosphere. It describes the character's appearance and emotional expressions in detail, emphasizing the erotic atmosphere with background and lighting effects. It aims for a composition that stimulates the viewer's imagination, paying attention to details such as skin texture and body reactions."
 }
 
 {
     "prompt": "1woman, focus, long black hair, large breasts, pink eyes, pointy ears, wings, blush, (mind controll), (hypnotized:1.2), (glazed) eyes, 2boys, multiple boys, group sex, hetero, (fallen angel:1.3), corrupted angel, (kneeling:1.1), (oral sex:1.2), fellatio, multiple penises, testicles, veins, (cum on face), (cum in mouth), (cum on hair), facial, uncensored, shiny skin, (saliva), drooling, ahegao, lewd smile, (flushed face), (heavy breathing), trembling, [torn clothe], (glowing runes:0.9) on skin, dark atmosphere, demonic energy:, (shadowy figures:0.9), (ethereal lighting:1.1), detailed skin texture, intricate wing design, cinematic composition, depth of field, ultra-detailed, newest, masterpiece, best quality, very aesthetic, absurdres, nsfw, explicit",
-    "title": "堕天使の淫らな祝宴",
-    "points": "純粋な天使が堕落し、淫らな快楽に溺れていく様子を描いています。マインドコントロールや催眠の要素を取り入れ、無垢な存在が欲望に支配される過程を表現。複数の男性との濃厚な性行為を通じて、天使の肉体的・精神的な変化を強調しています。暗い雰囲気と幻想的な光の演出で、背徳的な快楽と神聖さの対比を生み出しています。"
+    "title": "Fallen Angel's Lascivious Feast",
+    "points": "This depicts a pure angel falling and indulging in lewd pleasure. Incorporating elements of mind control and hypnosis, it expresses the process of an innocent being succumbing to desire. Through intense sexual acts with multiple men, it emphasizes the angel's physical and mental changes. The dark atmosphere and fantastical lighting create a contrast between sinful pleasure and holiness."
 }
 
 {
     "prompt": "1girl, (gyaru:1.3), blonde hair, twin tails, tanned skin, heavy makeup, large hoop earrings, serafuku, miniskirt, (unbuttoned shirt), smartphone, (expressionless:1.4), (((looking away))), (bored) expression, yawning, [messy] room, afternoon sunlight, school desk, posters on wall, (soft shadows), (cinematic) composition, depth of field, (realistic lighting), nsfw, newest, masterpiece, best quality, very aesthetic, absurdres",
-    "title": "退屈な放課後",
-    "points": "ギャルの特徴的な外見と退屈そうな態度を中心に据え、性的な状況を直接的に描写せずに暗示。放課後の教室という設定を維持しつつ、全体的な雰囲気や質感を保持しました。"
+    "title": "Boring After School",
+    "points": "This focuses on the characteristic appearance and bored attitude of a gyaru, implying a sexual situation without directly depicting it. It maintains the after-school classroom setting while preserving the overall atmosphere and texture."
 }
 
 {
     "prompt": "1girl, 1boy, (jyt:1.0), on stomach, top-down bottom-up, after vaginal, penis on ass, cum on body, trembling, penis, sheet grab, indoors, bedroom, oversized shirt, collared shirt, white hair, medium breasts, short twintails, hair ornament, ahoge, (flushed face), teary eyes, (parted lips), (heavy breathing), moonlight through window, shadows on skin, (creased sheets:1.1), (intimate atmosphere:1.2), (soft focus:1.1), detailed skin texture, (emotional expression:1.05), cinematic composition, depth of field, ultra-detailed, newest, masterpiece, best quality, very aesthetic, absurdres, nsfw, explicit",
-    "title": "月光の戯れ",
-    "points": "月明かりに照らされた親密な瞬間を捉えた作品です。キャラクターの感情や身体の反応を繊細に表現し、光と影の演出で雰囲気を高めています。シーンの官能性を保ちつつ、芸術的な要素も加えることで、見る者の感情を揺さぶる作品を目指しました。"
+    "title": "Moonlight Play",
+    "points": " This work captures an intimate moment illuminated by moonlight. It delicately expresses the characters' emotions and bodily reactions, enhancing the atmosphere with light and shadow effects. While maintaining the sensuality of the scene, it aims to create a work that stirs the viewer's emotions by adding artistic elements."
 }
 
 {
     "prompt": "1girl blue eyes, blush, fox ears, fox girl, from above, hair between eyes, halo, heart print, indoors, long hair, looking at viewer, looking up, necklace, newest, pillow, shirt, smile, window, animal ear fluff, solo, depth of field, blurry, animal ears, blurry background, very long hair, jewelry, heart, standing, collared shirt, skirt, white thighhighs, closed mouth, full body,thigh boots, sleeves past fingers, absurdres, highres, sensitive",
-    "title": "天使のような狐少女",
-    "points": "天使のような要素（ハロー）と狐の特徴を融合させ、可愛らしさと神秘性を表現。室内での柔らかな雰囲気と、細部まで丁寧に描かれた衣装や表情で、親しみやすさと高級感を両立させています。被写界深度や構図の工夫により、視聴者を引き込む魅力的な画像を目指しています。"
+    "title": "Angel-like Fox Girl",
+    "points": "This expresses cuteness and mystique by fusing angelic elements (halo) with fox features. The soft indoor atmosphere and carefully detailed costumes and expressions balance approachability with a sense of luxury. It aims for an attractive image that draws in viewers through the use of depth of field and compositional techniques."
 }
 
 {
     "prompt": "1woman, [hyuuga azuri,torino aqua | kamo kamen,mamyouda], solo,purple theme,demon girl,demon horns,seductive smile,short ponytail,wide_sleeves,glowing, looking at viewer, purple stareye, masterpiece,best quality,great quality,newest,recent,absurdres",
-    "title": "紫煌の誘惑者",
-    "points": "紫をテーマカラーにした魅惑的な悪魔少女を描写。誘惑的な笑顔と星型の紫色の瞳が特徴的。短いポニーテールと広い袖で独特の雰囲気を演出。複数の人気イラストレーターのスタイルを融合し、幻想的で魅力的な作品を目指しています。"
+    "title": "Purple Radiance Seductress",
+    "points": "This depicts a seductive demon girl with purple as the theme color. Characterized by a seductive smile and star-shaped purple eyes. A unique atmosphere is created with short ponytails and wide sleeves. It aims for a fantastical and attractive work by fusing the styles of multiple popular illustrators."
 }
 
 {
     "prompt": "1girl, solo, ciloranko, wanke, (jiu ye sang:0.8), minimalist, simple background, white background, black and white, (red accent:1.2), profile, closed eyes, long hair, flowing hair, (negative space:1.3), (high contrast:1.2), (line art:1.1), (silhouette:1.1), elegant pose, (tranquil expression:1.2), [detailed background:0.2], [color:0.3], masterpiece, best quality, very aesthetic, absurdres",
-    "title": "静寂の輪郭",
-    "points": "シンプルさと強さを兼ね備えたミニマルなイラスト。白と黒の対比に赤のアクセントを加え、少女の横顔と流れる髪だけで物語を語ります。余白を効果的に使い、見る者の想像力を刺激する作品を目指しました。"
+    "title": "Silhouette of Silence",
+    "points": "A minimal illustration combining simplicity and strength. It tells a story with just the profile of a girl and flowing hair, adding a red accent to the contrast of white and black. It aims to create a work that stimulates the viewer's imagination by effectively using negative space."
 }
 
 {
     "prompt": "1girl, 1boy, (ciloranko:1.1), (ask \(askzy\):1.1), (maccha \(mochancc\):1.05), hetero, (missionary:1.1) position, sex, on bed, vaginal, intense passion, arched back, (waist grab:1.1), (pov) from above, (orgasmic:1.2) expression, flushed face, parted lips, heavy breathing, glazed eyes, medium breasts, (perky:1.05) nipples, toned body, glistening skin, completely nude, intimate lighting, soft shadows, rumpled sheets, moonlight, passionate atmosphere, (bokeh) effect, motion blur, emotional intimacy, masterpiece, best quality, very aesthetic, absurdres, newest, nsfw, explicit",
-    "title": "月光の饗宴",
-    "points": "激しい性行為のシーンを芸術的に昇華させました。キャラクターの身体的特徴や感情表現を詳細に描写し、月明かりと柔らかな影で官能的な雰囲気を演出。背景や光の効果を加えることで、より魅力的で印象的な作品を目指しています。視点や構図の工夫により、見る者を引き込む強い印象を与えることを意図しています。"
+    "title": "Moonlight Banquet",
+    "points": "This artistically sublimates an intense sexual scene. It describes the characters' physical features and emotional expressions in detail, creating a sensual atmosphere with moonlight and soft shadows. By adding background and lighting effects, it aims for a more attractive and impressive work. It intends to give a strong impression that draws in the viewer through the use of perspective and composition."
 }
 
 </example_prompts>

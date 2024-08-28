@@ -53,6 +53,7 @@ def process_prompt(prompt_request, user_prompt_type, content_type, vendor, model
             if attempt < config.max_retry:
                 print(f"[Prompt-Gen] An error occurred while generating the prompt. Retrying in 2 seconds... (Attempt {attempt + 1}/{config.max_retry + 1})")
                 print(f"[Prompt-Gen] Error details: {e}")
+                print(f"[Prompt-Gen] Response Text:\n{response_text}")
                 time.sleep(2)
             else:
                 print(f"[Prompt-Gen] Failed to generate the prompt after {config.max_retry + 1} attempts. Please try again later.")
