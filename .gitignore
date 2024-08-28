@@ -13,3 +13,4 @@ build/
 .DS_Store
 .env
 sample_extension
+.prompt
