@@ -118,7 +118,7 @@ def create_ui():
 
             improve_button.click(
                 fn=improve_prompt_wrapper,
-                inputs=[prompt_request, fixed_tags_prefix, fixed_tags_suffix, content_type, vendor, model, image_model_type],
+                inputs=[generated_prompt, fixed_tags_prefix, fixed_tags_suffix, content_type, vendor, model, image_model_type],
                 outputs=[generated_prompt, supplementary_information, thinking_information, full_info_textbox]
             )
 
@@ -202,7 +202,7 @@ def generate_prompt_wrapper(prompt_request, mode, fixed_tags_prefix, fixed_tags_
     prompt_text, title, points, thinking_text = generate_prompt(prompt_request, mode_number, content_type, vendor, model, image_model_type, reference_image)
     
     # 表示用の文字列を組み立て
-    supplementary_info = f"### Title: {title}\n\nPoints: {points}"
+    supplementary_info = f"### {title}\n{points}"
     
     # 固定タグを追加
     full_prompt = (fixed_tags_prefix + ", " if fixed_tags_prefix else "") + prompt_text + (", " + fixed_tags_suffix if fixed_tags_suffix else "")
@@ -216,9 +216,10 @@ def generate_prompt_wrapper(prompt_request, mode, fixed_tags_prefix, fixed_tags_
     })
     return prompt_text, supplementary_info, updated_history, full_info_with_tags, thinking_text, current_page, total_pages
 
-def improve_prompt_wrapper(prompt_request, fixed_tags_prefix, fixed_tags_suffix, content_type, vendor, model, image_model_type):
-    prompt_text, title, points, thinking_text = improve_prompt(prompt_request, content_type, vendor, model, image_model_type)
-    supplementary_info = f"### Title: {title}\n\nPoints: {points}"
+def improve_prompt_wrapper(generated_prompt, fixed_tags_prefix, fixed_tags_suffix, content_type, vendor, model, image_model_type):
+    prompt_text, title, points, thinking_text = improve_prompt(generated_prompt, content_type, vendor, model, image_model_type)
+    supplementary_info = f"### {title}\n{points}"
     full_prompt = (fixed_tags_prefix + ", " if fixed_tags_prefix else "") + prompt_text + (", " + fixed_tags_suffix if fixed_tags_suffix else "")
+    full_prompt = full_prompt.strip().strip(',')
     full_info_with_tags = update_params_content(full_prompt)
     return prompt_text, supplementary_info, thinking_text, full_info_with_tags

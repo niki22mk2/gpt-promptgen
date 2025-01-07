@@ -6,7 +6,7 @@ class AnthropicAPI:
     def __init__(self):
         self.client = Anthropic(api_key=config.anthropic_api_key, timeout=30.0)
 
-    def generate_message(self, system_prompt, user_prompt, prefill="", model="claude-3-5-sonnet-20240620", reference_image=None):
+    def generate_message(self, system_prompt, user_prompt, prefill="", model="claude-3-5-sonnet-20241022", reference_image=None):
         try:
             messages = [
                 {

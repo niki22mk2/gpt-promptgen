@@ -6,6 +6,8 @@ from .config import config
 from utilities.prompts import get_template
 from .api.anthropic import AnthropicAPI
 from .api.openai import OpenAIAPI
+from .api.google import GoogleAPI
+from .api.factory import APIFactory
 from constants.constants import MODE_PROMPT_NAME_MAPPING
 
 def get_system_prompt(content_type, image_model_type):
@@ -27,7 +29,8 @@ def process_prompt(prompt_request, user_prompt_type, content_type, vendor, model
     
     system_prompt = get_system_prompt(content_type, image_model_type)
 
-    api = AnthropicAPI() if vendor == "Anthropic" else OpenAIAPI()
+    # APIファクトリーを使用してAPIインスタンスを取得
+    api = APIFactory.get_api(vendor)
 
     for attempt in range(config.max_retry + 1):
         try:

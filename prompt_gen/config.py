@@ -10,6 +10,18 @@ class Config:
         return shared.opts.openai_api_key
 
     @property
+    def openrouter_api_key(self):
+        return shared.opts.openrouter_api_key
+
+    @property
+    def deepseek_api_key(self):
+        return shared.opts.deepseek_api_key
+
+    @property
+    def google_api_key(self):
+        return shared.opts.google_api_key
+
+    @property
     def opt_temperature(self):
         return shared.opts.opt_temperature
 

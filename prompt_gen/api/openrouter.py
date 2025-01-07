@@ -3,11 +3,14 @@ from ..config import config
 from utilities.image_utils import process_reference_image
 import base64
 
-class OpenAIAPI:
+class OpenRouterAPI:
     def __init__(self):
-        self.client = OpenAI(api_key=config.openai_api_key)
+        self.client = OpenAI(
+            base_url="https://openrouter.ai/api/v1",
+            api_key=config.openrouter_api_key
+        )
 
-    def generate_message(self, system_prompt, user_prompt, prefill="", model="gpt-4o", reference_image=None):
+    def generate_message(self, system_prompt, user_prompt, prefill="", model="x-ai/grok-2-1212", reference_image=None):
         try:
             messages = [
                 {"role": "system", "content": system_prompt},
@@ -38,7 +41,7 @@ class OpenAIAPI:
                 max_tokens=4096
             )
 
-            print(f"[Prompt-Gen] OpenAI API usage: {response.usage}")
+            print(f"[Prompt-Gen] OpenRouter API usage: {response.usage}")
 
             text = response.choices[0].message.content.strip()
             return prefill + text if prefill else text
