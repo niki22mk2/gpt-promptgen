@@ -1,0 +1,211 @@
+This .cursorrules file provides repository-specific rules and best practices for developing extensions (plugins) for the [stable-diffusion-webui](https://github.com/AUTOMATIC1111/stable-diffusion-webui). The web UI uses **Gradio 4**, so these guidelines reflect that environment.
+
+---
+
+## Contents
+1. Introduction and Repository Structure
+2. Using Gradio 4
+3. Recommended Extension Folder Layout
+4. `install.py` and Dependency Management
+5. Scripts Directory and `script_callbacks`
+6. (Optional) `metadata.ini`
+7. UI Implementation (Tabs, Settings, Custom Scripts)
+8. Best Practices
+9. References
+
+---
+
+## 1. Introduction and Repository Structure
+
+- A stable-diffusion-webui extension resides in `extensions/<extension_name>/`.
+- Each extension is essentially a subdirectory containing:
+  - (Optionally) `install.py` to handle dependencies.
+  - A `scripts/` folder for your Python scripts.
+  - (Optionally) other folders like `localizations/` for language files, `javascript/` for custom JS, etc.
+  - (Optionally) `metadata.ini` for extension metadata.
+- Avoid name collisions with other extensions. Choose unique folder names and module names.
+- The extension directory is automatically added to `sys.path`, but be mindful of import name conflicts.
+
+---
+
+## 2. Using Gradio 4
+
+- The stable-diffusion-webui runs on Gradio 4. 
+- Important points:
+  - Use `import gradio as gr`.
+  - Create UI layouts within `with gr.Blocks(analytics_enabled=False):`.
+  - Use Gradio’s events like `.click()`, `.change()`, etc.
+  - Watch out for component ID collisions if you define multiple components with identical names.
+
+For official documentation, see [Gradio Docs](https://gradio.app/docs/).
+
+---
+
+## 3. Recommended Extension Folder Layout
+
+A basic extension structure can look like this:
+
+```
+extensions/
+└── your_extension/
+    ├── install.py          (optional; used for installing dependencies)
+    ├── scripts/            (main scripts that stable-diffusion-webui will load)
+    │   ├── script_one.py
+    │   └── script_two.py
+    ├── localizations/      (optional; localization JSON files)
+    ├── javascript/         (optional; custom JS)
+    ├── metadata.ini        (optional; defines metadata and dependencies)
+    ├── style.css           (optional; adds custom CSS to the web UI)
+    └── preload.py          (optional; called before parsing command-line args)
+```
+
+- Files in `scripts/` are treated like user scripts. 
+- If present, `localizations/` files are integrated into the web UI language settings.
+- If present, `style.css` is automatically added to the page.
+- If present, `javascript/` files are loaded into the web UI.
+
+---
+
+## 4. `install.py` and Dependency Management
+
+- `install.py`, if present at the root of your extension, is executed **before** the web UI launches.
+- It’s used to install or check for required Python packages.
+- Example snippet:
+  ```python
+  import launch
+
+  if not launch.is_installed("some_package"):
+      launch.run_pip("install some_package==1.2.3", "Installing dependencies for my extension")
+  ```
+- Though optional, it helps keep your extension self-contained and easy to set up.
+
+---
+
+## 5. Scripts Directory and `script_callbacks`
+
+- All `.py` files in `extensions/<extension_name>/scripts/` are auto-discovered by stable-diffusion-webui.
+- Use `script_callbacks` to hook into various UI or startup events:
+  - `on_ui_tabs()`: Add new tabs to the interface.
+  - `on_ui_settings()`: Add items to the settings panel.
+  - `on_app_started()`: Run code after the Gradio app has started.
+- For custom **txt2img / img2img** behavior or other features, create classes that inherit from `modules.scripts.Script` and override methods like `show()`, `ui()`, and `run()`.
+
+---
+
+## 6. (Optional) `metadata.ini`
+
+- A config file for defining dependencies, load order, and extension metadata.
+- Sample `metadata.ini`:
+  ```
+  [Extension]
+  Name = my-extension
+  Requires = sd-webui-controlnet
+
+  [scripts]
+  # Dependencies or load order for files in scripts/ can be declared here.
+  ```
+- See the “Developing extensions” wiki for more advanced usage:
+  [metadata.ini usage](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Developing-extensions#metadataini).
+
+---
+
+## 7. UI Implementation (Tabs, Settings, Custom Scripts)
+
+### 7.1 Adding a Custom Tab
+Use `script_callbacks.on_ui_tabs()` to add a Gradio Blocks UI as a new tab. Example:
+
+```python
+import gradio as gr
+from modules import script_callbacks
+
+def on_ui_tabs():
+    with gr.Blocks(analytics_enabled=False) as ui_component:
+        with gr.Row():
+            slider = gr.Slider(
+                minimum=0.0,
+                maximum=360.0,
+                step=1,
+                value=0,
+                label="Angle"
+            )
+            checkbox = gr.Checkbox(
+                False,
+                label="Enable Something"
+            )
+        # Add any event handlers or other components
+    return [(ui_component, "My Extension Tab", "my_extension_tab")]
+
+script_callbacks.on_ui_tabs(on_ui_tabs)
+```
+
+### 7.2 Adding to Settings
+Use `script_callbacks.on_ui_settings()` and `shared.opts.add_option()` to add new settings:
+
+```python
+from modules import shared, script_callbacks
+import gradio as gr
+
+def on_ui_settings():
+    section = ('my_extension', "My Extension Settings")
+    shared.opts.add_option(
+        "my_extension_enabled",
+        shared.OptionInfo(
+            False,
+            "Enable My Extension",
+            gr.Checkbox,
+            {"interactive": True},
+            section=section
+        )
+    )
+
+script_callbacks.on_ui_settings(on_ui_settings)
+```
+
+### 7.3 Custom Script for txt2img / img2img
+Implement a class extending `modules.scripts.Script`:
+
+```python
+import modules.scripts as scripts
+from modules.processing import process_images, Processed
+
+class MyExtensionScript(scripts.Script):
+    def title(self):
+        return "My Extension Script"
+
+    def show(self, is_img2img):
+        return scripts.AlwaysVisible
+    
+    def ui(self, is_img2img):
+        with gr.Accordion("My Extension Options", open=False):
+            angle = gr.Slider(minimum=0, maximum=360, step=1, value=0, label="Angle")
+            enable = gr.Checkbox(value=False, label="Enable Something")
+        return [angle, enable]
+
+    def run(self, p, angle, enable):
+        # Customize or modify processing here
+        processed = process_images(p)
+        return processed
+```
+
+---
+
+## 8. Best Practices
+
+- Name your extension folder uniquely to avoid collisions.
+- If you need your extension’s root path, you can call `scripts.basedir()` carefully (timing can affect its return value).
+- Avoid variable and class name collisions in your custom scripts.
+- Use `preload.py` if you need to modify or add command-line arguments before webui fully initializes.
+- Keep an eye on the webui logs to verify your extension loaded successfully and in the correct order.
+- Large features might be split into multiple extensions with explicit dependencies set in `metadata.ini`.
+- Don’t rely on the user’s extension folder name being consistent; it might be renamed.
+
+---
+
+## 9. References
+
+- **[Developing Extensions](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Developing-extensions)**  
+- **[Developing Custom Scripts](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Developing-custom-scripts)**  
+- **[Extensions Wiki](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Extensions)**  
+- **[Gradio Documentation](https://gradio.app/docs/)**  
+
+Use these resources to ensure best practices and compatibility with stable-diffusion-webui.

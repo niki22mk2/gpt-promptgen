@@ -108,7 +108,24 @@ h) Additional Elements of Composition:
 
 ### 4. Style Specification:
 If necessary, add content related to the style of the image (color usage, touch, style, technique, artistic approach, etc.).
-Examples: flat color, watercolor, chiaroscuro, selective color, gouache painting, paper cut art, bold brushstrokes, linocut printmaking, pencil sketch, pixel art, comic style, ukiyo-e, impressionistic style
+Examples:
+- pastel colors
+- calm colors
+- anime screencap
+- photorealistic
+- flat color
+- watercolor
+- chiaroscuro
+- selective color
+- gouache painting
+- paper cut art
+- bold brushstrokes
+- linocut printmaking
+- pencil sketch
+- pixel art
+- comic style
+- ukiyo-e
+- impressionistic style
 
 ### 5. Rating Tags:
 You can use one of the following tags to specify the content rating:
@@ -206,13 +223,13 @@ You can write anything here - theme exploration, character design considerations
 
 <example_prompts>
 {
-    "prompt": "1girl, solo, long hair, silver hair, purple eyes, cat ears, maid outfit, frills, thigh-highs, garter belt, holding tray, elegant pose, soft smile, looking at viewer, indoor cafe setting, sunlight through window, detailed background",
+    "prompt": "1girl, solo, long hair, silver hair, purple eyes, cat ears, maid outfit, frills, thigh-highs, garter belt, holding tray, elegant pose, soft smile, looking at viewer, indoor cafe setting, sunlight through window, pastel colors, detailed background",
     "title": "Elegant Cat-Eared Maid",
     "points": "Expressing the charming concept of a cat-eared maid. Focused on cafe atmosphere and lighting to achieve both elegance and cuteness."
 }
 
 {
-    "prompt": "1girl, solo, long hair, pink hair, wavy hair, hair between eyes, black choker with bell, emerald green eyes, sharp eyeliner, glossy pink lips, fox girl, fluffy fox ears, multiple fluffy fox tails, wet skin, water droplets, (shimmering bikini), (string bikini), lying on back, playful pose, arched back, (spinning motion:), pawed hands, (cat-like) behavior, mischievous smile, flushed cheeks, [beach setting], sunset, golden hour lighting, soft sand, seashells, lens flare, (looking at viewer), perfect lighting, (eyeshadow:1.1), sensitive",
+    "prompt": "1girl, solo, long hair, pink hair, wavy hair, hair between eyes, black choker with bell, emerald green eyes, sharp eyeliner, glossy pink lips, fox girl, fluffy fox ears, multiple fluffy fox tails, wet skin, water droplets, (shimmering bikini), (string bikini), lying on back, playful pose, arched back, (spinning motion:), pawed hands, (cat-like) behavior, mischievous smile, flushed cheeks, [beach setting], sunset, golden hour lighting, soft sand, seashells, lens flare, (looking at viewer), calm colors, perfect lighting, (eyeshadow:1.1), sensitive",
     "title": "Fox-Cat Girl's Waterside Dance",
     "points": "Detailed description of character's appearance and gestures in a beach setting. Merged cat-like movements with fox features to create a playful yet mysterious atmosphere. The sunset light and water droplets add both sensual and fantastical elements."
 }
@@ -254,7 +271,7 @@ You can write anything here - theme exploration, character design considerations
 }
 
 {
-    "prompt": "1girl, solo, blue eyes, short hair, orange hair,blush, fox ears, fox girl, from above, hair between eyes, halo, heart print, indoors, long hair, looking at viewer, looking up, necklace, pillow, shirt, smile, window, animal ear fluff, solo, animal ears, very long hair, jewelry, heart, standing, collared shirt, skirt, white thighhighs, closed mouth, full body,thigh boots, sleeves past fingers, sensitive",
+    "prompt": "1girl, solo, official art, anime screencap, blue eyes, short hair, orange hair,blush, fox ears, fox girl, from above, hair between eyes, halo, heart print, indoors, long hair, looking at viewer, looking up, necklace, pillow, shirt, smile, window, animal ear fluff, solo,  animal ears, very long hair, jewelry, heart, standing, collared shirt, skirt, white thighhighs, closed mouth, full body,thigh boots, sleeves past fingers, sensitive",
     "title": "Angel-Like Fox Girl",
     "points": "Combines angelic elements (halo) with fox features to express cuteness and mystique. Indoor soft atmosphere with detailed clothing and expressions balance approachability with elegance."
 }
@@ -272,7 +289,7 @@ You can write anything here - theme exploration, character design considerations
 }
 
 {
-    "prompt": "1girl, solo, demon girl, (purple theme:1.2), (seductive smile:1.1), purple eyes:, short ponytail, wide sleeves, purple hair, horns, tail, (alluring pose:1.1), magical aura, purple magic circles, [dark background], glowing eyes, (looking at viewer:1.1)",
+    "prompt": "1girl, solo, demon girl, (purple theme:1.2), (seductive smile:1.1), purple eyes:, short ponytail, wide sleeves, purple hair, horns, tail, (alluring pose:1.1), magical aura, purple magic circles, [dark background], glowing eyes, (looking at viewer:1.1), (photorealistic:0.8)",
     "title": "Purple Radiance Tempter",
     "points": "A prompt maximizing the appeal of a purple-themed demon girl. Emphasizes seductive smile and purple eyes, with magical elements enhancing the fantastical impression."
 }
@@ -403,7 +420,24 @@ h) Additional Composition Elements:
 
 ### 4. Specification of Art Style:
 If necessary, add content related to the art style of the image (color usage, touch, style, techniques, artistic methods, etc.).
-Examples: flat color, watercolor, chiaroscuro, selective color, gouache painting, paper cut art, bold brushstrokes, linocut printmaking, pencil sketch, pixel art, comic style, ukiyo-e, impressionistic style
+Examples:
+- pastel colors
+- calm colors
+- anime screencap
+- photorealistic
+- flat color
+- watercolor
+- chiaroscuro
+- selective color
+- gouache painting
+- paper cut art
+- bold brushstrokes
+- linocut printmaking
+- pencil sketch
+- pixel art
+- comic style
+- ukiyo-e
+- impressionistic style
 
 ### 5. Rating Tags:
 Use one of the following tags to specify the content rating:
@@ -499,25 +533,25 @@ You can write anything such as your theme consideration, character design, techn
 
 <example_prompts>
 {
-    "prompt": "1girl, solo, upper body, looking at viewer, close-up, blushing, (heavy breathing), (parted lips), dilated pupils, flushed face, sensual expression, (anticipation:1.1), low key lighting, soft focus, (detailed skin), (wet hair), disheveled hair, (bare shoulders), collarbone, neck, slightly open mouth, [saliva], (steamy), passionate atmosphere, (erotic) tension, explicit",
+    "prompt": "1girl, solo, upper body, looking at viewer, close-up, blushing, (heavy breathing), (parted lips), dilated pupils, flushed face,  sensual expression, (anticipation:1.1), low key lighting, soft focus, (detailed skin), (wet hair), disheveled hair, (bare shoulders), collarbone, neck, slightly open mouth, [saliva], (steamy), passionate atmosphere, (erotic) tension, explicit", 
     "title": "Moment of Sensuality",
     "points": "Expressed a close-up of a woman eagerly anticipating a kiss, emphasizing sensual and attractive expressions and atmosphere. Highlighted arousal with blushing, breathing, and pupil depiction, using low-key lighting for allure. The composition looking at the viewer heightens anticipation and erotic tension."
 }
 
 {
-    "prompt": "1girl, 1boy, hetero, (sleep sex:1.5), (unconscious girl:1.3), (night:1.2), (moonlight through window:1.4), (dark room:1.2), girl's dormitory, single bed, long black hair sprawled, slim figure, small breasts, (sleeping face:1.3), (parted lips:1.2), heavy breathing, flushed cheeks, torn nightgown, (fully exposed body:1.4), (dripping cum:1.4), (muscular male:1.3), completely nude, (rough pounding:1.5), (deep penetration:1.4), (vaginal sex:1.4), (girl's legs spread wide:1.3), (arched back:1.2), intense body movement, (creampie:1.3), (overflowing cum:1.4), (mixed body fluids:1.3), (glistening sweat:1.3), (top-down view:1.3), (veins:1.2), soft shadows, (intimate lighting:1.2), motion lines, (body spasms:1.3), (trembling thighs:1.3), (clenched fists:1.2), (toes curled:1.2), (pulsating penis:1.3), (throbbing veins:1.2), (rippling muscles:1.2), (strained expression:1.2), (gritted teeth:1.1), (sweat droplets:1.2), (passionate atmosphere:1.3), (steamy room:1.2), (disheveled bedsheets:1.2), (scattered clothes:1.1), (creaking bed:1.1), (muffled moans:1.2), (erotic shadows:1.2), nsfw, explicit",
+    "prompt": "1girl, 1boy, hetero, (sleep sex:1.5), (unconscious girl:1.3), (night:1.2), (moonlight through window:1.4), (dark room:1.2), calm colors, girl's dormitory, single bed, long black hair sprawled, slim figure, small breasts, (sleeping face:1.3), (parted lips:1.2), heavy breathing, flushed cheeks, torn nightgown, (fully exposed body:1.4), (dripping cum:1.4), (muscular male:1.3), completely nude, (rough pounding:1.5), (deep penetration:1.4), (vaginal sex:1.4), (girl's legs spread wide:1.3), (arched back:1.2), intense body movement, (creampie:1.3), (overflowing cum:1.4), (mixed body fluids:1.3), (glistening sweat:1.3), (top-down view:1.3), (veins:1.2), soft shadows, (intimate lighting:1.2), motion lines, (body spasms:1.3), trembling thighs:, (clenched fists:1.2), (toes curled:1.2), (pulsating penis:1.3), (throbbing veins:1.2), rippling muscles, (strained expression:1.2), gritted teeth, (sweat droplets:1.2), (passionate atmosphere:1.3), (steamy room:1.2), (disheveled bedsheets:1.2), (scattered clothes:1.1), (creaking bed:1.1), muffled moans, erotic shadows, nsfw, explicit",
     "title": "Forbidden Pleasures of the Night",
     "points": "Depicts the illicit act unfolding in a girl's dormitory under moonlit. The intense physical interaction between the unconscious girl and the man invading her is vividly portrayed, capturing a moment dominated by erotic tension. The focus is on the girl's pleasure-filled expression while asleep, intense movements, sweat, and bodily fluids, evoking the complex emotions brought about by forbidden acts."
 }
 
 {
-    "prompt": "1girl, solo, (tsurime:1.1025), elf, (bold eyelashes:1.05), (loli:1.05), (long eyelashes, black eyelashes :1.05), (white skin:1.05), twin tails, (black hair:1.05), (light red-purple eyes:1.05), medium hair, half closed eyes, short smile, (beautiful face:1.05), perfect shaped breasts, collarbone, clarity, looking straight at viewer, off shoulder, slender, (delicate features:1.05), (enchanting expression:1.05), general",
+    "prompt": "1girl, solo, (tsurime:1.1025), elf, (bold eyelashes:1.05), (loli:1.05), (long eyelashes, black eyelashes :1.05), (white skin:1.05), twin tails, (black hair:1.05), (light red-purple eyes:1.05), medium hair, half closed eyes, short smile, (beautiful face:1.05), perfect shaped breasts, collarbone, clarity, looking straight at viewer, off shoulder, slender, (delicate features:1.05), (enchanting expression:1.05), pastel colors, general",
     "title": "Temptation of the Fairy",
     "points": "Depicts the alluring charm of an elven girl with detailed portrayal, blending cuteness and allure seamlessly. Expressed cuteness with features like tsurime eyes, long lashes, white skin, and twin tails, while highlighting adult attractiveness with well-shaped breasts and collarbones. Aims to create an enchanting and artistic work with the girl looking directly at the viewer with a slight smile and half-closed eyes."
 }
 
 {
-    "prompt": "1girl, rio (blue archive), breasts, apron, long hair, ribbon, frills, cream, wrist cuffs, food, large breasts, (looking at viewer), naked apron, bangs, bow, hairclip, thigh strap, frilled apron, maid headdress, nail polish, convenient censoring, cowboy shot, thigh ribbon, whipped cream, food on body, leg ribbon, bare shoulders, white apron, heart, thigh gap, strawberry, detached collar, thighs, bowtie, red ribbon, skindentation, groin, cleavage, parted lips, hands up, standing, wide hips, fingernails, cake, red eyes, black hair, fruit, food on breasts, very long hair, halo, food on face, (cream censoring:1.2), areola, sensitive",
+    "prompt": "1girl, rio \(blue archive\), official art, breasts, apron, long hair, ribbon, frills, cream, wrist cuffs, food, large breasts, (looking at viewer), naked apron, bangs, bow, hairclip, thigh strap, frilled apron, maid headdress, nail polish, convenient censoring, cowboy shot, thigh ribbon, whipped cream, food on body, leg ribbon, bare shoulders, white apron, heart, thigh gap, strawberry, detached collar, thighs, bowtie, red ribbon, skindentation, groin, cleavage, parted lips, hands up, standing, wide hips, fingernails, cake, red eyes, black hair, fruit, food on breasts, very long hair, halo, food on face, (cream censoring:1.2), areola, anime screencap, sensitive,",
     "title": "Rio's Sweet Maid Service",
     "points": "Depicts Rio from Blue Archive in a naked apron, with maid decorations and food used for a sensual display. Emphasizes the alluring body curves and expressions. Aims for an erotic yet cute image by cleverly placing cream and fruit. The composition and expressions that are conscious of the viewer create an engaging work."
 }

@@ -1,10 +1,11 @@
 import gradio as gr
-from modules import infotext_utils
+from modules import infotext_utils, shared
 from .core import generate_prompt, improve_prompt
 from utilities.logs import update_request_history, load_request_history
 from utilities.params import update_params_content
 from utilities.fixed_tags import load_fixed_tags, save_fixed_tags
 from constants.constants import MODE_NAME_MAPPING, VENDOR_MODELS
+from .config import config
 
 def create_ui():
     with gr.Blocks() as llm_prompt_gen_interface:
@@ -183,9 +184,24 @@ def create_ui():
     
     return [(llm_prompt_gen_interface, "LLM Prompt Gen", "llm_prompt_gen_interface")]
 
-# ベンダー選択に応じてモデル選択を更新する関数
+def get_openrouter_models():
+    """OpenRouterのモデルリストを取得します。設定画面で指定されたカスタムモデルも含みます。"""
+    base_models = VENDOR_MODELS["OpenRouter"].copy()
+    custom_models = config.openrouter_custom_models
+    
+    if custom_models:
+        base_models.extend(custom_models)
+    
+    return base_models
+
 def update_model_choices(vendor):
-    return gr.Dropdown.update(choices=VENDOR_MODELS[vendor], value=VENDOR_MODELS[vendor][0])
+    """ベンダー選択に応じてモデル選択を更新する関数"""
+    if vendor == "OpenRouter":
+        models = get_openrouter_models()
+    else:
+        models = VENDOR_MODELS[vendor]
+    
+    return gr.Dropdown.update(choices=models, value=models[0])
 
 def update_full_info(generated_prompt, fixed_tags_prefix, fixed_tags_suffix):
     if generated_prompt:

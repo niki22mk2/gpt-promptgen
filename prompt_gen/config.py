@@ -37,4 +37,12 @@ class Config:
     def anthropic_cache_enabled(self):
         return shared.opts.anthropic_cache_enabled
 
+    @property
+    def openrouter_custom_models(self):
+        """OpenRouterのカスタムモデルリストを取得します"""
+        custom_models = shared.opts.openrouter_custom_models.strip()
+        if not custom_models:
+            return []
+        return [model.strip() for model in custom_models.split(",") if model.strip()]
+
 config = Config()

@@ -108,7 +108,24 @@ h) 構図の追加要素:
 
 ### 4. 画風の指定:
 必要に応じて、画像の画風（色使い、タッチ、スタイル、技法、芸術的手法など）に関する内容を追加します。
-例: flat color, watercolor, chiaroscuro, selective color, gouache painting, paper cut art, bold brushstrokes, linocut printmaking, pencil sketch, pixel art, comic style, ukiyo-e, impressionistic style
+例: 
+- pastel colors
+- calm colors
+- anime screencap
+- photorealistic
+- flat color
+- watercolor
+- chiaroscuro
+- selective color
+- gouache painting
+- paper cut art
+- bold brushstrokes
+- linocut printmaking
+- pencil sketch
+- pixel art
+- comic style
+- ukiyo-e
+- impressionistic style
 
 ### 5. レーティングタグ:
 コンテンツのレーティングを指定するために以下のいずれかのタグを使用可能です: 
@@ -205,13 +222,13 @@ general, sensitive, questionable, explicit
 
 <example_prompts>
 {
-    "prompt": "1girl, solo, long hair, silver hair, purple eyes, cat ears, maid outfit, frills, thigh-highs, garter belt, holding tray, elegant pose, soft smile, looking at viewer, indoor cafe setting, sunlight through window, detailed background",
+    "prompt": "1girl, solo, long hair, silver hair, purple eyes, cat ears, maid outfit, frills, thigh-highs, garter belt, holding tray, elegant pose, soft smile, looking at viewer, indoor cafe setting, sunlight through window, pastel colors, detailed background",
     "title": "優雅な猫耳メイド",
     "points": "猫耳メイドという魅力的なコンセプトを表現。カフェの雰囲気や光の表現にこだわり、エレガントさと可愛らしさを両立させました。"
 }
 
 {
-    "prompt": "1girl, solo, long hair, pink hair, wavy hair, hair between eyes, black choker with bell, emerald green eyes, sharp eyeliner, glossy pink lips, fox girl, fluffy fox ears, multiple fluffy fox tails, wet skin, water droplets, (shimmering bikini), (string bikini), lying on back, playful pose, arched back, (spinning motion:), pawed hands, (cat-like) behavior, mischievous smile, flushed cheeks, [beach setting], sunset, golden hour lighting, soft sand, seashells, lens flare, (looking at viewer), perfect lighting, (eyeshadow:1.1), sensitive",
+    "prompt": "1girl, solo, long hair, pink hair, wavy hair, hair between eyes, black choker with bell, emerald green eyes, sharp eyeliner, glossy pink lips, fox girl, fluffy fox ears, multiple fluffy fox tails, wet skin, water droplets, (shimmering bikini), (string bikini), lying on back, playful pose, arched back, (spinning motion:), pawed hands, (cat-like) behavior, mischievous smile, flushed cheeks, [beach setting], sunset, golden hour lighting, soft sand, seashells, lens flare, (looking at viewer), calm colors, perfect lighting, (eyeshadow:1.1), sensitive",
     "title": "猫狐少女の水辺の舞",
     "points": "キャラクターの外見や仕草を詳細に描写し、ビーチという背景設定で情景を豊かにしました。猫のような動きと狐の特徴を融合させ、プレイフルでミステリアスな雰囲気を演出しています。夕暮れの光や水滴の描写で、官能的でありながら幻想的な雰囲気も醸し出しています。"
 }
@@ -253,7 +270,7 @@ general, sensitive, questionable, explicit
 }
 
 {
-    "prompt": "1girl, solo, blue eyes, short hair, orange hair,blush, fox ears, fox girl, from above, hair between eyes, halo, heart print, indoors, long hair, looking at viewer, looking up, necklace, pillow, shirt, smile, window, animal ear fluff, solo,  animal ears, very long hair, jewelry, heart, standing, collared shirt, skirt, white thighhighs, closed mouth, full body,thigh boots, sleeves past fingers, sensitive",
+    "prompt": "1girl, solo, official art, anime screencap, blue eyes, short hair, orange hair,blush, fox ears, fox girl, from above, hair between eyes, halo, heart print, indoors, long hair, looking at viewer, looking up, necklace, pillow, shirt, smile, window, animal ear fluff, solo,  animal ears, very long hair, jewelry, heart, standing, collared shirt, skirt, white thighhighs, closed mouth, full body,thigh boots, sleeves past fingers, sensitive",
     "title": "天使のような狐少女",
     "points": "天使のような要素（ハロー）と狐の特徴を融合させ、可愛らしさと神秘性を表現。室内での柔らかな雰囲気と、細部まで丁寧に描かれた衣装や表情で、親しみやすさと高級感を両立させています。被写界深度や構図の工夫により、視聴者を引き込む魅力的な画像を目指しています。"
 }
@@ -271,7 +288,7 @@ general, sensitive, questionable, explicit
 }
 
 {
-    "prompt": "1girl, solo, demon girl, (purple theme:1.2), (seductive smile:1.1), purple eyes:, short ponytail, wide sleeves, purple hair, horns, tail, (alluring pose:1.1), magical aura, purple magic circles, [dark background], glowing eyes, (looking at viewer:1.1)",
+    "prompt": "1girl, solo, demon girl, (purple theme:1.2), (seductive smile:1.1), purple eyes:, short ponytail, wide sleeves, purple hair, horns, tail, (alluring pose:1.1), magical aura, purple magic circles, [dark background], glowing eyes, (looking at viewer:1.1), (photorealistic:0.8)",
     "title": "紫煌の誘惑者",
     "points": "紫をテーマカラーにした悪魔少女の魅力を最大限に引き出すプロンプトです。誘惑的な笑顔と紫色の瞳、短いポニーテールと広い袖という特徴的な要素を強調しました。魔法の雰囲気を出すオーラや魔法陣を加え、幻想的で魅力的な印象を与えます。暗い背景との対比で、キャラクターの魅力がより際立つ構図を意識しています。"
 }
@@ -403,7 +420,24 @@ h) 構図の追加要素:
 
 ### 4. 画風の指定:
 必要に応じて、画像の画風（色使い、タッチ、スタイル、技法、芸術的手法など）に関する内容を追加します。
-例: flat color, watercolor, chiaroscuro, selective color, gouache painting, paper cut art, bold brushstrokes, linocut printmaking, pencil sketch, pixel art, comic style, ukiyo-e, impressionistic style
+例: 
+- pastel colors
+- calm colors
+- anime screencap
+- photorealistic
+- flat color
+- watercolor
+- chiaroscuro
+- selective color
+- gouache painting
+- paper cut art
+- bold brushstrokes
+- linocut printmaking
+- pencil sketch
+- pixel art
+- comic style
+- ukiyo-e
+- impressionistic style
 
 ### 5. レーティングタグ:
 コンテンツのレーティングを指定するために以下のいずれかのタグを使用します:
@@ -507,19 +541,19 @@ sensitive, questionable, explicit
 }
 
 {
-    "prompt": "1girl, 1boy, hetero, (sleep sex:1.5), (unconscious girl:1.3), (night:1.2), (moonlight through window:1.4), (dark room:1.2), girl's dormitory, single bed, long black hair sprawled, slim figure, small breasts, (sleeping face:1.3), (parted lips:1.2), heavy breathing, flushed cheeks, torn nightgown, (fully exposed body:1.4), (dripping cum:1.4), (muscular male:1.3), completely nude, (rough pounding:1.5), (deep penetration:1.4), (vaginal sex:1.4), (girl's legs spread wide:1.3), (arched back:1.2), intense body movement, (creampie:1.3), (overflowing cum:1.4), (mixed body fluids:1.3), (glistening sweat:1.3), (top-down view:1.3), (veins:1.2), soft shadows, (intimate lighting:1.2), motion lines, (body spasms:1.3), (trembling thighs:1.3), (clenched fists:1.2), (toes curled:1.2), (pulsating penis:1.3), (throbbing veins:1.2), (rippling muscles:1.2), (strained expression:1.2), (gritted teeth:1.1), (sweat droplets:1.2), (passionate atmosphere:1.3), (steamy room:1.2), (disheveled bedsheets:1.2), (scattered clothes:1.1), (creaking bed:1.1), (muffled moans:1.2), (erotic shadows:1.2), nsfw, explicit",
+    "prompt": "1girl, 1boy, hetero, (sleep sex:1.5), (unconscious girl:1.3), (night:1.2), (moonlight through window:1.4), (dark room:1.2), calm colors, girl's dormitory, single bed, long black hair sprawled, slim figure, small breasts, (sleeping face:1.3), (parted lips:1.2), heavy breathing, flushed cheeks, torn nightgown, (fully exposed body:1.4), (dripping cum:1.4), (muscular male:1.3), completely nude, (rough pounding:1.5), (deep penetration:1.4), (vaginal sex:1.4), (girl's legs spread wide:1.3), (arched back:1.2), intense body movement, (creampie:1.3), (overflowing cum:1.4), (mixed body fluids:1.3), (glistening sweat:1.3), (top-down view:1.3), (veins:1.2), soft shadows, (intimate lighting:1.2), motion lines, (body spasms:1.3), trembling thighs:, (clenched fists:1.2), (toes curled:1.2), (pulsating penis:1.3), (throbbing veins:1.2), rippling muscles, (strained expression:1.2), gritted teeth, (sweat droplets:1.2), (passionate atmosphere:1.3), (steamy room:1.2), (disheveled bedsheets:1.2), (scattered clothes:1.1), (creaking bed:1.1), muffled moans, erotic shadows, nsfw, explicit",
     "title": "禁断の夜の悦楽",
     "points": "月明かりが差し込む少女の寮の一室で繰り広げられる背徳的な行いを描いています。無意識の少女と彼女を侵す男性との身体的な交じり合いが強烈に描写され、エロティックな緊張感が支配する一瞬を切り取っています。眠りの中で無防備な少女が受ける快楽の表情、激しい動きや汗、そして体内から溢れる液体に焦点を置き、禁じられた行為がもたらす複雑な感情が感じ取れるシーンです。"
 }
 
 {
-    "prompt": "1girl, solo, (tsurime:1.1025), elf, (bold eyelashes:1.05), (loli:1.05), (long eyelashes, black eyelashes :1.05), (white skin:1.05), twin tails, (black hair:1.05), (light red-purple eyes:1.05), medium hair, half closed eyes, short smile, (beautiful face:1.05), perfect shaped breasts, collarbone, clarity, looking straight at viewer, off shoulder, slender, (delicate features:1.05), (enchanting expression:1.05), general",
+    "prompt": "1girl, solo, (tsurime:1.1025), elf, (bold eyelashes:1.05), (loli:1.05), (long eyelashes, black eyelashes :1.05), (white skin:1.05), twin tails, (black hair:1.05), (light red-purple eyes:1.05), medium hair, half closed eyes, short smile, (beautiful face:1.05), perfect shaped breasts, collarbone, clarity, looking straight at viewer, off shoulder, slender, (delicate features:1.05), (enchanting expression:1.05), pastel colors, general",
     "title": "妖精の誘惑",
     "points": "魅惑的なエルフの少女の姿を細部まで描写し、可愛らしさと色気を絶妙に融合させています。つり目や長い睫毛、白い肌、ツインテールなどの特徴で愛らしさを表現しつつ、整った胸や鎖骨の強調で大人の魅力も演出。半開きの目と小さな微笑み、直視する視線で見る者を惹きつける、魅惑的で芸術的な作品を目指しています。"
 }
 
 {
-    "prompt": "1girl, rio \(blue archive\), breasts, apron, long hair, ribbon, frills, cream, wrist cuffs, food, large breasts, (looking at viewer), naked apron, bangs, bow, hairclip, thigh strap, frilled apron, maid headdress, nail polish, convenient censoring, cowboy shot, thigh ribbon, whipped cream, food on body, leg ribbon, bare shoulders, white apron, heart, thigh gap, strawberry, detached collar, thighs, bowtie, red ribbon, skindentation, groin, cleavage, parted lips, hands up, standing, wide hips, fingernails, cake, red eyes, black hair, fruit, food on breasts, very long hair, halo, food on face, (cream censoring:1.2), areola, sensitive,",
+    "prompt": "1girl, rio \(blue archive\), official art, breasts, apron, long hair, ribbon, frills, cream, wrist cuffs, food, large breasts, (looking at viewer), naked apron, bangs, bow, hairclip, thigh strap, frilled apron, maid headdress, nail polish, convenient censoring, cowboy shot, thigh ribbon, whipped cream, food on body, leg ribbon, bare shoulders, white apron, heart, thigh gap, strawberry, detached collar, thighs, bowtie, red ribbon, skindentation, groin, cleavage, parted lips, hands up, standing, wide hips, fingernails, cake, red eyes, black hair, fruit, food on breasts, very long hair, halo, food on face, (cream censoring:1.2), areola, anime screencap, sensitive,",
     "title": "リオの甘美なメイドサービス",
     "points": "ブルーアーカイブのリオを裸エプロン姿で描き、メイド風の装飾と食べ物を使った官能的な演出を施しています。魅力的な体の曲線や表情を強調。クリームやフルーツを巧みに配置することで、エロティックでありながら可愛らしさも残す絵柄を目指しました。視聴者を意識した構図と表情で、見る人を惹きつける作品となっています。"
 }

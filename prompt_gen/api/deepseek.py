@@ -37,7 +37,7 @@ class DeepSeekAPI:
                 messages=messages,
                 # frequency_penalty=0.75,
                 temperature=config.opt_temperature,
-                max_tokens=4096
+                max_tokens=2048
             )
 
             print(f"[Prompt-Gen] DeepSeek API usage: {response.usage}")
