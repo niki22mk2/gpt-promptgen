@@ -52,7 +52,7 @@ class AnthropicAPI:
                 system[0]["cache_control"] = {"type": "ephemeral"}
                 print(f"[Prompt-Gen] Anthropic Prompt cache enabled")
 
-            response = self.client.beta.prompt_caching.messages.create(
+            response = self.client.messages.create(
                 model=model,
                 max_tokens=4096,
                 temperature=config.opt_temperature,
