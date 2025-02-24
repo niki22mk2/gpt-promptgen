@@ -14,3 +14,4 @@ build/
 .env
 sample_extension
 .prompt
+.cursorrules

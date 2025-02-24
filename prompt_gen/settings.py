@@ -7,7 +7,6 @@ def on_ui_settings():
     shared.opts.add_option('anthropic_api_key', shared.OptionInfo('', 'Anthropic API Key', section=section))
     shared.opts.add_option('anthropic_cache_enabled', shared.OptionInfo(True, 'Enable Anthropic Prompt cache', gr.Checkbox, {}, section=section))
     shared.opts.add_option('openai_api_key', shared.OptionInfo('', 'OpenAI API Key', section=section))
-    shared.opts.add_option('deepseek_api_key', shared.OptionInfo('', 'DeepSeek API Key', section=section))
     shared.opts.add_option('openrouter_api_key', shared.OptionInfo('', 'OpenRouter API Key', section=section))
     shared.opts.add_option('openrouter_custom_models', shared.OptionInfo('', 'OpenRouter Custom Models (comma-separated model IDs)', section=section))
     shared.opts.add_option('opt_temperature', shared.OptionInfo(1, 'temperature (default=1)', gr.Slider, {'minimum': 0, 'maximum': 1, 'step': 0.1}, section=section))
