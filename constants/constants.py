@@ -25,7 +25,7 @@ MODE_PROMPT_NAME_MAPPING = {
 }
 
 VENDOR_MODELS = {
-    "Anthropic": ["claude-3-5-sonnet-20241022"],
+    "Anthropic": ["claude-3-7-sonnet-20250219", "claude-3-5-sonnet-20241022"],
     "OpenAI": ["chatgpt-4o-latest", "gpt-4o"],
     "Google": ["gemini-2.0-flash"],
     "OpenRouter": ["x-ai/grok-2-1212", "x-ai/grok-2-vision-1212", "amazon/nova-pro-v1"],
